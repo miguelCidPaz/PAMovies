@@ -1,8 +1,11 @@
+import react from "react";
+import Header from "./components/header/header";
+import "./assets/css/styles.css"
 
 function App() {
   return (
     <div>
-      <h1>Hola mundo 2</h1>
+      <Header></Header>
     </div>
   );
 }
