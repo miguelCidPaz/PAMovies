@@ -1,3 +1,97 @@
-.filmdetails--title{
-    color: white;
+.filmdetails--main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5%;
+    margin-top: 20px;
+
+    .filmdetails--title{
+        color: white;
+        font-size: 50px;
+        margin-left: -10px;
+        padding: 10px 0px;
+        font-weight: bolder;
+    }
+}
+
+.filmdetails--section{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.541);
+    box-shadow: 0 0 5px grey, 0 0 4px inset white;
+    margin: 20px;
+    padding: 20px 10px;
+    width: 70%;
+
+    @media (max-width:760px){
+        width: 90%;
+    }
+}
+
+.filmdetails--frame-photo{
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    @media (max-width:580px) {
+        width:250px;
+        height:250px;
+    }
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.filmdetails--description, .filmdetails--cast{
+    margin: 20px;
+}
+
+.filmdetails--cast{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    .castcomponent--container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        width: 200px;
+        height: 250px;
+        border-radius: 20px;
+        background-color: rgba(206, 199, 199, 0.603);
+        box-shadow: 0 0 4px inset white, 0 0 5px rgba(206, 198, 198, 0.445);
+    
+        .castcomponent--frame-photo{
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 30px;
+            width: 100px;
+            height: 100px;
+        
+            img{
+                width: 100%;
+                height: 100%;
+                margin: auto;
+            }
+        }
+    
+    }
+}
+
+.filmdetails--presentation{
+    display: flex;
+    flex-direction: column;
+    
 }

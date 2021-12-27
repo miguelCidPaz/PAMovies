@@ -10,5 +10,9 @@ export const filmDetail = {
         0: { photo: "https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image-620x600.jpg", nameActor: "Menganito tres pueblos" },
         1: { photo: "https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image-620x600.jpg", nameActor: "Joselito tres caminos" },
         2: { photo: "https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image-620x600.jpg", nameActor: "Alfonsito tres scripts" },
+    },
+
+    trailer: {
+        url: "S_Pd2pGkq54"
     }
 }
