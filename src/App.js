@@ -1,12 +1,14 @@
 import react from "react";
 import Header from "./components/header/header";
+import FilmDetails from "./components/FilmDetails/FilmDetails";
 import "./assets/css/styles.css"
 
 function App() {
   return (
-    <>
-      <Header></Header>
-    </>
+    <main>
+      <Header />
+      <FilmDetails />
+    </main>
   );
 }
 

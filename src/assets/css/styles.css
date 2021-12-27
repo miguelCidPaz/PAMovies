@@ -68,4 +68,8 @@ body::before {
   background-color: #272727;
 }
 
+.filmdetails--title {
+  color: white;
+}
+
 /*# sourceMappingURL=styles.css.map */
