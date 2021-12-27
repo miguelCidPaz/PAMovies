@@ -1,16 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Row from '../Row/Row'
+import { genders } from './data-main';
+import Row from './Row'
 
-/* title={this.state.information2.title} data={this.state.information2.elements} */
-function Main(props) {
-    
+
+function Main() {
+
     return (
         <div className="main-container" >
+            <div className='allgenders-button'>
+                <p>Todos los géneros</p>
+            </div>
+
             <div className='distribution'>
-                <Row/>
-                <Row/>
-                <Row/>  
+                <Row title={genders[0].title}/>
+                <Row title={genders[1].title}/>
+                <Row title={genders[2].title}/>  
             </div>
         </div>
     )

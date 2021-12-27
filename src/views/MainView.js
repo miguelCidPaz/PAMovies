@@ -7,7 +7,6 @@ function MainView () {
     return (
         <div className="mainview-container" >
             {/* <Header /> */}
-            <p>Soy Main View</p>
             <Main />
         </div>
     )

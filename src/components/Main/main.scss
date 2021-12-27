@@ -1,0 +1,30 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+    color: white;
+
+
+    .allgenders-button{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-left: 34px;
+    }
+
+    .distribution{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.row-container{
+    margin-left: 34px;
+}
+.film-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    min-height: 4rem;
+    align-items: center;
+    margin: 20px;
+}
