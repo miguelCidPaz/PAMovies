@@ -83,6 +83,36 @@ body::before {
   font-weight: bolder;
 }
 
+.filmdetails--stars .star, .filmdetails--stars .star-point {
+  cursor: pointer;
+  text-shadow: 0 0 31px inset grey;
+  background-color: transparent;
+  border: 1px grey;
+  outline: none;
+  color: white;
+  width: 20px;
+  height: 30px;
+}
+.filmdetails--stars .star:hover, .filmdetails--stars .star-point:hover {
+  color: yellow;
+}
+.filmdetails--stars .star-point {
+  color: yellow;
+}
+.filmdetails--stars .star-point:hover {
+  color: white;
+}
+
+.filmdetails--show-or-not {
+  width: 20%;
+}
+.filmdetails--show-or-not .filmdetails--check {
+  background-color: transparent;
+  border: 0px;
+  outline: none;
+  height: 30px;
+}
+
 .filmdetails--section {
   display: flex;
   flex-direction: row;
@@ -102,6 +132,10 @@ body::before {
   .filmdetails--section {
     width: 90%;
   }
+}
+
+.filmdetails--valorations {
+  justify-content: space-around;
 }
 
 .filmdetails--frame-photo {

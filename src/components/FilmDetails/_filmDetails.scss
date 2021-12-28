@@ -14,6 +14,44 @@
     }
 }
 
+
+.filmdetails--stars{
+
+    .star, .star-point{
+        cursor: pointer;
+        text-shadow: 0 0 31px inset grey;
+        background-color: transparent;
+        border: 1px grey;
+        outline: none;
+        color: white;
+        width: 20px;
+        height: 30px;
+
+        &:hover{
+            color: yellow;
+        }
+    }
+
+    .star-point{
+        color: yellow;
+
+        &:hover{
+            color:white;
+        }
+    }
+}
+
+.filmdetails--show-or-not{
+    width: 20%;
+
+    .filmdetails--check{
+        background-color: transparent;
+        border: 0px;
+        outline: none;
+        height: 30px;
+    }
+}
+
 .filmdetails--section{
     display: flex;
     flex-direction: row;
@@ -32,6 +70,10 @@
     @media (max-width:760px){
         width: 90%;
     }
+}
+
+.filmdetails--valorations{
+    justify-content: space-around;
 }
 
 .filmdetails--frame-photo{

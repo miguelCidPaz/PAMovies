@@ -1,7 +1,24 @@
 import CastComponent from './CastComponent';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar, faToggleOn, faToggleOff } from '@fortawesome/free-solid-svg-icons'
+import { useState, useEffect } from 'react';
 import { filmDetail } from './Data';
 
 const FilmDetails = () => {
+    const [rating, setRating] = useState(0);
+    const [view, setView] = useState(false);
+
+    const selectScore = (value) => {
+        setRating(value)
+    }
+
+    const selectView = () => {
+        setView(!view);
+    }
+    /* 
+        useEffect(() => {
+    
+        }, []); */
 
     const CastFilm = Object.values(filmDetail.cast);
 
@@ -17,10 +34,14 @@ const FilmDetails = () => {
 
             <section className="filmdetails--section filmdetails--valorations">
                 <div className='filmdetails--stars'>
-                    Estrellitas
+                    {filmDetail.rating.map((element, index) => {
+                        return <button key={index} className={rating > index ? 'star-point' : 'star'} value={element} onClick={(e) => selectScore(e.currentTarget.value)}><FontAwesomeIcon icon={faStar} /></button>
+                    })}
                 </div>
                 <div className='filmdetails--show-or-not'>
-                    La ves o no
+                    <button className='filmdetails--check' onClick={selectView}>
+                        <FontAwesomeIcon color={view ? "yellow" : "white"} size='5x' icon={view ? faToggleOn : faToggleOff} />
+                    </button>
                 </div>
             </section>
 

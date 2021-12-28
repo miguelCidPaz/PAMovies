@@ -14,5 +14,7 @@ export const filmDetail = {
 
     trailer: {
         url: "S_Pd2pGkq54"
-    }
+    },
+
+    rating: [1, 2, 3, 4, 5],
 }
