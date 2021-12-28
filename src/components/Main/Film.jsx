@@ -1,16 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function Film() {
+function Film(props) {
 
     return (
-        <div className="film-container" >
-           <img src='https://www.universalpictures.es/tl_files/content/movies/sing2/posters/01.jpg' width={'100px'} height={'100px'} />
-           <img src='https://www.universalpictures.es/tl_files/content/movies/sing2/posters/01.jpg' width={'100px'} height={'100px'} />
-           <img src='https://www.universalpictures.es/tl_files/content/movies/sing2/posters/01.jpg' width={'100px'} height={'100px'} />
-           <img src='https://www.universalpictures.es/tl_files/content/movies/sing2/posters/01.jpg' width={'100px'} height={'100px'} />
-           <img src='https://www.universalpictures.es/tl_files/content/movies/sing2/posters/01.jpg' width={'100px'} height={'100px'} />
-        </div>
+        <>
+           <img src={props.image} className='image-film' width={'120px'} height={'200px'} />
+        </>
     )
 }
 export default Film
