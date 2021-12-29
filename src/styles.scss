@@ -1,44 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-<<<<<<< HEAD
 @import './scss/globals.scss';
 @import './components/header/header.scss';
-=======
-
-
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
-body{
-    font-family: 'Roboto',sans-serif;
-    position: relative;
-    background-color: #272727;
-   
-}
-
-    
-    
-body::before{
-    content: '';
-    position: absolute;
-    margin: 0 auto;
-    width: 65vw;
-    min-height:100% ;
-    left: 0px;
-    right: 0px;
-    top: 15rem;
-    z-index: -100;
-    background: linear-gradient(90deg, rgba(255, 0, 245, 0.70) 0%, rgba(0, 128, 255, 0.918) 100%);
-    filter: blur(90px);
-
-}
-.container{
-    width: 95%;
-    margin: 0 auto;
-    max-width: 1400px;
-}
-
-@import "components/header/header";
-@import "components/FilmDetails/filmDetails";
->>>>>>> fe7d8c03a4e8b84775d9cb8a416c7de9f6ca1811
+@import './components/FilmDetails/filmDetails.scss'
