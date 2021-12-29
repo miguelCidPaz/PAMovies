@@ -1,0 +1,52 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+
+    .allgenders-button{
+        display: flex;
+        justify-content: right;
+        margin-right: 10px;
+    }
+
+    .distribution{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.row-container{
+    margin:30px;
+
+}
+
+.title-container{
+     justify-content: right;
+}
+.film-container{
+    margin-left: 34px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    min-height: 4rem;
+    align-items: center;
+    margin: 20px;
+}
+
+
+.film-container{
+    align-items: center;
+    justify-content: center;
+
+    
+    .image-film{
+        width:'120px';
+        height: '200px';
+        padding: 10px
+    }
+}
+
+.slick-list{
+    margin-left: 100px;
+}
