@@ -1,7 +1,6 @@
-import react from "react";
 import Header from "./components/header/header";
-import FilmDetails from "./components/FilmDetails/FilmDetails";
-import "./assets/css/styles.css"
+import FilmDetails from "./views/FilmDetails";
+import "./styles.scss";
 
 function App() {
   return (
