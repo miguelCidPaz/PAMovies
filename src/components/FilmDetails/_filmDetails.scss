@@ -18,22 +18,24 @@
 .filmdetails--stars{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 10px;
     width: 300px;
 
     .star, .star-point{
         cursor: pointer;
-        text-shadow: 0 0 31px inset rgb(143, 60, 60);
         background-color: transparent;
+        text-shadow: 0 0 2px grey;
         border: 1px grey;
         outline: none;
         color: white;
-        width: 50%;
-        height: 30px;
+        font-size: 30px;
+        transition-duration: 0.5s;
+        font-weight: bolder;
 
-        &:hover{
+        &:hover {
             color: yellow;
-        }
+          }
     }
 
     .star-point{
@@ -50,6 +52,62 @@
         border: 0px;
         outline: none;
         height: 30px;
+    }
+
+    .filmdetails--bar, .filmdetails--bar-checked{
+        position: relative;
+        width: 100px;
+        height: 40px;
+        background-color: rgb(185, 178, 178);
+        border-radius: 30px;
+        box-shadow: 0 0 4px inset grey;
+
+        &::before{
+            content:'';
+            position: absolute;
+            top: -5px;
+            height: 50px;
+            width: 50px;
+            border-radius: 30px;
+            box-shadow: 0 0 4px rgb(197, 193, 193);
+        }
+    }
+
+    .filmdetails--bar{
+        &::before{
+            box-shadow: 0 0 4px inset white;
+            animation: unCheck 1s;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    .filmdetails--bar-checked{
+        &::before{
+            animation: check 1s;
+            animation-fill-mode: forwards;
+        }
+    }
+}
+
+@keyframes check {
+    from{
+        left: 0px;
+        background-color: rgb(212, 207, 207);
+    }
+    to{
+        left: 50px;
+        background-color: rgb(243, 243, 172);
+    }
+}
+
+@keyframes unCheck {
+    from{
+        left:50px;
+        background-color: rgb(243, 243, 172);
+    }
+    to{
+        left: 0px;
+        background-color: rgb(212, 207, 207);
     }
 }
 
