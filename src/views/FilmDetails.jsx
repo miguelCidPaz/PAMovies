@@ -4,6 +4,7 @@ import { filmDetail } from '../components/FilmDetails/Data';
 import DetailPresentation from '../components/FilmDetails/DetailPresentation';
 import DetailValorations from '../components/FilmDetails/DetailValorations';
 import DetailTrailer from '../components/FilmDetails/DetailTrailer';
+//Prueba
 
 const FilmDetails = () => {
     const [rating, setRating] = useState(0);
