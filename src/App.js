@@ -1,12 +1,13 @@
-import react from "react";
 import Header from "./components/header/header";
-import "./styles.scss"
+import FilmDetails from "./views/FilmDetails";
+import "./styles.scss";
 
 function App() {
   return (
-    <>
-      <Header></Header>
-    </>
+    <main>
+      <Header />
+      <FilmDetails />
+    </main>
   );
 }
 
