@@ -1,3 +1,41 @@
-body{
-    background: black;
+.header{
+    background-color: #272727;
+}
+.container-header{
+    display: flex;
+    justify-content: space-between;
+    min-height: 4rem;
+    align-items: center;
+    color: white;
+
+    
+    .logo{
+    font-size: 1.5rem;
+   
+    }
+    
+
+}
+.nav{
+    
+    display: flex;
+    flex-direction: column;
+    .fa-bars,.fa-times{
+
+    height: 3rem;
+    width: 2rem;
+    align-self: flex-end;
+    }
+}
+ 
+.container-nav{
+    position: absolute;
+    top: 4rem;
+    right: 0px;
+    left: 0px;
+    width: 100vw;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #272727;
 }
