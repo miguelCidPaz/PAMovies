@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar, faToggleOn, faToggleOff } from '@fortawesome/free-solid-svg-icons'
 
 const DetailValorations = (props) => {
     const [isSelect, setIsSelect] = useState(0);
@@ -21,7 +19,6 @@ const DetailValorations = (props) => {
             </div>
             <div className='filmdetails--show-or-not'>
                 <button className='filmdetails--check' onClick={props.selectView}>
-                    {/* <FontAwesomeIcon color={props.view ? "yellow" : "white"} size='5x' icon={props.view ? faToggleOn : faToggleOff} /> */}
                     <div className={props.view ? 'filmdetails--bar-checked' : 'filmdetails--bar'}>
 
                     </div>
