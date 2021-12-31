@@ -6,6 +6,9 @@ import DetailValorations from '../components/FilmDetails/DetailValorations';
 import DetailTrailer from '../components/FilmDetails/DetailTrailer';
 //Prueba
 
+const idProp = 1;
+const ApiKey = "07e793aeac523d9f4455050b060257c7";
+
 const FilmDetails = () => {
     const [rating, setRating] = useState(0);
     const [view, setView] = useState(false);
@@ -17,10 +20,6 @@ const FilmDetails = () => {
     const selectView = () => {
         setView(!view);
     }
-
-    useEffect(() => {
-
-    }, [rating, view])
 
     const CastFilm = Object.values(filmDetail.cast);
 

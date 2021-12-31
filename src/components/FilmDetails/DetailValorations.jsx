@@ -13,7 +13,7 @@ const DetailValorations = (props) => {
                         onMouseOver={(e) => setIsSelect(e.currentTarget.value)}
                         onMouseOut={(e) => setIsSelect(0)}
                         onClick={(e) => props.selectScore(e.currentTarget.value)}>
-                        <p>★</p>
+                        <span>★</span>
                     </button>
                 })}
             </div>
