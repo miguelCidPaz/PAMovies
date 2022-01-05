@@ -7,7 +7,7 @@ import Row from './Row'
 function Main() {
 
     return (
-        <div className="main-container" >
+        <div className="main-container container" >
             <div className='allgenders-button'>
                 <p>Todos los géneros</p>
             </div>
