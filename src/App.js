@@ -1,9 +1,9 @@
 import Header from "./components/header/header";
 // import FilmDetails from "./views/FilmDetails";
+
 import MainView from "./views/MainView";
 
 import "./styles.scss";
-
 
 function App() {
   return (
