@@ -9,9 +9,14 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
     "@material-ui/core": "^4.12.3",
+<<<<<<< HEAD
     "@material-ui/icons": "^4.11.2",
     "@mui/material": "^5.2.7",
     "@mui/styled-engine-sc": "^5.1.0",
+=======
+    "@material-ui/lab": "^4.0.0-alpha.60",
+    "@mui/material": "^5.2.6",
+>>>>>>> 346a4c820177a8d4aa43807656e014c095eba492
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -22,7 +27,10 @@
     "react-slick": "^0.28.1",
     "sass": "^1.45.1",
     "slick-carousel": "^1.8.1",
+<<<<<<< HEAD
     "styled-components": "^5.3.3",
+=======
+>>>>>>> 346a4c820177a8d4aa43807656e014c095eba492
     "web-vitals": "^2.1.2"
   },
   "scripts": {

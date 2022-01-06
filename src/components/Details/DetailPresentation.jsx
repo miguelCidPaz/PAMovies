@@ -1,8 +1,8 @@
 const DetailPresentation = (props) => {
     return (
-        <section className='filmdetails--section filmdetails--presentation'>
-            <p className="filmdetails--title">{props.title}</p>
-            <div className="filmdetails--frame-photo">
+        <section className='details--section details--presentation'>
+            <p className="details--title">{props.title}</p>
+            <div className="details--frame-photo">
                 <img src={props.photo} alt={`Poster de ${props.title}`} />
             </div>
         </section>

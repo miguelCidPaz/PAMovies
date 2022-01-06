@@ -1,11 +1,13 @@
 import { useState } from 'react'
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 const DetailValorations = (props) => {
     const [isSelect, setIsSelect] = useState(0);
 
     return (
-        <section className="filmdetails--section filmdetails--valorations">
-            <div className='filmdetails--stars'>
+        <section className="details--section details--valorations">
+            <div className='details--stars'>
                 {props.rating.map((element, index) => {
                     return <button key={index}
                         className={props.puntuation > index || isSelect > index ? 'star-point' : 'star'}
@@ -13,16 +15,18 @@ const DetailValorations = (props) => {
                         onMouseOver={(e) => setIsSelect(e.currentTarget.value)}
                         onMouseOut={(e) => setIsSelect(0)}
                         onClick={(e) => props.selectScore(e.currentTarget.value)}>
-                        <p>★</p>
+                        <span>★</span>
                     </button>
                 })}
             </div>
-            <div className='filmdetails--show-or-not'>
-                <button className='filmdetails--check' onClick={props.selectView}>
-                    <div className={props.view ? 'filmdetails--bar-checked' : 'filmdetails--bar'}>
+            <div className='details--show-or-not'>
+                <FormControlLabel control={<Switch
+                    onClick={props.selectView}
+                    checked={props.view}
+                    color="warning"
+                    size="large"
+                />} label={props.view === true ? "La vere" : "No la vere"} />
 
-                    </div>
-                </button>
             </div>
         </section>
     )
