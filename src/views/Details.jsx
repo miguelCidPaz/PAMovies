@@ -17,7 +17,7 @@ const Details = (props) => {
 
     //Llamada a la api
     const requestApi = async () => {
-        const idProp = "343611";
+        const idProp = "500";
         const ApiKey = "07e793aeac523d9f4455050b060257c7";
         const normalize = { name: "", photo_principal: "", description: "", details: [], video: null };
         //Esta url serviria para cualquiera de las 3 busquedas
