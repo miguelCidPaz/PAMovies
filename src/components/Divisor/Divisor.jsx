@@ -11,7 +11,6 @@ export default function Divisor(props) {
                     <div className='line-purple '></div>
                 </div>
             </div>
-
         </>
     )
 }
