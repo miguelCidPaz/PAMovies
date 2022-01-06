@@ -83,7 +83,7 @@ const Details = () => {
                 </section>
             </section>
 
-            <Divisor title="Companies" />
+            {item.details !== undefined ? <Divisor title="Companies" /> : null}
             <section className="details--main-container">
                 <section className='details--section details--cast'>
                     {item.details !== undefined ? item.details.map((element, index) => {
@@ -93,7 +93,7 @@ const Details = () => {
             </section>
 
             <section className="details--main-container">
-                {item.video ? <DetailTrailer url={item.video} /> : null}
+                {item.video ? <><Divisor title="Companies" /><DetailTrailer url={item.video} /></> : null}
             </section>
         </>
     )
