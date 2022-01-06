@@ -1,4 +1,4 @@
-import FilmDetails from "./views/FilmDetails";
+import FilmDetails from "./views/Details";
 import Header from './components/header/header'
 import "./styles.scss";
 

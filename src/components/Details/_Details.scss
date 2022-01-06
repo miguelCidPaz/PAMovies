@@ -1,11 +1,11 @@
-.filmdetails--main-container{
+.details--main-container{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5%;
     margin-top: 20px;
 
-    .filmdetails--title{
+    .details--title{
         color: white;
         font-size: 50px;
         margin-left: -10px;
@@ -15,7 +15,7 @@
 }
 
 
-.filmdetails--stars{
+.details--stars{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -43,10 +43,10 @@
     }
 }
 
-.filmdetails--show-or-not{
+.details--show-or-not{
     width: 20%;
 
-    .filmdetails--check{
+    .details--check{
         cursor: pointer;
         background-color: transparent;
         border: 0px;
@@ -54,7 +54,7 @@
         height: 30px;
     }
 
-    .filmdetails--bar, .filmdetails--bar-checked{
+    .details--bar, .details--bar-checked{
         position: relative;
         width: 100px;
         height: 40px;
@@ -73,7 +73,7 @@
         }
     }
 
-    .filmdetails--bar{
+    .details--bar{
         &::before{
             box-shadow: 0 0 4px inset white;
             animation: unCheck 1s;
@@ -81,7 +81,7 @@
         }
     }
 
-    .filmdetails--bar-checked{
+    .details--bar-checked{
         &::before{
             animation: check 1s;
             animation-fill-mode: forwards;
@@ -111,7 +111,7 @@
     }
 }
 
-.filmdetails--section{
+.details--section{
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -129,11 +129,11 @@
     }
 }
 
-.filmdetails--valorations{
+.details--valorations{
     justify-content: space-around;
 }
 
-.filmdetails--frame-photo{
+.details--frame-photo{
     width: 500px;
     height: 500px;
     border-radius: 20px;
@@ -152,11 +152,11 @@
     }
 }
 
-.filmdetails--description, .filmdetails--cast{
+.details--description, .details--cast{
     margin: 20px;
 }
 
-.filmdetails--cast{
+.details--cast{
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -189,7 +189,7 @@
     }
 }
 
-.filmdetails--presentation{
+.details--presentation{
     display: flex;
     flex-direction: column;
     

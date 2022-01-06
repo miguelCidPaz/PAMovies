@@ -1,12 +1,12 @@
-import CastComponent from '../components/FilmDetails/CastComponent';
+import CastComponent from '../components/Details/CastComponent';
 import { useState, useEffect } from 'react';
-import { filmDetail } from '../components/FilmDetails/Data';
+import { filmDetail } from '../components/Details/Data';
 import Divisor from '../components/Divisor/Divisor'
-import DetailPresentation from '../components/FilmDetails/DetailPresentation';
-import DetailValorations from '../components/FilmDetails/DetailValorations';
-import DetailTrailer from '../components/FilmDetails/DetailTrailer';
+import DetailPresentation from '../components/Details/DetailPresentation';
+import DetailValorations from '../components/Details/DetailValorations';
+import DetailTrailer from '../components/Details/DetailTrailer';
 
-const FilmDetails = () => {
+const Details = () => {
     const [search, setSearch] = useState("movie") //Controlara el tipo de busqueda que se realiza {movie | tv | person}
     const [rating, setRating] = useState(0);
     const [view, setView] = useState(false);
@@ -67,36 +67,36 @@ const FilmDetails = () => {
     return (
         <>
             <Divisor title="Poster" />
-            <section className="filmdetails--main-container">
+            <section className="details--main-container">
                 <DetailPresentation photo={urlForImages + item.photo_principal} title={item.name} />
             </section>
 
             <Divisor title="Valorations" />
-            <section className="filmdetails--main-container">
+            <section className="details--main-container">
                 <DetailValorations view={view} puntuation={rating} rating={filmDetail.rating} selectScore={selectScore} selectView={selectView} />
             </section>
 
             <Divisor title="Description" />
-            <section className="filmdetails--main-container">
-                <section className='filmdetails--section filmdetails--description'>
+            <section className="details--main-container">
+                <section className='details--section details--description'>
                     <p>{item.description}</p>
                 </section>
             </section>
 
             <Divisor title="Companies" />
-            <section className="filmdetails--main-container">
-                <section className='filmdetails--section filmdetails--cast'>
+            <section className="details--main-container">
+                <section className='details--section details--cast'>
                     {item.details !== undefined ? item.details.map((element, index) => {
                         return <CastComponent key={index} cast={element} />
                     }) : null}
                 </section>
             </section>
 
-            <section className="filmdetails--main-container">
+            <section className="details--main-container">
                 {item.video ? <DetailTrailer url={item.video} /> : null}
             </section>
         </>
     )
 }
 
-export default FilmDetails;
+export default Details;

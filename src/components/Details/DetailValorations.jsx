@@ -6,8 +6,8 @@ const DetailValorations = (props) => {
     const [isSelect, setIsSelect] = useState(0);
 
     return (
-        <section className="filmdetails--section filmdetails--valorations">
-            <div className='filmdetails--stars'>
+        <section className="details--section details--valorations">
+            <div className='details--stars'>
                 {props.rating.map((element, index) => {
                     return <button key={index}
                         className={props.puntuation > index || isSelect > index ? 'star-point' : 'star'}
@@ -19,7 +19,7 @@ const DetailValorations = (props) => {
                     </button>
                 })}
             </div>
-            <div className='filmdetails--show-or-not'>
+            <div className='details--show-or-not'>
                 <FormControlLabel control={<Switch
                     onClick={props.selectView}
                     checked={props.view}
