@@ -1,51 +1,44 @@
 .container-divisor {
-    position: relative;
-   
-  }
-  
-  .divisor-gradient {
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
-      .divisor-title {
-        font-size: 24px;
-        color: white;
-        margin: 0 1.2rem 0 1.2rem;
-          @media (min-width: 450px){
-            font-size: 32px;
-          }
-      }
+  position: relative;
+  margin: 4rem 0;
+}
 
-      .line-blue {
-      
-        border: 1px solid #027DF5;
-        box-shadow: 0px 0px 24px #027DF5;
-        width: 80%;
-      
-      }
-      
-      .line-purple {
-      
-        border: 1px solid #C206BB;
-        box-shadow: 0px 0px 24px #C206BB;
-        width: 80%;
-      }
+.divisor-gradient {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .divisor-title {
+    font-size: 24px;
+    color: white;
+    margin: 0 1.2rem 0 1.2rem;
+    @media (min-width: 450px) {
+      font-size: 32px;
+    }
   }
-  
-  
-  
-  .divisor-gradient::after {
-    position: absolute;
-    content: "";
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: -100;
-    background: linear-gradient(to right, #027df5 0%, #c206bb 100%);
-    filter: blur(45px);
-  
+
+  .line-blue {
+    border: 1px solid #027df5;
+    box-shadow: 0px 0px 24px #027df5;
+    width: 80%;
   }
-  
+
+  .line-purple {
+    border: 1px solid #c206bb;
+    box-shadow: 0px 0px 24px #c206bb;
+    width: 80%;
+  }
+}
+
+.divisor-gradient::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -100;
+  background: linear-gradient(to right, #027df5 0%, #c206bb 100%);
+  filter: blur(45px);
+}
