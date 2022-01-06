@@ -1,5 +1,5 @@
 import React from 'react';
-export default function Search(props) {
+export default function Divisor(props) {
 
 
     return (
@@ -11,7 +11,6 @@ export default function Search(props) {
                     <div className='line-purple '></div>
                 </div>
             </div>
-
         </>
     )
 }
