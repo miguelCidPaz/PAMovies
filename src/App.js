@@ -1,5 +1,4 @@
-import FilmDetails from "./views/FilmDetails";
-import MainView from './views/MainView'
+import FilmDetails from "./views/Details";
 import Header from './components/header/header'
 import "./styles.scss";
 
@@ -7,7 +6,7 @@ function App() {
   return (
     <main>
       <Header />
-      <MainView />
+      <FilmDetails />
     </main>
   );
 }
