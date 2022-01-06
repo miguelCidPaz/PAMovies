@@ -6,7 +6,7 @@ import DetailPresentation from '../components/Details/DetailPresentation';
 import DetailValorations from '../components/Details/DetailValorations';
 import DetailTrailer from '../components/Details/DetailTrailer';
 
-const Details = () => {
+const Details = (props) => {
     const [search, setSearch] = useState("movie") //Controlara el tipo de busqueda que se realiza {movie | tv | person}
     const [rating, setRating] = useState(0);
     const [view, setView] = useState(false);
@@ -23,7 +23,7 @@ const Details = () => {
         //Esta url serviria para cualquiera de las 3 busquedas
         const URL = `https://api.themoviedb.org/3/${search}/${idProp}?api_key=${ApiKey}&language=en-US`;
         await fetch(URL).then(res => res.json()).then(data => {
-            console.log(data);
+
             switch (search) {
                 case "movie":
                     normalize.name = data.title;
@@ -51,7 +51,7 @@ const Details = () => {
 
     useEffect(() => {
         requestApi();
-    }, [])
+    }, props)
 
     const selectScore = (value) => {
         setRating(value);
