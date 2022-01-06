@@ -4,6 +4,7 @@ import MainView from "./views/MainView";
 
 import "./styles.scss";
 
+
 function App() {
   return (
     <main>
