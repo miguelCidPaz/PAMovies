@@ -46,7 +46,7 @@ export default function Header() {
   return (
     <>
       <header className="header">
-        <div className="container container-header">
+        <div className="container-header">
           <a className="logo">logo </a>
           <div className="faBars">
             {mobile ? (
@@ -54,13 +54,13 @@ export default function Header() {
             ) : (
               <>
                 <Nav></Nav>
-                <Search></Search>
+                <Search className="search"></Search>
               </>
             )}
           </div>
         </div>
+        {mobile ? <Search></Search> : null}
       </header>
-      {mobile ? <Search></Search> : null}
     </>
   );
 }

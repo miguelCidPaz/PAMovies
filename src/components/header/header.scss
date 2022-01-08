@@ -7,6 +7,10 @@
   min-height: 4rem;
   align-items: center;
   color: white;
+  width: 95%;
+  margin: 0 auto;
+  max-width: 1400px;
+  // align-items: center;
 
   .logo {
     font-size: 1.5rem;
@@ -14,32 +18,51 @@
 
   .fa-times,
   .fa-bars {
-    height: 3rem;
-    width: 2rem;
+    height: 2rem;
+    width: 1.5rem;
+    cursor: pointer;
   }
   @media (min-width: 550px) {
+    .container-header {
+      width: 80%;
+    }
     .faBars {
       flex-basis: 60%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 }
 .nav {
   position: absolute;
   width: 100%;
-  top: 4rem;
+  top: 3rem;
   left: 0;
   background-color: #272727;
-
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   -webkit-box-shadow: 0px 22px 32px -10px #272727;
   -moz-box-shadow: 0px 22px 32px -10px #272727;
   box-shadow: 0px 22px 32px -10px #272727;
+  .views-nav {
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+  }
+  .views-nav:hover {
+    background-color: #8d8d8d;
+  }
   @media (min-width: 550px) {
     position: unset;
     flex-direction: row;
     justify-content: space-between;
+    .views-nav:hover {
+      // border-radius: 1rem;
+    }
   }
 }
 
@@ -53,4 +76,28 @@
   display: flex;
   flex-direction: column;
   background-color: #272727;
+}
+
+.search {
+  background-color: #eeeeee;
+  padding: 0 1rem 0 1rem;
+  border-radius: 1rem;
+  border: unset;
+  max-width: 90%;
+  margin: 0 auto;
+  height: 2rem;
+  flex-basis: 40%;
+
+  .search::after,
+  .search::before {
+    border: unset;
+  }
+  .MuiInput-underline:before,
+  .MuiInput-underline:after {
+    content: unset;
+    border: unset;
+  }
+  .MuiFormLabel-root.Mui-focused {
+    color: #999999;
+  }
 }

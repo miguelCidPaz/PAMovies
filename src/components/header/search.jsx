@@ -28,6 +28,7 @@ export default function ComboBox() {
   return (
     <>
       <Autocomplete
+        className="search"
         onChange={getValueSelect}
         freeSolo
         id="free-solo-demo"
@@ -37,9 +38,9 @@ export default function ComboBox() {
             ? option.title
             : ""
         }
-        sx={{ width: 300 }}
+        sx={{ width: 700 }}
         renderInput={(params) => (
-          <TextField onChange={hola} {...params} label="Movie" />
+          <TextField onChange={hola} {...params} placeholder="Movie" />
         )}
       />
       {/* <div>
