@@ -1,9 +1,7 @@
 import Header from "./components/header/header";
 // import FilmDetails from "./views/FilmDetails";
 import ListSearch from "./components/listSearch/listSearch";
-
 import MainView from "./views/MainView";
-
 import "./styles.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
