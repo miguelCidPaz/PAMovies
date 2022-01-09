@@ -8,11 +8,11 @@ import Divisor from "../Divisor/Divisor";
 
 export default function Main() {
   const [getFilms, setGetFilms] = useState([]);
-
+ 
   useEffect(async () => {
     await axios
       .get(
-        `https://api.themoviedb.org/3/trending/movie/week?api_key=198b2f6e124efb8ffaed4dd22cc65a8c&language=es`
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=198b2f6e124efb8ffaed4dd22cc65a8c&language=en-US&page=1`
       )
       .then((res) => {
         setGetFilms(res.data.results);
@@ -20,7 +20,7 @@ export default function Main() {
   }, []);
 
   let data = getFilms;
-
+  
   return (
     <Grid
       container
@@ -42,7 +42,7 @@ export default function Main() {
       </Grid>
       <Grid item xs={10} md={7}>
         <div className="main-container">
-          <Divisor title="ESTRENOS"></Divisor>
+          <Divisor title="CATEGORÍAS"></Divisor>
           <div className="distribution">
             <Genres genres={genres} />
           </div>
