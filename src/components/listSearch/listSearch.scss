@@ -1,0 +1,23 @@
+.movie-list {
+  border-top: 1px solid #494949;
+}
+
+.container-movie-list {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid #494949;
+  @media (min-width: 450px) {
+    padding: 3rem 4rem;
+  }
+
+  .img-movie-list {
+    max-width: 100%;
+    width: 30%;
+  }
+  .movie-list-detail {
+    width: 60%;
+    text-align: left;
+    align-items: flex-start;
+  }
+}

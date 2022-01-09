@@ -4,12 +4,10 @@ export default function Nav() {
   return (
     <>
       <nav className="nav">
-        <a>inicio</a>
-        <a>inicio</a>
-        <a>inicio</a>
-        <a>inicio</a>
-        <a>inicio</a>
-        <a>inicio</a>
+        <a className="views-nav">inicio</a>
+        <a className="views-nav">inicio</a>
+        <a className="views-nav">inicio</a>
+        <a className="views-nav">inicio</a>
       </nav>
     </>
   );

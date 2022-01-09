@@ -3,32 +3,48 @@ import axios from "axios";
 
 import { TextField } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import { useNavigate } from "react-router-dom";
 
 export default function ComboBox() {
   const [input, setInput] = useState([]);
   const [data, setData] = useState([]);
-  const getValueSelect = (e, value) => {
-    setData(value);
-    console.log(value);
-    console.log(input);
+  const navigate = useNavigate();
+
+  const getSelectValue = (e, value) => {
+    if (e.keyCode === 13) {
+      setData([e.target.value]);
+      // console.log(e.target.value);
+    }
   };
+  useEffect(() => {
+    if (typeof data[0] === "string") {
+      navigate("/listSearch", { state: input });
+      console.log(input);
+    } else if (typeof data[0] === "object") {
+      // navigate("/listSearch");
+      console.log(data);
+    }
+  }, [data]);
 
-  async function hola(e, value) {
+  async function getValue(e) {
     let keyWord = e.target.value;
-
-    if (/[a-zA-ZñÑ]/.test(keyWord)) {
-      let getData = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=fb1999e69926d1387eb44c3abee6e7c5&language=en-US&query=${keyWord}&include_adult=false`
-      );
-
-      setInput(getData.data.results);
+    if (/[a-zA-ZñÑ0-9]/.test(keyWord)) {
+      try {
+        let getData = await axios.get(
+          `https://api.themoviedb.org/3/search/movie?api_key=fb1999e69926d1387eb44c3abee6e7c5&language=en-US&query=${keyWord}&include_adult=false`
+        );
+        setInput(getData.data.results);
+        // console.log(getData);
+      } catch (err) {
+        console.log(err);
+      }
     }
   }
-
   return (
     <>
       <Autocomplete
-        onChange={getValueSelect}
+        className="search"
+        onKeyDown={getSelectValue}
         freeSolo
         id="free-solo-demo"
         options={input}
@@ -37,9 +53,14 @@ export default function ComboBox() {
             ? option.title
             : ""
         }
-        sx={{ width: 300 }}
+        sx={{ width: 700 }}
         renderInput={(params) => (
-          <TextField onChange={hola} {...params} label="Movie" />
+          <TextField
+            onChange={getValue}
+            className="input-search"
+            {...params}
+            placeholder="Movie"
+          />
         )}
       />
       {/* <div>
