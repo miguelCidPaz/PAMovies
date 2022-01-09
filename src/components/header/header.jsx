@@ -5,11 +5,13 @@ import Search from "./search";
 import { createContext, useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [bars, setBars] = useState(true);
   const [width, setWidth] = useState(window.innerWidth);
   const [mobile, setMobile] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
@@ -47,7 +49,9 @@ export default function Header() {
     <>
       <header className="header">
         <div className="container-header">
-          <a className="logo">logo </a>
+          <a className="logo" onClick={() => navigate("/")}>
+            logo{" "}
+          </a>
           <div className="faBars">
             {mobile ? (
               screenChange()

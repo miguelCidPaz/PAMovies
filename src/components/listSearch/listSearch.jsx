@@ -13,7 +13,7 @@ function ListSearch() {
         <div key={element.id}>
           <img src={`${link}${element.poster_path}`} alt=""></img>
           <h1>{element.title}</h1>
-          <p>{element.overview}</p>
+          <p>{element.release_date}</p>
         </div>
       ))}
     </div>

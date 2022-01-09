@@ -14,6 +14,7 @@
 
   .logo {
     font-size: 1.5rem;
+    cursor: pointer;
   }
 
   .fa-times,
@@ -30,6 +31,7 @@
       flex-basis: 60%;
       display: flex;
       justify-content: space-between;
+
       align-items: center;
     }
   }
@@ -53,15 +55,13 @@
     text-align: center;
     cursor: pointer;
   }
-  .views-nav:hover {
-    background-color: #8d8d8d;
-  }
+
   @media (min-width: 550px) {
     position: unset;
     flex-direction: row;
     justify-content: space-between;
-    .views-nav:hover {
-      // border-radius: 1rem;
+    .views-nav {
+      text-align: unset;
     }
   }
 }
@@ -87,17 +87,15 @@
   margin: 0 auto;
   height: 2rem;
   flex-basis: 40%;
+  cursor: text;
 
   .search::after,
   .search::before {
     border: unset;
   }
-  .MuiInput-underline:before,
-  .MuiInput-underline:after {
+  .MuiInputBase-root:before,
+  .MuiInputBase-root:after {
     content: unset;
     border: unset;
-  }
-  .MuiFormLabel-root.Mui-focused {
-    color: #999999;
   }
 }
