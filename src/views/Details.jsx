@@ -65,6 +65,7 @@ const Details = (props) => {
 
     //Controlando renders innecesarios
     console.log("Renderizado en details")
+    console.log(item.description)
     //Si veis que se ejecuta dos veces es por la plantilla por defecto y por la carga de la api, a la api solo la llama una vez
 
     return (
@@ -79,12 +80,13 @@ const Details = (props) => {
                 <DetailValorations view={view} puntuation={rating} rating={filmDetail.rating} selectScore={selectScore} selectView={selectView} />
             </section>
 
-            <Divisor title="Description" />
-            <section className="details--main-container">
-                <section className='details--section details--description'>
-                    <p>{item.description}</p>
-                </section>
-            </section>
+            {item.description !== undefined || item.description !== null ? <><Divisor title="Description" />
+                <section className="details--main-container">
+                    <section className='details--section details--description'>
+                        <p>{item.description}</p>
+                    </section>
+                </section></> : null}
+
 
             {item.details !== undefined ? <Divisor title="Companies" /> : null}
             <section className="details--main-container">
