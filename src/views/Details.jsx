@@ -1,5 +1,6 @@
 import CastComponent from '../components/Details/CastComponent';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { filmDetail } from '../components/Details/Data';
 import Divisor from '../components/Divisor/Divisor'
 import DetailPresentation from '../components/Details/DetailPresentation';
@@ -11,6 +12,7 @@ const Details = (props) => {
     const [rating, setRating] = useState(0);
     const [view, setView] = useState(false);
     const [item, setItem] = useState(filmDetail); //Pasara a ser o bien una llamada a la Api o el objeto que reciba por prop
+    const params = useParams();
 
     //Url necesaria para las imagenes
     const urlForImages = "https://image.tmdb.org/t/p/w500/";
@@ -63,6 +65,8 @@ const Details = (props) => {
 
     //Controlando renders innecesarios
     console.log("Renderizado en details")
+    console.log(params.type)
+    console.log(params.id)
 
     return (
         <>
