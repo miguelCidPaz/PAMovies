@@ -7,16 +7,16 @@ function Film(props) {
 
     return (
     <div className='full-container'>
-        <figure className='image-container'>
+        <figure>
             {props.img === null ? 
             <img src={`https://www.gruposertec.com/wp-content/uploads/2015/03/no_image_available.jpeg`}
                 height={280}
-                width={170}
+                width={190}
             />
             :
             <img src={`https://image.tmdb.org/t/p/w500/${keyword}`}
             height={280}
-            width={170}
+            width={190}
             />
             }
             <div className='layer'>

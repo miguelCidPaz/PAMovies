@@ -7,32 +7,36 @@ export default function NewFilms(props) {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    centerMode: true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    // centerMode: true,
     arrows: true,
-    variableWidth: true,
     focusOnSelect: true,
     className: "news-slider",
-    slidesPerRow: 3,
     rows: 2,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesPerRow: 3,
+          rows: 2,
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesPerRow: 2,
+          rows: 2,
+          slidesToShow: 2,
+          slidesToScroll: 2,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesPerRow: 1,
+          slidesToShow:1,
+          slidesToScroll: 1,
         },
       },
     ],

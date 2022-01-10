@@ -33,9 +33,8 @@ export default function Main() {
     >
       <Grid item xs={9} md={7}>
         <div className="main-container ">
-          {/* <p className="title-container">ESTRENOS</p> */}
           <Divisor className="title-container" title="ESTRENOS"></Divisor>
-          <div className="background-color">
+          <div className="films-container background-color">
             <NewFilms data={data} />
           </div>
         </div>

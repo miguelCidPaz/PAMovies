@@ -1,4 +1,5 @@
 /*Main*/
+
 .main-container{
     display: flex;
     flex-direction: column;
@@ -24,31 +25,29 @@
 /*newFilms*/
 .news-container{
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
 }
-.news-slider{
-    display: flex;
-    flex-direction: row;
-
-    img {
-        padding: 5px;
-    }
-}
+// .news-slider{
+//     img {
+//         padding: 25px;
+//     }
+// }
     /*Film*/
 
     .full-container{
-        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-
+        padding: 25px;
+       
         figure{
             position:relative;
-            height: 250px;
-            width: 170px;
+            height: 270px;
+            width: 190px;
             overflow: hidden;
+            
         }
 
         img{
@@ -67,11 +66,13 @@
         visibility:hidden;
         transition: all 500ms ease-out;
         text-align: center;
+        
     }
 
     .full-container figure:hover > .layer {
         opacity: 1;
         visibility: visible;   
+        
     }
 
     .full-container figure:hover > .layer p{
@@ -92,6 +93,7 @@
     }
 .full-container figure:hover > img{
     transform: scale(1.1);
+    
 }
 
 /*Genres*/
@@ -106,7 +108,9 @@
         margin:  0 0 20px;
     }
 
-    .film-container{
+    
+}
+.film-container{
         margin-left: 34px;
         display: flex;
         flex-direction: row;
@@ -114,8 +118,6 @@
         align-items: center;
         margin: 20px;
     }
-}
-
         /*GenreType*/
         .type-container {
             position: relative;
@@ -142,8 +144,15 @@
 
         }
     
-        
-        
+.slick-dots li {
+    position: relative;
+    display: inline-block;
+    width: 5%;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+    cursor: pointer;
+}   
        
 
        
