@@ -8,10 +8,9 @@ import DetailValorations from '../components/Details/DetailValorations';
 import DetailTrailer from '../components/Details/DetailTrailer';
 
 const Details = (props) => {
-    const [search, setSearch] = useState("movie") //Controlara el tipo de busqueda que se realiza {movie | tv | person}
     const [rating, setRating] = useState(0);
     const [view, setView] = useState(false);
-    const [item, setItem] = useState(filmDetail); //Pasara a ser o bien una llamada a la Api o el objeto que reciba por prop
+    const [item, setItem] = useState(filmDetail); //Aqui guardaremos el obj de la api, filmdetail es nuestra plantilla por defecto
     const params = useParams();
 
     //Url necesaria para las imagenes
@@ -19,14 +18,15 @@ const Details = (props) => {
 
     //Llamada a la api
     const requestApi = async () => {
-        const idProp = "500";
+        const id = params.id;
+        const type = params.type;
         const ApiKey = "07e793aeac523d9f4455050b060257c7";
         const normalize = { name: "", photo_principal: "", description: "", details: [], video: null };
         //Esta url serviria para cualquiera de las 3 busquedas
-        const URL = `https://api.themoviedb.org/3/${search}/${idProp}?api_key=${ApiKey}&language=en-US`;
+        const URL = `https://api.themoviedb.org/3/${type}/${id}?api_key=${ApiKey}&language=en-US`;
         await fetch(URL).then(res => res.json()).then(data => {
 
-            switch (search) {
+            switch (type) {
                 case "movie":
                     normalize.name = data.title;
                     normalize.photo_principal = data.poster_path;
@@ -53,7 +53,7 @@ const Details = (props) => {
 
     useEffect(() => {
         requestApi();
-    }, props)
+    }, [])
 
     const selectScore = (value) => {
         setRating(value);
@@ -65,8 +65,7 @@ const Details = (props) => {
 
     //Controlando renders innecesarios
     console.log("Renderizado en details")
-    console.log(params.type)
-    console.log(params.id)
+    //Si veis que se ejecuta dos veces es por la plantilla por defecto y por la carga de la api, a la api solo la llama una vez
 
     return (
         <>

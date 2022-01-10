@@ -11,11 +11,9 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<MainView />}>
-            <Route path="main" element={<MainView />} />
-            <Route path="details/:type/:id" element={<Details />} />
-            <Route path="*" element={<MainView />} />
-          </Route>
+          <Route path="/main" element={<MainView />} />
+          <Route path="/details/:type/:id" element={<Details />} />
+          <Route path="*" element={<MainView />} />
         </Routes>
       </Router>,
     </main>
