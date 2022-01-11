@@ -12,9 +12,10 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
+          <Route path="/details/:type/:id" element={<Details />} />
+
           <Route path="/" element={<MainView />} />
           <Route path="/listSearch" element={<ListSearch />} />
-          <Route path="/details/:type/:id" element={<Details />} />
         </Routes>
       </BrowserRouter>
     </main>
