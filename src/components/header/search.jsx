@@ -45,7 +45,7 @@ export default function ComboBox(props) {
         className="search"
         onChange={(e, value) => setData([value])}
         freeSolo
-        value={value}
+        // value={value}
         clearOnBlur
         id="free-solo-demo"
         options={input}
@@ -58,7 +58,7 @@ export default function ComboBox(props) {
         renderInput={(params) => (
           <TextField
             onChange={getValue}
-            value=""
+            // value=""
             className="input-search"
             {...params}
             placeholder="Movie"

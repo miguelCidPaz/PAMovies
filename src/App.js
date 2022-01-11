@@ -8,17 +8,14 @@ import Details from "./views/Details";
 
 function App() {
   return (
-    <main>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/details/:type/:id" element={<Details />} />
-
-          <Route path="/" element={<MainView />} />
-          <Route path="/listSearch" element={<ListSearch />} />
-        </Routes>
-      </BrowserRouter>
-    </main>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/details/:type/:id" element={<Details />} />
+        <Route path="/" element={<MainView />} />
+        <Route path="/listSearch" element={<ListSearch />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
