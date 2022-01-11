@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import GenreType from './GenreType'
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-
+import {Link} from 'react-router-dom'
 
 export default function Genres(props) {
-
+  
   let settings = {
     dots: true,
     infinite: true,
@@ -49,30 +49,32 @@ export default function Genres(props) {
   return (<>
     <div className="row-container">
       <div>
-        <p className='row-title'>TODAS LAS CATEGORÍAS</p>
+        <p className='row-title'>ALL CATEGORY</p>
       </div>
 
       <Slider className="film-container" {...settings}>
         <div>
-          <GenreType title={props.genres[0].title} theme={props.genres[0].src} />
+          <GenreType title={props.genres[0].title} theme={props.genres[0].src} gender_ID={props.genres[0].id}/>
         </div>
         <div>
-          <GenreType title={props.genres[1].title} theme={props.genres[1].src} />
+          <GenreType title={props.genres[1].title} theme={props.genres[1].src} gender_ID={props.genres[1].id}/>
         </div>
         <div>
-          <GenreType title={props.genres[2].title} theme={props.genres[2].src} />
+        <Link to="/animation">
+          <GenreType title={props.genres[2].title} theme={props.genres[2].src} gender_ID={props.genres[2].id}/>
+        </Link>
         </div>
         <div>
-          <GenreType title={props.genres[3].title} theme={props.genres[3].src} />
+          <GenreType title={props.genres[3].title} theme={props.genres[3].src} gender_ID={props.genres[3].id}/>
         </div>
         <div>
-          <GenreType title={props.genres[4].title} theme={props.genres[4].src} />
+          <GenreType title={props.genres[4].title} theme={props.genres[4].src} gender_ID={props.genres[4].id}/>
         </div>
         <div>
-          <GenreType title={props.genres[5].title} theme={props.genres[5].src} />
+          <GenreType title={props.genres[5].title} theme={props.genres[5].src} gender_ID={props.genres[5].id}/>
         </div>
         <div>
-          <GenreType title={props.genres[6].title} theme={props.genres[6].src} />
+          <GenreType title={props.genres[6].title} theme={props.genres[6].src} gender_ID={props.genres[6].id} />
         </div>
       </Slider>
     </div>
