@@ -7,6 +7,7 @@ body {
   font-family: "Roboto", sans-serif;
   position: relative;
   background-color: #272727;
+  color: #fff;
 }
 .background-color {
   position: relative;
@@ -32,9 +33,25 @@ body {
 
 p {
   color: #fff;
+  font-size: 16px;
+}
+h1 {
+  color: #fff;
+  font-size: 24px;
+}
+@media (min-width: 450px) {
+  p {
+    font-size: 18px;
+  }
+  h1 {
+    font-size: 32px;
+  }
 }
 .container {
   width: 95%;
   margin: 0 auto;
   max-width: 1400px;
+  @media (min-width: 750px) {
+    width: 55%;
+  }
 }

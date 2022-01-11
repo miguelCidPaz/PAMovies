@@ -1,21 +1,38 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import Divisor from "../Divisor/Divisor";
 
 function ListSearch() {
   const location = useLocation().state;
+  const navigate = useNavigate();
 
   let link = "https://image.tmdb.org/t/p/w500";
-  console.log(location[0]);
 
+  function hola() {}
   return (
     <div className="container">
-      {location.map((element) => (
-        <div key={element.id}>
-          <img src={`${link}${element.poster_path}`} alt=""></img>
-          <h1>{element.title}</h1>
-          <p>{element.overview}</p>
-        </div>
-      ))}
+      <Divisor title="TITULOS"></Divisor>
+      <div className="movie-list">
+        {location.map((element) => (
+          <div
+            className="container-movie-list"
+            onClick={() => {
+              navigate(`/details/movie/${element.id}`);
+            }}
+            key={element.id}
+          >
+            <img
+              className="img-movie-list"
+              src={`${link}${element.poster_path}`}
+              alt=""
+            ></img>
+            <div className="movie-list-detail">
+              <h1>{element.title}</h1>
+              <p>( {element.release_date} )</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
