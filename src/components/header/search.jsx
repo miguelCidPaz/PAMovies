@@ -9,23 +9,19 @@ export default function ComboBox(props) {
   const [input, setInput] = useState([]);
   const [data, setData] = useState([]);
   const [value, setValue] = useState("");
-
   const navigate = useNavigate();
-
-  const getSelectValue = (e, value) => {
-    setData([value]);
-  };
+  let valueInput = value;
 
   useEffect(() => {
-    if (typeof data[0] === "string" && data[0] != null) {
+    if (typeof data[0] === "string" && data[0] != null && input.length > 0) {
       navigate("/listSearch", { state: input });
-      console.log(input);
+      // console.log(input.length);
     } else if (typeof data[0] === "object" && data[0] != null) {
-      navigate("/listSearch", { state: data });
-      console.log(data);
+      navigate(`/details/movie/${data[0].id}`);
+      // console.log(data);
     }
   }, [data]);
-  let valueInput = value;
+
   async function getValue(e) {
     let keyWord = e.target.value;
 
@@ -47,11 +43,11 @@ export default function ComboBox(props) {
       <Autocomplete
         key={true}
         className="search"
-        onChange={getSelectValue}
+        onChange={(e, value) => setData([value])}
         freeSolo
         value={value}
-        id="free-solo-demo"
         clearOnBlur
+        id="free-solo-demo"
         options={input}
         getOptionLabel={(option) =>
           typeof option.title === "string" || option.title instanceof String

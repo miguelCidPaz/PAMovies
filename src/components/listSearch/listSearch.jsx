@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Divisor from "../Divisor/Divisor";
 
 function ListSearch() {
-  const [getMovie, setGetMovie] = useState([]);
   const location = useLocation().state;
+  const navigate = useNavigate();
 
   let link = "https://image.tmdb.org/t/p/w500";
 
-  useEffect(() => {
-    // console.log(getMovie);
-    // location('./detail',{ state :getMovie )
-  }, [getMovie]);
-
+  function hola() {}
   return (
     <div className="container">
       <Divisor title="TITULOS"></Divisor>
@@ -20,9 +16,9 @@ function ListSearch() {
         {location.map((element) => (
           <div
             className="container-movie-list"
-            onClick={() =>
-              setGetMovie({ id: element.id, title: element.title })
-            }
+            onClick={() => {
+              navigate(`/details/movie/${element.id}`);
+            }}
             key={element.id}
           >
             <img
