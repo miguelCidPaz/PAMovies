@@ -8,7 +8,6 @@ function ListSearch() {
 
   let link = "https://image.tmdb.org/t/p/w500";
 
-  function hola() {}
   return (
     <div className="container">
       <Divisor title="TITULOS"></Divisor>
