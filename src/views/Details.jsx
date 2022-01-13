@@ -72,7 +72,6 @@ const Details = ({ state }) => {
 
   //Controlando renders innecesarios
   console.log("Renderizado en details");
-  console.log(state);
 
   return (
     <>
@@ -111,19 +110,17 @@ const Details = ({ state }) => {
         <section className="details--section details--cast">
           {item.details !== undefined
             ? item.details.map((element, index) => {
-                return <CastComponent key={index} cast={element} />;
-              })
+              return <CastComponent key={index} cast={element} />;
+            })
             : null}
         </section>
       </section>
 
       <section className="details--main-container">
-        {item.video ? (
-          <>
-            <Divisor title="Companies" />
-            <DetailTrailer url={item.video} />
-          </>
-        ) : null}
+        {item.video !== null ?
+          <><Divisor title="Trailer" />
+            <DetailTrailer id={params.id} />
+          </> : null}
       </section>
     </>
   );
