@@ -60,7 +60,7 @@ const Details = ({ state }) => {
 
   useEffect(() => {
     requestApi();
-  }, []);
+  }, [params]);
 
   const selectScore = (value) => {
     setRating(value);
