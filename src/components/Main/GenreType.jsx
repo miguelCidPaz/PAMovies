@@ -13,8 +13,8 @@ function GenreType(props) {
       <img
         src={props.theme}
         className="image-film"
-        width={"125px"}
-        height={"200px"}
+        width={"100%"}
+        height={"100%"}
       />
       <div>
         <p className="centerGender">{props.title}</p>
