@@ -10,34 +10,33 @@ export default function ComboBox(props) {
   const [data, setData] = useState([]);
   const [value, setValue] = useState("");
   const navigate = useNavigate();
-  let valueInput = value;
 
   useEffect(() => {
-    if (typeof data[0] === "string" && data[0] != null && input.length > 0) {
+    let fitrando = input.find((element) => element.title === data[0]);
+
+    if (data[0] != null && fitrando) {
+      navigate(`/details/movie/${fitrando.id}`);
+    } else if (data[0] != null) {
       navigate("/listSearch", { state: input });
-      // console.log(input.length);
-    } else if (typeof data[0] === "object" && data[0] != null) {
-      navigate(`/details/movie/${data[0].id}`);
-      // console.log(data);
     }
   }, [data]);
-
-  async function getValue(e) {
-    let keyWord = e.target.value;
-
-    if (/[a-zA-ZñÑ0-9]/.test(keyWord)) {
-      try {
-        let getData = await axios.get(
-          `https://api.themoviedb.org/3/search/movie?api_key=fb1999e69926d1387eb44c3abee6e7c5&language=en-US&query=${keyWord}&include_adult=false`
-        );
-        setInput(getData.data.results);
-      } catch (err) {
-        console.log(err);
+  useEffect(() => {
+    const fetchData = async () => {
+      if (/[a-zA-ZñÑ0-9]/.test(value)) {
+        try {
+          let getData = await axios.get(
+            `https://api.themoviedb.org/3/search/movie?api_key=fb1999e69926d1387eb44c3abee6e7c5&language=en-US&query=${value}&include_adult=false`
+          );
+          setInput(getData.data.results);
+        } catch (err) {
+          console.log(err);
+        }
       }
-    }
+    };
+    fetchData();
+  }, [value]);
 
-    setValue(valueInput);
-  }
+  // console.log("se renderiza");
   return (
     <>
       <Autocomplete
@@ -45,20 +44,21 @@ export default function ComboBox(props) {
         className="search"
         onChange={(e, value) => setData([value])}
         freeSolo
-        value={value}
         clearOnBlur
         id="free-solo-demo"
-        options={input}
-        getOptionLabel={(option) =>
-          typeof option.title === "string" || option.title instanceof String
-            ? option.title
-            : ""
-        }
+        options={input.map((option) => option.title)}
+        // getOptionLabel={(option) =>
+        //   typeof option.title === "string" || option.title instanceof String
+        //     ? option.title
+        //     : ""
+        // }
         sx={{ width: 700 }}
         renderInput={(params) => (
           <TextField
-            onChange={getValue}
-            value=""
+            onChange={(e) => setValue(e.target.value)}
+            onKeyDown={(e) =>
+              e.key === "Enter" ? setData([e.target.value]) : null
+            }
             className="input-search"
             {...params}
             placeholder="Movie"

@@ -16,7 +16,7 @@ body {
   content: "";
   position: absolute;
   margin: 0 auto;
-  width: 65vw;
+
   min-height: 100%;
   left: 0px;
   right: 0px;
@@ -55,3 +55,8 @@ h1 {
     width: 55%;
   }
 }
+
+//  variables
+$background-color: #272727;
+$blue: #027df5;
+$purple: #c206bb;
