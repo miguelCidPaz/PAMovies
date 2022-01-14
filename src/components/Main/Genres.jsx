@@ -18,6 +18,7 @@ export default function Genres(props) {
     variableWidth: true,
     className: "gender-slider",
     focusOnSelect: true,
+    rows: 1,
     responsive: [
       {
         breakpoint: 1024,
@@ -60,9 +61,7 @@ export default function Genres(props) {
           <GenreType title={props.genres[1].title} theme={props.genres[1].src} gender_ID={props.genres[1].id}/>
         </div>
         <div>
-        <Link to="/animation">
           <GenreType title={props.genres[2].title} theme={props.genres[2].src} gender_ID={props.genres[2].id}/>
-        </Link>
         </div>
         <div>
           <GenreType title={props.genres[3].title} theme={props.genres[3].src} gender_ID={props.genres[3].id}/>

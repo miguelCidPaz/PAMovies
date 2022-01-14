@@ -16,7 +16,6 @@ function App() {
         <Header />
         <Routes>
           <Route path="/details/:type/:id" element={<Details />} />
-
           <Route path="/" element={<MainView />} />
           <Route path="/animation" element={<GendersView/>} />
           <Route path="/listSearch" element={<ListSearch />} />

@@ -1,14 +1,18 @@
 import React from 'react';
-
+import {useNavigate} from "react-router-dom";
 
 function Film(props) {
-
-    let keyword = props.img
-
+    const navigate = useNavigate();
+    let keyword = props.item.poster_path
     return (
-    <div className='full-container'>
+    <div className='full-container'
+    onClick={() => {
+        navigate(`/details/movie/${props.item.id}`);
+      }}
+      key={props.id}
+    >
         <figure>
-            {props.img === null ? 
+            {props.item.poster_path === null ? 
             <img src={`https://www.gruposertec.com/wp-content/uploads/2015/03/no_image_available.jpeg`}
                 height={280}
                 width={190}
@@ -20,9 +24,9 @@ function Film(props) {
             />
             }
             <div className='layer'>
-                <p>{props.date}</p>
-                <p>{props.title}</p>
-                {/* <p>{props.puntuation}</p> */}
+                <p>{props.item.release_date}</p>
+                <p>{props.item.title}</p>
+                {/* <p>{props.vote_average}</p> */}
             </div>
         </figure>
     </div>
