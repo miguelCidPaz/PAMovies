@@ -25,4 +25,4 @@ function GenreType(props) {
         </div>
     )
 }
-export default GenreType
+export default GenreType;

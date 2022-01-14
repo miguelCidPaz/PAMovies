@@ -5,7 +5,7 @@ import Film from "./Film";
 export default function NewFilms(props) {
   let settings = {
     dots: true,
-    infinite: true,
+    // infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
@@ -19,23 +19,22 @@ export default function NewFilms(props) {
         breakpoint: 1024,
         settings: {
           rows: 2,
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 2,
-          
         },
       },
       {
         breakpoint: 600,
         settings: {
           rows: 2,
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 2,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow:1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },

@@ -1,7 +1,7 @@
 .container-divisor {
   position: relative;
-  margin: 5rem auto;
-  // width: 100%;
+  margin: 5rem auto 2rem auto;
+  width: 100%;
 }
 
 .divisor-gradient {
@@ -20,14 +20,14 @@
   }
 
   .line-blue {
-    border: 1px solid #027df5;
-    box-shadow: 0px 0px 24px #027df5;
+    border: 1px solid $blue;
+    box-shadow: 0px 0px 24px $blue;
     width: 80%;
   }
 
   .line-purple {
-    border: 1px solid #c206bb;
-    box-shadow: 0px 0px 24px #c206bb;
+    border: 1px solid $purple;
+    box-shadow: 0px 0px 24px $purple;
     width: 80%;
   }
 }
@@ -40,6 +40,6 @@
   left: 0;
   right: 0;
   z-index: -100;
-  background: linear-gradient(to right, #027df5 0%, #c206bb 100%);
+  background: linear-gradient(to right, $blue 0%, $purple 100%);
   filter: blur(45px);
 }

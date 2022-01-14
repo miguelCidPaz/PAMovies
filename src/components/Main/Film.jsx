@@ -14,13 +14,10 @@ function Film(props) {
         <figure>
             {props.item.poster_path === null ? 
             <img src={`https://www.gruposertec.com/wp-content/uploads/2015/03/no_image_available.jpeg`}
-                height={280}
-                width={190}
+               
             />
             :
-            <img src={`https://image.tmdb.org/t/p/w500/${keyword}`}
-            height={280}
-            width={190}
+            <img src={`https://image.tmdb.org/t/p/w500/${keyword}`} 
             />
             }
             <div className='layer'>
@@ -30,7 +27,6 @@ function Film(props) {
             </div>
         </figure>
     </div>
-    )
-
+  );
 }
-export default Film
+export default Film;
