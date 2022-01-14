@@ -9,10 +9,11 @@ function GenreType(props) {
     setMyId (props.gender_ID)
     console.log(myID)
     }
-    
-    return (
+   
+      return (
        
-        <div className='type-container' id={myID}
+        <div className='type-container'
+        id={myID}
         onClick={handleChange} 
         onClick={() => {
             navigate('/animation');
