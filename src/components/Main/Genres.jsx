@@ -15,7 +15,6 @@ export default function Genres(props) {
     centerMode: true,
     arrows: true,
     focusOnSelect: true,
-    className: "news-slider",
     rows: 1,
     responsive: [
       {
