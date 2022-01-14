@@ -8,10 +8,9 @@ import DetailValorations from "../components/Details/DetailValorations";
 import DetailTrailer from "../components/Details/DetailTrailer";
 
 const Details = ({ state }) => {
-  const [rating, setRating] = useState(0);
-  const [view, setView] = useState(false);
+  const [rating, setRating] = useState(0); //Rating para las estrellas
   const [item, setItem] = useState(filmDetail); //Pasara a ser o bien una llamada a la Api o el objeto que reciba por prop
-  const params = useParams();
+  const params = useParams(); //Parametros de la URL
 
   //Url necesaria para las imagenes
   const urlForImages = "https://image.tmdb.org/t/p/w500/";
@@ -66,31 +65,38 @@ const Details = ({ state }) => {
     setRating(value);
   };
 
-  const selectView = () => {
-    setView(!view);
-  };
-
   //Controlando renders innecesarios
   console.log("Renderizado en details");
 
   return (
-    <>
+    <div className="container">
       <Divisor title="Poster" />
       <section className="details--main-container">
-        <DetailPresentation
-          photo={urlForImages + item.photo_principal}
-          title={item.name}
-        />
+        <div className="details--frame-photo">
+          <img src={urlForImages + item.photo_principal} alt={`Poster de ${item.name}`} />
+        </div>
+
+        <div className="details--interior-container">
+          <p className="details--title">{item.name}</p>
+          <div className="details--interior-row details--interior-row-extra">
+            <p>Year</p>
+            <p>Valorations</p>
+          </div>
+          <p>Director:</p>
+          <div className="details--interior-row">
+            <p>Reparto</p>
+            <p>...</p>
+          </div>
+        </div>
+
       </section>
 
       <Divisor title="Valorations" />
       <section className="details--main-container">
         <DetailValorations
-          view={view}
           puntuation={rating}
           rating={filmDetail.rating}
           selectScore={selectScore}
-          selectView={selectView}
         />
       </section>
 
@@ -122,7 +128,7 @@ const Details = ({ state }) => {
             <DetailTrailer id={params.id} />
           </> : null}
       </section>
-    </>
+    </div>
   );
 };
 

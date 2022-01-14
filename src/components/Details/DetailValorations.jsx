@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
 
 const DetailValorations = (props) => {
     const [isSelect, setIsSelect] = useState(0);
@@ -18,15 +16,6 @@ const DetailValorations = (props) => {
                         <span>★</span>
                     </button>
                 })}
-            </div>
-            <div className='details--show-or-not'>
-                <FormControlLabel control={<Switch
-                    onClick={props.selectView}
-                    checked={props.view}
-                    color="warning"
-                    size="large"
-                />} label={props.view === true ? "La vere" : "No la vere"} />
-
             </div>
         </section>
     )

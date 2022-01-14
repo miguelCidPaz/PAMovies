@@ -1,8 +1,9 @@
 .details--main-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 5%;
+    justify-content: center;
+    gap: 4%;
     margin-top: 20px;
 
     .details--title{
@@ -12,6 +13,23 @@
         padding: 10px 0px;
         font-weight: bolder;
     }
+
+    .details--interior-row{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .details--interior-row-extra{
+        gap: 20%;
+    }
+}
+
+.details--interior-container{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    height: 300px;
+    gap: 15%;
 }
 
 
@@ -134,8 +152,8 @@
 }
 
 .details--frame-photo{
-    width: 500px;
-    height: 500px;
+    width: 200px;
+    height: 300px;
     border-radius: 20px;
     overflow: hidden;
     margin-bottom: 20px;
