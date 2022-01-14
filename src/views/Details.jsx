@@ -1,14 +1,17 @@
 import CastComponent from "../components/Details/CastComponent";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { filmDetail } from "../components/Details/Data";
 import Divisor from "../components/Divisor/Divisor";
 import DetailPresentation from "../components/Details/DetailPresentation";
+import { Normalizer } from './../components/Details/Normalizer'
 import DetailValorations from "../components/Details/DetailValorations";
 import DetailTrailer from "../components/Details/DetailTrailer";
 
 const Details = ({ state }) => {
   const [rating, setRating] = useState(0); //Rating para las estrellas
+  const [casting, setCasting] = useState([]) //Reparto de la pelicula
+  const [director, setDirector] = useState("");
   const [item, setItem] = useState(filmDetail); //Pasara a ser o bien una llamada a la Api o el objeto que reciba por prop
   const params = useParams(); //Parametros de la URL
 
@@ -22,43 +25,24 @@ const Details = ({ state }) => {
       const id = params.id;
       const type = params.type;
       const ApiKey = "07e793aeac523d9f4455050b060257c7";
-      const normalize = {
-        name: "",
-        photo_principal: "",
-        description: "",
-        details: [],
-        video: null,
-      };
+
       //Esta url serviria para cualquiera de las 3 busquedas
-      const URL = `https://api.themoviedb.org/3/${type}/${id}?api_key=${ApiKey}&language=en-US`;
-      await fetch(URL)
+      const URLPrincipal = `https://api.themoviedb.org/3/${type}/${id}?api_key=${ApiKey}&language=en-US`;
+      await fetch(URLPrincipal)
         .then((res) => res.json())
         .then((data) => {
-          switch (type) {
-            case "movie":
-              normalize.name = data.title;
-              normalize.photo_principal = data.poster_path;
-              normalize.description = data.overview;
-              normalize.details = data.production_companies;
-              normalize.video = data.video;
-              break;
-
-            case "person":
-              normalize.name = data.name;
-              normalize.photo_principal = data.profile_path;
-              normalize.description = data.biography;
-              normalize.details = undefined;
-              normalize.video = null;
-              break;
-
-            default:
-              setItem(filmDetail);
-          }
-
-          setItem(normalize);
+          setItem(Normalizer(data, type));
         });
+      if (type === "movie") {
+        const URLReparto = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${ApiKey}&language=en-US`;
+        await fetch(URLReparto)
+          .then((res) => res.json())
+          .then((data) => {
+            setCasting(Object.values(data.cast))
+            setDirector(data.crew[0])
+          })
+      }
     };
-
     requestApi();
   }, [params]);
 
@@ -81,25 +65,22 @@ const Details = ({ state }) => {
         <div className="details--interior-container">
           <p className="details--title">{item.name}</p>
           <div className="details--interior-row details--interior-row-extra">
-            <p>Year</p>
-            <p>Valorations</p>
+            <p>{item.date}</p>
+            <DetailValorations
+              puntuation={rating}
+              rating={filmDetail.rating}
+              selectScore={selectScore}
+            />
           </div>
-          <p>Director:</p>
           <div className="details--interior-row">
-            <p>Reparto</p>
-            <p>...</p>
+            <p>Director:</p>
+            <NavLink className={"details--casting"} to={`/person/${director.id}`}>{director.name}</NavLink>
+          </div>
+          <div className="details--interior-row">
+            <p>Reparto:</p>
+            {casting.map((element, index) => index < 15 ? <NavLink className={"details--casting"} to={`/person/${element.id}`}>{element.name}</NavLink> : null)}
           </div>
         </div>
-
-      </section>
-
-      <Divisor title="Valorations" />
-      <section className="details--main-container">
-        <DetailValorations
-          puntuation={rating}
-          rating={filmDetail.rating}
-          selectScore={selectScore}
-        />
       </section>
 
       {item.description !== null || item.description !== undefined ? (

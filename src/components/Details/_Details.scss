@@ -8,7 +8,7 @@
 
     .details--title{
         color: white;
-        font-size: 50px;
+        font-size: 30px;
         margin-left: -10px;
         padding: 10px 0px;
         font-weight: bolder;
@@ -17,10 +17,12 @@
     .details--interior-row{
         display: flex;
         flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
     }
 
     .details--interior-row-extra{
-        gap: 20%;
+        gap: 5%;
     }
 }
 
@@ -29,7 +31,8 @@
     flex-direction: column;
     align-self: flex-start;
     height: 300px;
-    gap: 15%;
+    width: 100%;
+    gap: 10%;
 }
 
 
@@ -37,7 +40,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 10px;
+    gap: 0px 10px;
     width: 300px;
 
     .star, .star-point{
@@ -47,7 +50,7 @@
         border: 1px grey;
         outline: none;
         color: white;
-        font-size: 30px;
+        font-size: 25px;
         transition-duration: 0.1s;
         font-weight: bolder;
 
@@ -61,71 +64,12 @@
     }
 }
 
-.details--show-or-not{
-    width: 20%;
-
-    .details--check{
-        cursor: pointer;
-        background-color: transparent;
-        border: 0px;
-        outline: none;
-        height: 30px;
-    }
-
-    .details--bar, .details--bar-checked{
-        position: relative;
-        width: 100px;
-        height: 40px;
-        background-color: rgb(185, 178, 178);
-        border-radius: 30px;
-        box-shadow: 0 0 4px inset grey;
-
-        &::before{
-            content:'';
-            position: absolute;
-            top: -5px;
-            height: 50px;
-            width: 50px;
-            border-radius: 30px;
-            box-shadow: 0 0 4px rgb(197, 193, 193);
-        }
-    }
-
-    .details--bar{
-        &::before{
-            box-shadow: 0 0 4px inset white;
-            animation: unCheck 1s;
-            animation-fill-mode: forwards;
-        }
-    }
-
-    .details--bar-checked{
-        &::before{
-            animation: check 1s;
-            animation-fill-mode: forwards;
-        }
-    }
-}
-
-@keyframes check {
-    from{
-        left: 0px;
-        background-color: rgb(212, 207, 207);
-    }
-    to{
-        left: 50px;
-        background-color: rgb(243, 243, 172);
-    }
-}
-
-@keyframes unCheck {
-    from{
-        left:50px;
-        background-color: rgb(243, 243, 172);
-    }
-    to{
-        left: 0px;
-        background-color: rgb(212, 207, 207);
+.details--casting{
+    color: aqua;
+    padding: 0px 5px;
+    
+    &:hover{
+        color: red;
     }
 }
 
@@ -152,10 +96,9 @@
 }
 
 .details--frame-photo{
-    width: 200px;
+    width: 50%;
     height: 300px;
-    border-radius: 20px;
-    overflow: hidden;
+    border-radius: 10px;
     margin-bottom: 20px;
 
     @media (max-width:580px) {
