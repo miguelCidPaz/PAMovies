@@ -16,50 +16,52 @@ const Details = ({ state }) => {
   const urlForImages = "https://image.tmdb.org/t/p/w500/";
 
   //Llamada a la api
-  const requestApi = async () => {
-    const id = params.id;
-    const type = params.type;
-    const ApiKey = "07e793aeac523d9f4455050b060257c7";
-    const normalize = {
-      name: "",
-      photo_principal: "",
-      description: "",
-      details: [],
-      video: null,
-    };
-    //Esta url serviria para cualquiera de las 3 busquedas
-    const URL = `https://api.themoviedb.org/3/${type}/${id}?api_key=${ApiKey}&language=en-US`;
-    await fetch(URL)
-      .then((res) => res.json())
-      .then((data) => {
-        switch (type) {
-          case "movie":
-            normalize.name = data.title;
-            normalize.photo_principal = data.poster_path;
-            normalize.description = data.overview;
-            normalize.details = data.production_companies;
-            normalize.video = data.video;
-            break;
-
-          case "person":
-            normalize.name = data.name;
-            normalize.photo_principal = data.profile_path;
-            normalize.description = data.biography;
-            normalize.details = undefined;
-            normalize.video = null;
-            break;
-
-          default:
-            setItem(filmDetail);
-        }
-
-        setItem(normalize);
-      });
-  };
 
   useEffect(() => {
+    const requestApi = async () => {
+      const id = params.id;
+      const type = params.type;
+      const ApiKey = "07e793aeac523d9f4455050b060257c7";
+      const normalize = {
+        name: "",
+        photo_principal: "",
+        description: "",
+        details: [],
+        video: null,
+      };
+      //Esta url serviria para cualquiera de las 3 busquedas
+      const URL = `https://api.themoviedb.org/3/${type}/${id}?api_key=${ApiKey}&language=en-US`;
+      await fetch(URL)
+        .then((res) => res.json())
+        .then((data) => {
+          switch (type) {
+            case "movie":
+              normalize.name = data.title;
+              normalize.photo_principal = data.poster_path;
+              normalize.description = data.overview;
+              normalize.details = data.production_companies;
+              normalize.video = data.video;
+              break;
+
+            case "person":
+              normalize.name = data.name;
+              normalize.photo_principal = data.profile_path;
+              normalize.description = data.biography;
+              normalize.details = undefined;
+              normalize.video = null;
+              break;
+
+            default:
+              setItem(filmDetail);
+          }
+
+          setItem(normalize);
+        });
+    };
+
     requestApi();
   }, [params]);
+
 
   const selectScore = (value) => {
     setRating(value);
