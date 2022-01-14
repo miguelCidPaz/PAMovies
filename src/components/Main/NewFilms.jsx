@@ -45,13 +45,9 @@ export default function NewFilms(props) {
     <>
       <Slider {...settings}>
         {props.data.map((item) => (
-          <div className="news-container">
+          <div className="news-container" key={item.id}>
             <Film
-              img={item.poster_path}
-              title={item.title}
-              overview={item.overview}
-              date={item.release_date}
-              puntuation={item.vote_average}
+              item={item}
             />
           </div>
         ))}

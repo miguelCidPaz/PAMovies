@@ -17,6 +17,7 @@ export default function Genres(props) {
     variableWidth: true,
     className: "gender-slider",
     focusOnSelect: true,
+    rows: 1,
     responsive: [
       {
         breakpoint: 1024,

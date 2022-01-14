@@ -1,24 +1,31 @@
-import React from "react";
+import React from 'react';
+import {useNavigate} from "react-router-dom";
 
 function Film(props) {
-  let keyword = props.img;
-
-  return (
-    <div className="full-container">
-      <figure>
-        {props.img === null ? (
-          <img
-            src={`https://www.gruposertec.com/wp-content/uploads/2015/03/no_image_available.jpeg`}
-          />
-        ) : (
-          <img src={`https://image.tmdb.org/t/p/w500/${keyword}`} />
-        )}
-        <div className="layer">
-          <p>{props.date}</p>
-          <p>{props.title}</p>
-          {/* <p>{props.puntuation}</p> */}
-        </div>
-      </figure>
+    const navigate = useNavigate();
+    let keyword = props.item.poster_path
+    return (
+    <div className='full-container'
+    onClick={() => {
+        navigate(`/details/movie/${props.item.id}`);
+      }}
+      key={props.id}
+    >
+        <figure>
+            {props.item.poster_path === null ? 
+            <img src={`https://www.gruposertec.com/wp-content/uploads/2015/03/no_image_available.jpeg`}
+               
+            />
+            :
+            <img src={`https://image.tmdb.org/t/p/w500/${keyword}`} 
+            />
+            }
+            <div className='layer'>
+                <p>{props.item.release_date}</p>
+                <p>{props.item.title}</p>
+                {/* <p>{props.vote_average}</p> */}
+            </div>
+        </figure>
     </div>
   );
 }
