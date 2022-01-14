@@ -25,30 +25,32 @@ export default function Main() {
     <div className="container">
       <Divisor title="ESTRENOS"></Divisor>
 
-      <Grid
+      {/* <Grid
+      conteiner
         direction="column"
         alignItems="center"
         justifyContent="center"
         alignContent="center"
         wrap="nowrap"
-      >
-        <Grid>
-          <div className="main-container ">
-            <div className="films-container background-color">
-              <NewFilms data={data} />
-            </div>
+      > */}
+      <Grid>
+        <div className="main-container ">
+          <div className="films-container background-color">
+            <NewFilms data={data} />
           </div>
-        </Grid>
+        </div>
       </Grid>
+      {/* </Grid> */}
       <Divisor title="CATEGORÍAS"></Divisor>
       <Grid
-        // spacing={1}
 
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-        alignContent="center"
-        wrap="nowrap"
+      // container
+      // spacing={1}
+      // direction="column"
+      // alignItems="center"
+      // justifyContent="center"
+      // alignContent="center"
+      // wrap="nowrap"
       >
         <Grid>
           <div className="main-container">

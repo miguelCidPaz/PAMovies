@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Divisor from "../Divisor/Divisor";
+import Divisor from "../../components/Divisor/Divisor";
 
 function ListSearch() {
   const location = useLocation().state;

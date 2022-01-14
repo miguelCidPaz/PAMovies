@@ -140,13 +140,17 @@ figure .layer {
   }
 }
 
-.slick-dots li {
+.container .slick-dots {
   position: relative;
   display: inline-block;
   // width: 5%;
   // height: 20px;
   // margin: 0 5px;
   // padding: 0;
-  margin: 10px;
+  // margin-top: 10px;
   cursor: pointer;
+  button::before {
+    font-size: 15px;
+    margin-top: 15px;
+  }
 }

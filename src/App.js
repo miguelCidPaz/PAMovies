@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.scss";
 import Header from "./components/header/header";
 // import FilmDetails from "./views/FilmDetails";
-import ListSearch from "./components/listSearch/listSearch";
+import ListSearch from "./views/listSearch/listSearch";
 import MainView from "./views/MainView";
 import GendersView from "./views/GendersView";
 import "./styles.scss";
