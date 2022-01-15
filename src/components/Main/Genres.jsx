@@ -4,17 +4,52 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+
+export function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+
+  return (
+    <ArrowForwardIosIcon
+      className={className}
+      style={{
+        ...style,
+        background: "transparent",
+        color: "white",
+        height: "50px",
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
+export function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <ArrowBackIosIcon
+      className={className}
+      style={{
+        ...style,
+        background: "transparent",
+        color: "white",
+        height: "50px",
+      }}
+      onClick={onClick}
+    />
+  );
+}
 
 export default function Genres(props) {
   let settings = {
-    dots: true,
-    // infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
     centerMode: true,
     arrows: true,
     focusOnSelect: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
     rows: 1,
     responsive: [
       {

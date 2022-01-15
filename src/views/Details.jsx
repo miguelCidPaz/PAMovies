@@ -6,7 +6,7 @@ import Divisor from "../components/Divisor/Divisor";
 import DetailPresentation from "../components/Details/DetailPresentation";
 import DetailValorations from "../components/Details/DetailValorations";
 import DetailTrailer from "../components/Details/DetailTrailer";
-
+import Cast from "../components/cast/Cast";
 const Details = ({ state }) => {
   const [rating, setRating] = useState(0);
   const [view, setView] = useState(false);
@@ -63,7 +63,6 @@ const Details = ({ state }) => {
     requestApi();
   }, [params]);
 
-
   const selectScore = (value) => {
     setRating(value);
   };
@@ -112,18 +111,21 @@ const Details = ({ state }) => {
         <section className="details--section details--cast">
           {item.details !== undefined
             ? item.details.map((element, index) => {
-              return <CastComponent key={index} cast={element} />;
-            })
+                return <CastComponent key={index} cast={element} />;
+              })
             : null}
         </section>
       </section>
 
       <section className="details--main-container">
-        {item.video !== null ?
-          <><Divisor title="Trailer" />
+        {item.video !== null ? (
+          <>
+            <Divisor title="Trailer" />
             <DetailTrailer id={params.id} />
-          </> : null}
+          </>
+        ) : null}
       </section>
+      <Cast id={params.id}></Cast>
     </>
   );
 };
