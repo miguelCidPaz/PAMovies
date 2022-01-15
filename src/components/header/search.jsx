@@ -5,7 +5,7 @@ import { TextField } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { useNavigate } from "react-router-dom";
 
-export default function ComboBox(props) {
+export default function ComboBox() {
   const [input, setInput] = useState([]);
   const [data, setData] = useState([]);
   const [value, setValue] = useState("");
@@ -36,7 +36,6 @@ export default function ComboBox(props) {
     fetchData();
   }, [value]);
 
-  // console.log("se renderiza");
   return (
     <>
       <Autocomplete
@@ -47,11 +46,6 @@ export default function ComboBox(props) {
         clearOnBlur
         id="free-solo-demo"
         options={input.map((option) => option.title)}
-        // getOptionLabel={(option) =>
-        //   typeof option.title === "string" || option.title instanceof String
-        //     ? option.title
-        //     : ""
-        // }
         sx={{ width: 700 }}
         renderInput={(params) => (
           <TextField

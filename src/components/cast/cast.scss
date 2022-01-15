@@ -1,0 +1,22 @@
+.container-cast > .img-cast {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin: 0 auto 1rem auto;
+}
+.container-cast {
+  height: 250px;
+  text-align: center;
+  .h2 {
+    width: 180px;
+    margin: 0 auto;
+  }
+}
+.container-slider-cast {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1400px;
+  @media (min-width: 750px) {
+    width: 85%;
+  }
+}
