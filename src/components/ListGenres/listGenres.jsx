@@ -6,7 +6,7 @@ import Divisor from "../Divisor/Divisor";
 
 export default function ListGenres(props) {
     const [orderFilms, setOrderFilms] = useState([]);
-    
+    {console.log(props)}
     /*Ejemplo con pagina de Animation === 16*/
     let gender_ID = genres[2].id
     useEffect(async () => {
@@ -22,9 +22,10 @@ export default function ListGenres(props) {
    
     let data = orderFilms 
 
-    return ( <div className="title-genre">
+    return (
+ <div className="title-genre">
          {console.log(props)}
-     <Divisor title={`${genres[2].title}`}></Divisor>
+    <Divisor title={`${genres[2].title}`}></Divisor>
     <div className="genre-container"> 
         <AnimationGenre data={data} gender_ID={`${genres[2].id}`}/> 
     </div>

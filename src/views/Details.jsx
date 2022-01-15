@@ -1,13 +1,12 @@
 import CastComponent from "../components/Details/CastComponent";
 import { useState, useEffect } from "react";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { filmDetail } from "../components/Details/Data";
 import Divisor from "../components/Divisor/Divisor";
 import DetailPresentation from "../components/Details/DetailPresentation";
 import { Normalizer } from './../components/Details/Normalizer'
-import DetailValorations from "../components/Details/DetailValorations";
 import DetailTrailer from "../components/Details/DetailTrailer";
-
+import Cast from "../components/cast/Cast";
 const Details = ({ state }) => {
   const [rating, setRating] = useState(0); //Rating para las estrellas
   const [casting, setCasting] = useState([]) //Reparto de la pelicula
@@ -47,7 +46,6 @@ const Details = ({ state }) => {
     requestApi();
   }, [params]);
 
-
   const selectScore = (value) => {
     setRating(value);
   };
@@ -56,44 +54,50 @@ const Details = ({ state }) => {
   console.log("Renderizado en details");
 
   return (
-    <div className="container">
-      <DetailPresentation
-        urlImage={urlForImages + item.photo_principal}
-        item={item}
-        rating={rating}
-        selectScore={selectScore}
-        casting={casting}
-        director={director}
-      />
+    <>
+      <div className="container">
+        <DetailPresentation
+          urlImage={urlForImages + item.photo_principal}
+          item={item}
+          rating={rating}
+          selectScore={selectScore}
+          casting={casting}
+          director={director}
+        />
 
-      {/* Segunda Seccion para productoras y description */}
+        {/* Segunda Seccion para productoras y description */}
 
-      {item.description !== null || item.description !== undefined ? (
+        {item.description !== null || item.description !== undefined ? (
+          <section className="details--main-container">
+            <section className="details--section details--description">
+              <p>{item.description}</p>
+            </section>
+          </section>
+        ) : null}
+
+        {item.details !== undefined ? <Divisor title="Companies" /> : null}
         <section className="details--main-container">
-          <section className="details--section details--description">
-            <p>{item.description}</p>
+          <section className="details--section details--cast">
+            {item.details !== undefined
+              ? item.details.map((element, index) => {
+                return <CastComponent key={index} cast={element} />;
+              })
+              : null}
           </section>
         </section>
-      ) : null}
 
-      {item.details !== undefined ? <Divisor title="Companies" /> : null}
-      <section className="details--main-container">
-        <section className="details--section details--cast">
-          {item.details !== undefined
-            ? item.details.map((element, index) => {
-              return <CastComponent key={index} cast={element} />;
-            })
-            : null}
+        <section className="details--main-container">
+          {item.video !== null ? (
+            <>
+              <Divisor title="Trailer" />
+              <DetailTrailer id={params.id} />
+            </>
+          ) : null}
         </section>
-      </section>
 
-      <section className="details--main-container">
-        {item.video !== null ?
-          <><Divisor title="Trailer" />
-            <DetailTrailer id={params.id} />
-          </> : null}
-      </section>
-    </div>
+      </div>
+      <Cast id={params.id}></Cast>
+    </>
   );
 };
 
