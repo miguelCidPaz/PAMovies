@@ -9,7 +9,7 @@ function SampleNextArrow(props) {
   const { className, style, onClick } = props;
 
   return (
-    <div className="arrow-next">
+    <div className="arrow-next arrow">
       <ArrowForwardIosIcon
         className={className}
         style={{
@@ -28,7 +28,7 @@ function SampleNextArrow(props) {
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <div className="arrow-back">
+    <div className="arrow-back arrow">
       <ArrowBackIosNewIcon
         className={className}
         style={{
@@ -46,6 +46,7 @@ function SamplePrevArrow(props) {
 
 const Cast = (props) => {
   const [data, setData] = useState("");
+  const [item, setIems] = useState([""]);
   let id = props.id;
   useEffect(() => {
     const fetchData = async () => {
@@ -59,11 +60,12 @@ const Cast = (props) => {
       }
     };
     fetchData();
-
-    console.log(data);
   }, [props]);
   useEffect(() => {
-    console.log(data.crew);
+    let itemArr = [];
+    data.cast?.slice(0, 4).map((element) => itemArr.push(element));
+    data.crew?.slice(0, 4).map((element) => itemArr.push(element));
+    setIems(itemArr);
   }, [data]);
 
   let link = "https://image.tmdb.org/t/p/w500";
@@ -119,25 +121,8 @@ const Cast = (props) => {
         <Divisor title="CAST"></Divisor>
       </div>
       <Slider {...settings}>
-        {data.cast?.slice(0, 4).map((element) => (
-          <div key={element.id} className="container-cast">
-            {element.profile_path === null ? (
-              <ImageNotSupportedIcon className="img-cast"></ImageNotSupportedIcon>
-            ) : (
-              <img
-                className="img-cast"
-                src={link + element.profile_path}
-                alt=""
-              ></img>
-            )}
-            <div className="h2">
-              <p>({element.known_for_department})</p>
-              <h2>{element.name}</h2>
-            </div>
-          </div>
-        ))}
-        {data.crew?.slice(0, 4).map((element) => (
-          <div key={element.id} className="container-cast">
+        {item?.map((element) => (
+          <div key={item.length} className="container-cast">
             {element.profile_path === null ? (
               <ImageNotSupportedIcon className="img-cast"></ImageNotSupportedIcon>
             ) : (
