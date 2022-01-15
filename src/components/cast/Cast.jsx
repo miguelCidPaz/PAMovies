@@ -9,7 +9,7 @@ function SampleNextArrow(props) {
   const { className, style, onClick } = props;
 
   return (
-    <div className="arrow-next">
+    <div className="arrow-next arrow">
       <ArrowForwardIosIcon
         className={className}
         style={{
@@ -28,7 +28,7 @@ function SampleNextArrow(props) {
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <div className="arrow-back">
+    <div className="arrow-back arrow">
       <ArrowBackIosNewIcon
         className={className}
         style={{
@@ -46,6 +46,7 @@ function SamplePrevArrow(props) {
 
 const Cast = (props) => {
   const [data, setData] = useState("");
+  const [item, setIems] = useState([""]);
   let id = props.id;
   useEffect(() => {
     const fetchData = async () => {
@@ -59,37 +60,39 @@ const Cast = (props) => {
       }
     };
     fetchData();
-
-    console.log(data);
   }, [props]);
   useEffect(() => {
-    console.log(data.cast);
+    let itemArr = [];
+    data.cast?.slice(0, 4).map((element) => itemArr.push(element));
+    data.crew?.slice(0, 4).map((element) => itemArr.push(element));
+    setIems(itemArr);
   }, [data]);
 
   let link = "https://image.tmdb.org/t/p/w500";
 
   let settings = {
-    infinite: true,
+    // infinite: true,
     speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 3,
-    // initialSlide: 2,
+    slidesToScroll: 2,
+    initialSlide: 2,
+
     className: "container-slider-cast",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
       {
-        breakpoint: 1244,
+        breakpoint: 1441,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 3,
+          slidesToScroll: 2,
         },
       },
       {
-        breakpoint: 1024,
+        breakpoint: 1025,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
       {
@@ -118,8 +121,8 @@ const Cast = (props) => {
         <Divisor title="CAST"></Divisor>
       </div>
       <Slider {...settings}>
-        {data.cast?.map((element) => (
-          <div className="container-cast">
+        {item?.map((element) => (
+          <div key={item.length} className="container-cast">
             {element.profile_path === null ? (
               <ImageNotSupportedIcon className="img-cast"></ImageNotSupportedIcon>
             ) : (
@@ -130,6 +133,7 @@ const Cast = (props) => {
               ></img>
             )}
             <div className="h2">
+              <p>({element.known_for_department})</p>
               <h2>{element.name}</h2>
             </div>
           </div>

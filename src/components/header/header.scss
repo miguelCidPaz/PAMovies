@@ -80,12 +80,13 @@
 
 .search {
   background-color: #eeeeee;
-  padding: 0 1rem 0 1rem;
+  padding: 0.2rem 1rem;
   border-radius: 1rem;
   border: unset;
+  min-width: 11rem;
   max-width: 90%;
   margin: 0 auto;
-  height: 2rem;
+
   flex-basis: 40%;
   cursor: text;
 
