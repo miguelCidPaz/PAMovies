@@ -3,6 +3,47 @@ import react, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import ImageNotSupportedIcon from "@mui/icons-material/ImageNotSupported";
 import Divisor from "../Divisor/Divisor";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+
+  return (
+    <div className="arrow-next">
+      <ArrowForwardIosIcon
+        className={className}
+        style={{
+          ...style,
+
+          color: "white",
+
+          right: "0px",
+        }}
+        onClick={onClick}
+      />
+    </div>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div className="arrow-back">
+      <ArrowBackIosNewIcon
+        className={className}
+        style={{
+          ...style,
+
+          color: "white",
+
+          left: "-2%",
+        }}
+        onClick={onClick}
+      />
+    </div>
+  );
+}
+
 const Cast = (props) => {
   const [data, setData] = useState("");
   let id = props.id;
@@ -31,21 +72,33 @@ const Cast = (props) => {
     infinite: true,
     speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 4,
+    slidesToScroll: 3,
+    // initialSlide: 2,
     className: "container-slider-cast",
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1244,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 1,
+          slidesToScroll: 3,
         },
       },
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 1,
           slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: "150px",
         },
       },
       {
@@ -54,6 +107,7 @@ const Cast = (props) => {
           slidesToShow: 1,
           slidesToScroll: 1,
           centerMode: true,
+          centerPadding: "80px",
         },
       },
     ],
