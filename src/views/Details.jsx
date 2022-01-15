@@ -32,6 +32,7 @@ const Details = ({ state }) => {
         .then((res) => res.json())
         .then((data) => {
           setItem(Normalizer(data, type));
+          console.log(data)
         });
       if (type === "movie") {
         const URLReparto = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${ApiKey}&language=en-US`;
@@ -56,42 +57,23 @@ const Details = ({ state }) => {
 
   return (
     <div className="container">
-      <Divisor title="Poster" />
-      <section className="details--main-container">
-        <div className="details--frame-photo">
-          <img src={urlForImages + item.photo_principal} alt={`Poster de ${item.name}`} />
-        </div>
+      <DetailPresentation
+        urlImage={urlForImages + item.photo_principal}
+        item={item}
+        rating={rating}
+        selectScore={selectScore}
+        casting={casting}
+        director={director}
+      />
 
-        <div className="details--interior-container">
-          <p className="details--title">{item.name}</p>
-          <div className="details--interior-row details--interior-row-extra">
-            <p>{item.date}</p>
-            <DetailValorations
-              puntuation={rating}
-              rating={filmDetail.rating}
-              selectScore={selectScore}
-            />
-          </div>
-          <div className="details--interior-row">
-            <p>Director:</p>
-            <NavLink className={"details--casting"} to={`/person/${director.id}`}>{director.name}</NavLink>
-          </div>
-          <div className="details--interior-row">
-            <p>Reparto:</p>
-            {casting.map((element, index) => index < 15 ? <NavLink className={"details--casting"} to={`/person/${element.id}`}>{element.name}</NavLink> : null)}
-          </div>
-        </div>
-      </section>
+      {/* Segunda Seccion para productoras y description */}
 
       {item.description !== null || item.description !== undefined ? (
-        <>
-          <Divisor title="Description" />
-          <section className="details--main-container">
-            <section className="details--section details--description">
-              <p>{item.description}</p>
-            </section>
+        <section className="details--main-container">
+          <section className="details--section details--description">
+            <p>{item.description}</p>
           </section>
-        </>
+        </section>
       ) : null}
 
       {item.details !== undefined ? <Divisor title="Companies" /> : null}

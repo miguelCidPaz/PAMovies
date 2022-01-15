@@ -6,9 +6,17 @@ export const Normalizer = (data, type) => {
         photo_principal: "",
         description: "",
         details: [],
+        countries: null,
         date: null,
         video: null,
     };
+
+    let countries = [];
+    if (type === "movie") {
+        for (let i = 0; i < data.production_countries.length; i++) {
+            countries.push(data.production_countries[i].name);
+        }
+    }
 
     switch (type) {
         case "movie":
@@ -18,6 +26,7 @@ export const Normalizer = (data, type) => {
             normalize.details = data.production_companies;
             normalize.video = data.video;
             normalize.date = data.release_date;
+            normalize.countries = countries
             break;
 
         case "person":

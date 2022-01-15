@@ -9,8 +9,6 @@
     .details--title{
         color: white;
         font-size: 30px;
-        margin-left: -10px;
-        padding: 10px 0px;
         font-weight: bolder;
     }
 
@@ -22,7 +20,11 @@
     }
 
     .details--interior-row-extra{
-        gap: 5%;
+        gap: 1%;
+    }
+
+    @media (max-width:1100px) {
+        flex-direction: column;
     }
 }
 
@@ -33,6 +35,10 @@
     height: 300px;
     width: 100%;
     gap: 10%;
+
+    @media (max-width:1100px){
+        padding: 20px;
+    }
 }
 
 
@@ -62,6 +68,10 @@
     .star-point{
         color: yellow !important;
     }
+}
+
+.details--link{
+    padding: 0px 5px;
 }
 
 .details--casting{
