@@ -1,9 +1,8 @@
-import CastComponent from "../components/Details/CastComponent";
+import Description from "../components/Details/Description";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { filmDetail } from "../components/Details/Data";
-import Divisor from "../components/Divisor/Divisor";
-import DetailPresentation from "../components/Details/DetailPresentation";
+import Presentation from "../components/Details/Presentation";
 import { Normalizer } from './../components/Details/Normalizer'
 import DetailTrailer from "../components/Details/DetailTrailer";
 import Cast from "../components/cast/Cast";
@@ -56,7 +55,7 @@ const Details = ({ state }) => {
   return (
     <>
       <div className="container">
-        <DetailPresentation
+        <Presentation
           urlImage={urlForImages + item.photo_principal}
           item={item}
           rating={rating}
@@ -65,35 +64,12 @@ const Details = ({ state }) => {
           director={director}
         />
 
-        {/* Segunda Seccion para productoras y description */}
+        <Description
+          item={item}
+        />
 
-        {item.description !== null || item.description !== undefined ? (
-          <section className="details--main-container">
-            <section className="details--section details--description">
-              <p>{item.description}</p>
-            </section>
-          </section>
-        ) : null}
+        {item.video !== null ? <DetailTrailer id={params.id} /> : null}
 
-        {item.details !== undefined ? <Divisor title="Companies" /> : null}
-        <section className="details--main-container">
-          <section className="details--section details--cast">
-            {item.details !== undefined
-              ? item.details.map((element, index) => {
-                return <CastComponent key={index} cast={element} />;
-              })
-              : null}
-          </section>
-        </section>
-
-        <section className="details--main-container">
-          {item.video !== null ? (
-            <>
-              <Divisor title="Trailer" />
-              <DetailTrailer id={params.id} />
-            </>
-          ) : null}
-        </section>
 
       </div>
       <Cast id={params.id}></Cast>

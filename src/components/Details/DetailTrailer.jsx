@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+import Divisor from "../Divisor/Divisor";
 
 const DetailTrailer = (props) => {
     const [url, setUrl] = useState("");
+    const [title, setTitle] = useState("");
+    const [index, setIndex] = useState(0);
 
     const requestApi = async () => {
         const id = props.id;
@@ -12,21 +15,28 @@ const DetailTrailer = (props) => {
             .then((res) => res.json())
             .then((data) => {
                 console.log(data.results)
-                setUrl(data.results[0].key)
+                setUrl(data.results[index].key);
+                setTitle(data.results[index].name);
             });
     };
 
     useEffect(() => {
         requestApi();
-    }, [])
+    }, [props])
 
     return (
-        <section className='details--section details--frame-video'>
-            <iframe src={`https://www.youtube.com/embed/${url}`}
-                title="YouTube video player" frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-            />
+        <section className="details--main-container details--main-column">
+            <Divisor title="Trailer" />
+            <section className='details--section'>
+                <p className="details--title">{title}</p>
+                <div className="details--interior-row">
+                    <iframe className="details--frame-video" src={`https://www.youtube.com/embed/${url}`}
+                        title="YouTube video player" frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    />
+                </div>
+            </section>
         </section>
     )
 }
