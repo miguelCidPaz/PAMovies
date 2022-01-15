@@ -2,7 +2,7 @@
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  margin: 0 auto 1rem auto;
+  margin: 0 auto 32px auto;
 }
 .container-cast {
   height: 250px;
@@ -10,6 +10,9 @@
   .h2 {
     width: 180px;
     margin: 0 auto;
+  }
+  p {
+    margin-bottom: 20px;
   }
 }
 .container-slider-cast {

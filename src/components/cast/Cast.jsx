@@ -63,33 +63,34 @@ const Cast = (props) => {
     console.log(data);
   }, [props]);
   useEffect(() => {
-    console.log(data.cast);
+    console.log(data.crew);
   }, [data]);
 
   let link = "https://image.tmdb.org/t/p/w500";
 
   let settings = {
-    infinite: true,
+    // infinite: true,
     speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 3,
-    // initialSlide: 2,
+    slidesToScroll: 2,
+    initialSlide: 2,
+
     className: "container-slider-cast",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
       {
-        breakpoint: 1244,
+        breakpoint: 1441,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 3,
+          slidesToScroll: 2,
         },
       },
       {
-        breakpoint: 1024,
+        breakpoint: 1025,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
       {
@@ -118,8 +119,8 @@ const Cast = (props) => {
         <Divisor title="CAST"></Divisor>
       </div>
       <Slider {...settings}>
-        {data.cast?.map((element) => (
-          <div className="container-cast">
+        {data.cast?.slice(0, 4).map((element) => (
+          <div key={element.id} className="container-cast">
             {element.profile_path === null ? (
               <ImageNotSupportedIcon className="img-cast"></ImageNotSupportedIcon>
             ) : (
@@ -130,6 +131,24 @@ const Cast = (props) => {
               ></img>
             )}
             <div className="h2">
+              <p>({element.known_for_department})</p>
+              <h2>{element.name}</h2>
+            </div>
+          </div>
+        ))}
+        {data.crew?.slice(0, 4).map((element) => (
+          <div key={element.id} className="container-cast">
+            {element.profile_path === null ? (
+              <ImageNotSupportedIcon className="img-cast"></ImageNotSupportedIcon>
+            ) : (
+              <img
+                className="img-cast"
+                src={link + element.profile_path}
+                alt=""
+              ></img>
+            )}
+            <div className="h2">
+              <p>({element.known_for_department})</p>
               <h2>{element.name}</h2>
             </div>
           </div>
