@@ -1,47 +1,105 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import Slider from "react-slick";
 import Divisor from "../Divisor/Divisor";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
 
+  return (
+    <div className=" ">
+      <ArrowForwardIosIcon
+        className={className}
+        style={{
+          ...style,
+          right: " -50px",
+          color: "white",
+        }}
+        onClick={onClick}
+      />
+    </div>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div className=" ">
+      <ArrowBackIosNewIcon
+        className={className}
+        style={{
+          ...style,
+          zIndex: 1,
+          left: " -50px",
+          color: "white",
+        }}
+        onClick={onClick}
+      />
+    </div>
+  );
+}
 export default function News() {
   const [data, setData] = useState([]);
   let logo = "https://logo.clearbit.com/";
 
-  // useEffect(() => {
-  async function fecthData() {
-    try {
-      var options = {
-        method: "GET",
-        url: "https://api.newscatcherapi.com/v2/search",
-        params: {
-          q: "movie",
-          lang: "en",
-          sort_by: "relevancy",
-          page: "1",
-          sources: "rottentomatoes.com,cnn.com,nytimes.com",
-        },
-        headers: {
-          "x-api-key": "etTuYg-LShcP5DtU53WYMflslh8eCJe99DiKGl09lro",
-        },
-      };
-      const getData = await axios.request(options);
+  useEffect(() => {
+    async function fecthData() {
+      try {
+        var options = {
+          method: "GET",
+          url: "https://api.newscatcherapi.com/v2/search",
+          params: {
+            q: "movie",
+            lang: "en",
+            sort_by: "relevancy",
+            page: "1",
+            sources: "rottentomatoes.com,cnn.com,nytimes.com",
+          },
+          headers: {
+            "x-api-key": "etTuYg-LShcP5DtU53WYMflslh8eCJe99DiKGl09lro",
+          },
+        };
+        const getData = await axios.request(options);
 
-      setData(getData.data.articles);
-    } catch (error) {
-      console.log(error);
+        setData(getData.data.articles);
+      } catch (error) {
+        console.log(error);
+      }
     }
-  }
-  // fecthData();
-  // }, []);
-  // console.log(data);
+    fecthData();
+  }, []);
+
+  let settings = {
+    dots: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    arrows: true,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 4000,
+    focusOnSelect: true,
+
+    className: "container-news",
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          arrows: false,
+        },
+      },
+    ],
+  };
   return (
     <div className="container">
-      <button onClick={fecthData}>try</button>
+      {/* <button onClick={fecthData}>try</button> */}
       <Divisor title="NEWS"></Divisor>
-      <div className="container-news">
-        {data?.slice(0, 3).map((element, key) => {
-          {
-            console.log(element);
-          }
+
+      <Slider {...settings}>
+        {data?.slice(0, 7).map((element, key) => {
           return (
             <div key={key} className="news">
               <a href={element.link} target="_blank">
@@ -52,6 +110,10 @@ export default function News() {
                     {element.published_date.slice(0, 9)}
                   </p>
                   <h3 className="title-news">{element.title}</h3>
+                  <p className="sumary-news">{`${element.summary.slice(
+                    0,
+                    300
+                  )}...`}</p>
                   <div>
                     <img
                       className="logo-news"
@@ -63,7 +125,7 @@ export default function News() {
             </div>
           );
         })}
-      </div>
+      </Slider>
     </div>
   );
 }
