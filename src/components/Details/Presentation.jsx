@@ -27,27 +27,32 @@ const DetailPresentation = (props) => {
             </div>
 
             <div className="details--interior-container">
+
                 <p className="details--title">{props.item.name}</p>
                 <div className="details--interior-row details--interior-row-extra">
                     <p>{props.item.date}</p>
-                    <DetailValorations
+                    {props.item.date !== null ? <DetailValorations
                         puntuation={props.rating}
                         rating={filmDetail.rating}
                         selectScore={props.selectScore}
-                    />
+                    /> : null}
                 </div>
+
                 <div className="details--interior-row">
-                    <p className="details--text-resalt">Countrie:</p>
+                    {props.item.countries !== null ? <p className="details--text-resalt">Countrie:</p> : null}
                     {props.item.countries !== undefined ? props.item.countries.map((element, index) => <p key={index} className="details--link">{element}</p>) : null}
                 </div>
+
                 <div className="details--interior-row">
                     <p className="details--text-resalt">Director:</p>
                     <Link className={"details--casting"} to={routeLink(props.director.id)}>{props.director.name}</Link>
                 </div>
+
                 <div className="details--interior-row">
                     <p className="details--text-resalt">Reparto:</p>
                     {props.casting.map((element, index) => index < 15 ? <Link key={index} className={"details--casting"} to={routeLink(element.id)}>{element.name}</Link> : null)}
                 </div>
+
             </div>
         </section>
     )

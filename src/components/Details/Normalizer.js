@@ -1,6 +1,9 @@
 import { filmDetail } from "./Data";
 
 export const Normalizer = (data, type) => {
+
+    console.log(data)
+
     const normalize = {
         name: "",
         photo_principal: "",
@@ -11,15 +14,16 @@ export const Normalizer = (data, type) => {
         video: null,
     };
 
-    let countries = [];
-    if (type === "movie") {
-        for (let i = 0; i < data.production_countries.length; i++) {
-            countries.push(data.production_countries[i].name);
-        }
-    }
 
     switch (type) {
         case "movie":
+
+            let countries = [];
+            for (let i = 0; i < data.production_countries.length; i++) {
+                countries.push(data.production_countries[i].name);
+            }
+
+
             normalize.name = data.title;
             normalize.photo_principal = data.poster_path;
             normalize.description = data.overview;
@@ -35,6 +39,8 @@ export const Normalizer = (data, type) => {
             normalize.description = data.biography;
             normalize.details = undefined;
             normalize.video = null;
+            normalize.date = data.birthday;
+            normalize.countries = data.place_of_birth.split(",")
             break;
 
         default:
@@ -42,4 +48,12 @@ export const Normalizer = (data, type) => {
     }
 
     return normalize
+}
+
+
+export const shortString = (text) => {
+    if (text.length < 30) {
+        return text
+    }
+    return text.split("").map((element, index) => index >= 30 ? element : null)
 }

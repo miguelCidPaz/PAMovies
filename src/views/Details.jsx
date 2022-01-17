@@ -30,7 +30,6 @@ const Details = ({ state }) => {
         .then((res) => res.json())
         .then((data) => {
           setItem(Normalizer(data, type));
-          console.log(data)
         });
       if (type === "movie") {
         const URLReparto = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${ApiKey}&language=en-US`;
@@ -56,23 +55,23 @@ const Details = ({ state }) => {
     <>
       <div className="container">
         <Presentation
-          urlImage={urlForImages + item.photo_principal}
-          item={item}
-          rating={rating}
-          selectScore={selectScore}
-          casting={casting}
-          director={director}
+          urlImage={urlForImages + item.photo_principal} // 2 strings
+          item={item} //Objeto con datos de la api
+          rating={rating} //Rating obtenido de mockeo en filmdetail
+          selectScore={selectScore} //Funcion para interactuar con el rating
+          casting={casting} //Array de Objetos
+          director={director} //Array de Objetos (proximamente)
         />
 
         <Description
-          item={item}
+          item={item} //Objeto con datos de la api
         />
 
-        {item.video !== null ? <DetailTrailer id={params.id} /> : null}
+        {item.video !== null ? <DetailTrailer id={params.id} /> : null} {/* Int */}
 
 
       </div>
-      <Cast id={params.id}></Cast>
+      {item.video !== null ? <Cast id={params.id}></Cast> : null} {/* Int */}
     </>
   );
 };
