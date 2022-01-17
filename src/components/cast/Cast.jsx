@@ -45,10 +45,6 @@ function SamplePrevArrow(props) {
 }
 
 const Cast = (props) => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    setData(props.element);
-  }, [props.element]);
   let settings = {
     // infinite: true,
     speed: 500,
@@ -100,7 +96,7 @@ const Cast = (props) => {
         <Divisor title="CAST"></Divisor>
       </div>
       <Slider {...settings}>
-        {data?.map((element, key) => (
+        {props.element?.map((element, key) => (
           <div key={key} className="container-cast">
             {element.picture?.includes("null") ? (
               <ImageNotSupportedIcon className="img-cast"></ImageNotSupportedIcon>
@@ -110,7 +106,7 @@ const Cast = (props) => {
             <div className="h2">
               <p>({element.item})</p>
               <h2>{element.name}</h2>
-              {console.log(element)}
+              {/* {console.log(element)} */}
             </div>
           </div>
         ))}

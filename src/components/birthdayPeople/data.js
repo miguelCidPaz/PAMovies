@@ -8,11 +8,11 @@ var options = {
     "x-rapidapi-key": "7f4aee9aedmsh157cb8d21c481acp1acd25jsnd51dd7c23532",
   },
 };
-
-const datas = async () => {
-  let datas = [];
+let datas = [];
+const dates = async () => {
   const getData = await axios.request(options);
 
   return (datas = getData.data.Birthdays);
 };
-export default datas();
+dates();
+export default datas;

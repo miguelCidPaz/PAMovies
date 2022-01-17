@@ -1,3 +1,4 @@
+import { handleBreakpoints } from "@mui/system";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Cast from "../cast/Cast";
@@ -23,9 +24,10 @@ const BirthdayPeople = () => {
 
     axiosData();
   }, []);
-  let itemData = [];
+
   useEffect(() => {
-    data?.map((element) => {
+    let itemData = [];
+    data.map((element) => {
       const axiosData = async () => {
         const getData = await axios.get(
           `https://api.themoviedb.org/3/search/person?api_key=fb1999e69926d1387eb44c3abee6e7c5&language=en-US&query=${element.name}&page=1&include_adult=false`
@@ -36,19 +38,18 @@ const BirthdayPeople = () => {
           item: element.dob,
           name: getData.data.results[0].name,
         });
-
-        // console.log(getData?.data.results[0]);
-        // console.log(itemData);
+        setItem([itemData]);
       };
-      setItem(itemData);
+
       axiosData();
     });
-  }, []);
+  }, [data]);
 
   return (
     <>
-      {/* {console.log(item)} */}
-      <Cast element={item}></Cast>
+      {/* {console.log(item[0])} */}
+      {/* <button onClick={axiosData}>rewrer</button> */}
+      <Cast element={item[0]}></Cast>
     </>
   );
 };
