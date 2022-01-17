@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Divisor from "../../components/Divisor/Divisor";
+import Star from "../../components/stars/Stars";
 
 function ListSearch() {
   const location = useLocation().state;
@@ -27,10 +28,14 @@ function ListSearch() {
             ></img>
             <div className="movie-list-detail">
               <h1>{element.title}</h1>
-              <p>( {element.release_date} )</p>
+              <div className="container-list-start">
+                <Star star={element.vote_average}></Star>
+                <p>( {element.release_date.slice(0, 4)} )</p>
+              </div>
             </div>
           </div>
         ))}
+        {console.log(location)}
       </div>
     </div>
   );

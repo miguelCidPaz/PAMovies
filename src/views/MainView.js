@@ -7,7 +7,7 @@ function MainView() {
   return (
     <div>
       <Main />
-      <News></News>
+      {/* <News></News> */}
     </div>
   );
 }
