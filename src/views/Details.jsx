@@ -6,7 +6,7 @@ import Divisor from "../components/Divisor/Divisor";
 import DetailPresentation from "../components/Details/DetailPresentation";
 import DetailValorations from "../components/Details/DetailValorations";
 import DetailTrailer from "../components/Details/DetailTrailer";
-import Cast from "../components/cast/Cast";
+import ContainerCast from "../components/Details/ContainerCast";
 const Details = ({ state }) => {
   const [rating, setRating] = useState(0);
   const [view, setView] = useState(false);
@@ -125,7 +125,7 @@ const Details = ({ state }) => {
           </>
         ) : null}
       </section>
-      <Cast id={params.id}></Cast>
+      <ContainerCast id={params.id}></ContainerCast>
     </>
   );
 };
