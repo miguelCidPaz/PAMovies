@@ -19,6 +19,7 @@ export default function HalfRating(props) {
     <div className={classes.root}>
       <Rating
         name="half-rating-read"
+        // recive porps el valor puntuado que va de 0 a 10
         defaultValue={props.star / 2}
         precision={0.5}
         readOnly
