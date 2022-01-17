@@ -30,7 +30,7 @@ const DetailPresentation = (props) => {
 
                 <p className="details--title">{props.item.name}</p>
                 <div className="details--interior-row details--interior-row-extra">
-                    <p>{props.item.date}</p>
+                    <p>({props.item.date})</p>
                     {props.item.date !== null ? <DetailValorations
                         puntuation={props.rating}
                         rating={filmDetail.rating}

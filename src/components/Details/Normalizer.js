@@ -29,7 +29,7 @@ export const Normalizer = (data, type) => {
             normalize.description = data.overview;
             normalize.details = data.production_companies;
             normalize.video = data.video;
-            normalize.date = data.release_date;
+            normalize.date = data.release_date.split("-")[0];
             normalize.countries = countries
             break;
 
@@ -55,5 +55,5 @@ export const shortString = (text) => {
     if (text.length < 30) {
         return text
     }
-    return text.split("").map((element, index) => index >= 30 ? element : null)
+    return text.split("").map((element, index) => index < 30 ? element : null)
 }

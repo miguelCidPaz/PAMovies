@@ -4,6 +4,7 @@ import { shortString } from "./Normalizer";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Button } from "@mui/material";
+import NavBox from "../NavBox/NavBox";
 
 const DetailTrailer = (props) => {
     const [film, setFilm] = useState();
@@ -23,6 +24,16 @@ const DetailTrailer = (props) => {
             });
     };
 
+    const newIndex = (filmSelect) => {
+        console.log(filmSelect);
+        const newIndex = libraryFilms.indexOf(filmSelect.key);
+        console.log(libraryFilms.map((element, index) => {
+            if (element.key === filmSelect.key) {
+                return element
+            }
+        }))
+    }
+
     useEffect(() => {
         requestApi();
     }, [props])
@@ -37,20 +48,22 @@ const DetailTrailer = (props) => {
             <section className='details--section'>
                 <p className="details--title details--padding-title">{libraryFilms[index] !== undefined ? libraryFilms[index].name : null}</p>
                 <div className="details--interior-row">
+
                     <div className="details--interior-row-nowrap">
-                        <button className="details--scenes details--button" onClick={e => index - 1 < 0 ? setIndex(libraryFilms.length - 1) : setIndex(index - 1)} fullWidth><ArrowBackIosIcon /></button>
-                        {/* <Button onClick={e => index - 1 < 0 ? setIndex(libraryFilms.length - 1) : setIndex(index - 1)} fullWidth><ArrowBackIosIcon /></Button> */}
+                        <button className="details--scenes details--button" onClick={e => index - 1 < 0 ? setIndex(libraryFilms.length - 1) : setIndex(index - 1)}><ArrowBackIosIcon /></button>
                         <iframe className="details--frame-video" src={`https://www.youtube.com/embed/${libraryFilms[index] !== undefined ? libraryFilms[index].key : null}`}
                             title="YouTube video player" frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                         />
-                        {/* <Button onClick={e => index + 1 > libraryFilms.length - 1 ? setIndex(0) : setIndex(index + 1)} fullWidth><ArrowForwardIosIcon /></Button> */}
-                        <button className="details--scenes details--button" onClick={e => index + 1 > libraryFilms.length - 1 ? setIndex(0) : setIndex(index + 1)} fullWidth><ArrowForwardIosIcon /></button>
+                        <button className="details--scenes details--button" onClick={e => index + 1 > libraryFilms.length - 1 ? setIndex(0) : setIndex(index + 1)}><ArrowForwardIosIcon /></button>
                     </div>
-                    <div className="details--main-column details--container-secondary">
-                        {libraryFilms !== undefined ? libraryFilms.map((element, indexInterno) => <p className={libraryFilms[index].name !== element.name ? "details--scenes" : "details--scenes-selected"} onClick={e => setIndex(indexInterno)}>{shortString(element.name)}</p>) : null}
-                    </div>
+
+                    <NavBox
+                        libraryFilms={libraryFilms}
+                        nameSelect={libraryFilms[props.index] !== undefined ? libraryFilms[props.index].name : null}
+                        newIndex={newIndex} />
+
                 </div>
             </section>
         </section>

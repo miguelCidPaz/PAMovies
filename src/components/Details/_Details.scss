@@ -185,6 +185,7 @@
 
 .details--scenes, .details--scenes-selected{
     text-transform: uppercase;
+    width: 300px;
     font-size: 12px;
     color: #C206BB;
     border-radius: 5px;
@@ -199,6 +200,7 @@
 
     @media (max-width:700px) {
         text-align: center;
+        width: 100%;
     }
 
     &:hover{
@@ -222,4 +224,35 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.details--container-nav-trailer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4%;
+}
+
+.details--button-nav, .details--button-nav-select{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    transition-duration: 0.3s;
+    background-color: white;
+    outline: none;
+    border: none;
+    margin: auto;
+    cursor: pointer;
+    box-shadow: 0 0 2px white;
+
+    &:hover{
+        background-color: #C206BB;
+        box-shadow: 0 0 10px #C206BB;
+    }
+}
+
+.details--button-nav-select{
+    background-color: #C206BB;
+    box-shadow: 0 0 10px #C206BB;
 }
