@@ -3,10 +3,9 @@ import axios from "axios";
 import { genres } from "./data-main";
 import Genres from "./Genres";
 import NewFilms from "./NewFilms";
-import { Grid, ThemeProvider } from "@material-ui/core";
 import Divisor from "../Divisor/Divisor";
 
-export default function Main() {
+export default function Main(props) {
   const [getFilms, setGetFilms] = useState([]);
 
   useEffect(async () => {
@@ -33,7 +32,7 @@ export default function Main() {
       <Divisor title="CATEGORÍAS"></Divisor>
           <div className="main-container">
             <div className="distribution">
-              <Genres genres={genres} />
+              <Genres genres={genres} data={data} />
             </div>
           </div>
     </div>

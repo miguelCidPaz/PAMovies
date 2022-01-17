@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { genres } from "../Main/data-main";
 import AnimationGenre from "./AnimationGenre";
 import Divisor from "../Divisor/Divisor";
+import { useParams } from 'react-router-dom';
 
-export default function ListGenres(props) {
+export default function ListGenres() {
+    const params = useParams();
+    const gender_ID = params.id; 
+    const gender_name = params.title
+
     const [orderFilms, setOrderFilms] = useState([]);
-    {console.log(props)}
-    /*Ejemplo con pagina de Animation === 16*/
-    let gender_ID = genres[2].id
+
+
     useEffect(async () => {
       await axios
         .get(
@@ -23,16 +26,16 @@ export default function ListGenres(props) {
     let data = orderFilms 
 
     return (
- <div className="title-genre">
-         {console.log(props)}
-    <Divisor title={`${genres[2].title}`}></Divisor>
+    <div className="title-genre">
+
+    <Divisor title={`${gender_name}`}></Divisor>
     <div className="genre-container"> 
-        <AnimationGenre data={data} gender_ID={`${genres[2].id}`}/> 
+        <AnimationGenre data={data}/> 
     </div>
     </div>    
     )
   
 }
- 
+
 
     

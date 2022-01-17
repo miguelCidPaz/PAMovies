@@ -1,20 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GenreType from "./GenreType";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+
+
+export function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+
+  return (
+    <ArrowForwardIosIcon className={className} style={{...style,  color:"white", height:"50px" }} onClick={onClick}/>   
+  );
+}
+
+export function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <ArrowBackIosIcon className={className}
+    style={{...style, 
+    color:"white",
+    height:"50px" }} 
+    onClick={onClick}/>   
+  );
+}
 
 export default function Genres(props) {
+  const [getGenresFilms, setGetGenresFilms] = useState([]);
+
+  useEffect(async () => {
+    await axios
+      .get(
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=198b2f6e124efb8ffaed4dd22cc65a8c&language=en-US`
+      )
+      .then((res) => {
+        setGetGenresFilms(res.data.genres);
+      });
+  }, []);
+
+  let dataGenres = getGenresFilms;
+
   let settings = {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     initialSlide: 0,
+    infinite: true,
     centerMode: true,
     variableWidth: true,
     className: "gender-slider",
     focusOnSelect: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
     rows: 1,
     responsive: [
       {
@@ -50,82 +89,21 @@ export default function Genres(props) {
           <p className="row-title">ALL CATEGORY</p>
         </div>
 
-        <Slider className="film-container" {...settings}>
-          <div>
-            <GenreType
-              title={props.genres[0].title}
-              theme={props.genres[0].src}
-              gender_ID={props.genres[0].id}
-            />
-          </div>
-          <div>
-            <GenreType
-              title={props.genres[1].title}
-              theme={props.genres[1].src}
-              gender_ID={props.genres[1].id}
-            />
-          </div>
-          <div>
-            <Link to="/animation">
-              <GenreType
-                title={props.genres[2].title}
-                theme={props.genres[2].src}
-                gender_ID={props.genres[2].id}
-              />
-            </Link>
-          </div>
-          <div>
-            <GenreType
-              title={props.genres[3].title}
-              theme={props.genres[3].src}
-              gender_ID={props.genres[3].id}
-            />
-          </div>
-          <div>
-            <GenreType
-              title={props.genres[4].title}
-              theme={props.genres[4].src}
-              gender_ID={props.genres[4].id}
-            />
-          </div>
-          <div>
-            <GenreType
-              title={props.genres[5].title}
-              theme={props.genres[5].src}
-              gender_ID={props.genres[5].id}
-            />
-          </div>
-          <div>
-            <GenreType
-              title={props.genres[6].title}
-              theme={props.genres[6].src}
-              gender_ID={props.genres[6].id}
-            />
-          </div>
+        <Slider {...settings}>
+        {dataGenres.map((item) => (
+        <div className="news-container" key={item.id}>
+        
+          <GenreType
+            title={item.name}
+            id={item.id}
+            theme={props.genres.src}
+            dataGenres={props.data}
+          />
+        </div>
+        ))}
         </Slider>
       </div>
     </>
   );
 }
 
-/*  return (<>
-   <div className="row-container">
-     <div>
-       <p className='row-title'>TODAS LAS CATEGORÍAS</p>
-     </div>
-
-     <Slider className="film-container" {...settings}>
-      
-       {props.type.map((item) => (
-         <div className="news-container" >
-           <Film
-             title={item.title}
-             theme={item.src}
-           />
-         </div>
-       ))}
-     </Slider>
-   </div>
- </>
- )
-} */

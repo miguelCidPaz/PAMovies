@@ -1,25 +1,40 @@
 import React ,{useState} from 'react';
 import { useNavigate } from "react-router-dom";
+import ListGenres from '../ListGenres/listGenres';
+
 
 function GenreType(props) {
-    const [myID, setMyId] = useState(props.gender_ID)  
+    const [myID, setMyId] = useState(
+        {id : props.id, 
+        title: props.title}
+        )  
     const navigate = useNavigate();
-
-    function handleChange (){
-    setMyId (props.gender_ID)
-    console.log(myID)
-    }
    
+    function handleChange (){
+    setMyId (myID.id)
+    }
+    
+    let newid = myID.id
+    let newtitle = myID.title
+
       return (
        
         <div className='type-container'
-        id={myID}
+        newid={myID.id}
+        newtitle ={myID.title}
         onClick={handleChange} 
         onClick={() => {
-            navigate('/animation');
-          }}>
+            {console.log(newid)} 
+            {console.log(newtitle)}       
+            navigate(`/Genres/${newtitle}/${newid}/`);
+          }} 
+        key={newid}>
+         
             <img src={props.theme}
-                className='image-film' width={'125px'} height={'200px'} alt="film" />
+                className='image-film'
+                width={'125px'} 
+                height={'200px'}
+                alt="film" />
             <div>
                 <p className='centerGender'>{props.title}</p>
             </div>
