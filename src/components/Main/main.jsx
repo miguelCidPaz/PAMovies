@@ -5,7 +5,7 @@ import Genres from "./Genres";
 import NewFilms from "./NewFilms";
 import Divisor from "../Divisor/Divisor";
 
-export default function Main(props) {
+export default function Main() {
   const [getFilms, setGetFilms] = useState([]);
 
   useEffect(async () => {
@@ -22,14 +22,14 @@ export default function Main(props) {
 
   return (
     <div className="container">
-      <Divisor title="ESTRENOS"></Divisor>
+      <Divisor title="PREMIERES"></Divisor>
         <div className="main-container ">
           <div className="films-container background-color">
             <NewFilms data={data} />
           </div>
         </div>
      
-      <Divisor title="CATEGORÍAS"></Divisor>
+      <Divisor title="CATEGORIES"></Divisor>
           <div className="main-container">
             <div className="distribution">
               <Genres genres={genres} data={data} />

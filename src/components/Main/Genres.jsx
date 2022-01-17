@@ -6,28 +6,26 @@ import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-
+import { useNavigate } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 export function SampleNextArrow(props) {
   const { className, style, onClick } = props;
-
   return (
-    <ArrowForwardIosIcon className={className} style={{...style,  color:"white", height:"50px" }} onClick={onClick}/>   
+    <ArrowForwardIosIcon className={className} style={{...style, fontSize:"35px", color:"white", height:"50px" }} onClick={onClick}/>   
   );
 }
 
 export function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <ArrowBackIosIcon className={className}
-    style={{...style, 
-    color:"white",
-    height:"50px" }} 
-    onClick={onClick}/>   
+    <ArrowBackIosIcon className={className} style={{...style, fontSize:"35px",color:"white", height:"50px" }}  onClick={onClick}/>   
   );
 }
 
 export default function Genres(props) {
+  const navigate = useNavigate();
+
   const [getGenresFilms, setGetGenresFilms] = useState([]);
 
   useEffect(async () => {
@@ -41,7 +39,7 @@ export default function Genres(props) {
   }, []);
 
   let dataGenres = getGenresFilms;
-
+ 
   let settings = {
     speed: 500,
     slidesToShow: 1,
@@ -85,8 +83,12 @@ export default function Genres(props) {
   return (
     <>
       <div className="row-container">
-        <div>
-          <p className="row-title">ALL CATEGORY</p>
+        <div className="row-title">
+          <Button
+          {...dataGenres}
+          onClick={() => {   
+            navigate(`/AllGenres`);
+          }}>ALL CATEGORIES</Button>
         </div>
 
         <Slider {...settings}>
@@ -97,7 +99,7 @@ export default function Genres(props) {
             title={item.name}
             id={item.id}
             theme={props.genres.src}
-            dataGenres={props.data}
+           
           />
         </div>
         ))}

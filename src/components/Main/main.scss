@@ -14,12 +14,6 @@
     justify-content: center;
     align-items: center;
   }
-
-  // .distribution {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  // }
 }
 
 /*newFilms*/
@@ -28,12 +22,7 @@
   justify-content: center;
   align-items: center;
 }
-// .news-slider{
-//     img {
-//         padding: 25px;
-//     }
-// }
-/*Film*/
+
 
 .full-container {
   display: flex;
@@ -63,6 +52,7 @@ figure .layer {
   visibility: hidden;
   transition: all 500ms ease-out;
   text-align: center;
+  
 }
 
 .full-container figure:hover > .layer {
@@ -78,30 +68,42 @@ figure .layer {
   visibility: visible;
 }
 
+.full-container figure> .layer > div {
+  opacity: 1;
+  margin-top: 6px;
+  margin-bottom: 5px;
+  font-size: 9px;
+  visibility: visible;
+  transition: all 500ms ease-out;
+}
+.full-container figure:hover > .layer > div {
+  opacity: 1;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  visibility: visible;
+}
+
 .full-container figure .layer p {
   color: #fff;
   font-weight: 400;
-  margin-top: 5px;
   margin-bottom: 5px;
   font-size: 18px;
   transition: all 500ms ease-out;
 }
+
 .full-container figure:hover > img {
   transform: scale(1.1);
 }
 
 /*Genres*/
-.gender-slider {
-  opacity: 80%;
-}
 
 .row-container {
-  // width: 90%;
-
   .row-title {
     margin: 0 0 20px;
   }
 }
+
 .film-container {
   margin-left: 34px;
   display: flex;
@@ -110,6 +112,7 @@ figure .layer {
   align-items: center;
   margin: 20px;
 }
+
 /*GenreType*/
 .type-container {
   position: relative;
@@ -128,7 +131,6 @@ figure .layer {
     margin-left: 20px;
     margin-right: 20px;
     border: 5px solid transparent;
-    // box-shadow: 0 0 15px rgba(240, 196, 238, 50);
     background: black;
     border-image: linear-gradient(
         to bottom,
@@ -140,17 +142,14 @@ figure .layer {
   }
 }
 
+/*botones de librería react slick*/
 .container .slick-dots {
   position: relative;
   display: inline-block;
-  // width: 5%;
-  // height: 20px;
-  // margin: 0 5px;
-  // padding: 0;
-  // margin-top: 10px;
   cursor: pointer;
   button::before {
     font-size: 15px;
     margin-top: 15px;
   }
 }
+

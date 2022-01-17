@@ -1,9 +1,12 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
+import InfoIcon from '@mui/icons-material/Info';
 
 function Film(props) {
     const navigate = useNavigate();
     let keyword = props.item.poster_path
+    
+
     return (
     <div className='full-container'
     onClick={() => {
@@ -21,9 +24,9 @@ function Film(props) {
             />
             }
             <div className='layer'>
+                <div>{<InfoIcon fontSize='large'/>}</div>
                 <p>{props.item.release_date}</p>
-                <p>{props.item.title}</p>
-                {/* <p>{props.vote_average}</p> */}
+                <p><b>{props.item.title}</b></p>
             </div>
         </figure>
     </div>

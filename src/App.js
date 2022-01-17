@@ -8,9 +8,9 @@ import "./styles.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Details from "./views/Details";
 import ListGenres from "./components/ListGenres/listGenres";
-// import AllGenres from "./components/AllGenres/AllGenres";
+import AllGenres from "./components/AllGenres/AllGenres";
 
-function App(props) {
+function App() {
 
   return (
     <main>
@@ -19,7 +19,7 @@ function App(props) {
         <Routes>
           <Route exact path="/details/:type/:id" element={<Details />} />
           <Route path="/" element={<MainView />} />
-          {/* <Route path="/animation" element={<ListGenres/>}/> */}
+          <Route exact path="/AllGenres/" element={<AllGenres/>}/>
           <Route exact path="/Genres/:title/:id" element={<ListGenres/>}/>
           <Route path="/listSearch" element={<ListSearch/>}/>
         </Routes>
