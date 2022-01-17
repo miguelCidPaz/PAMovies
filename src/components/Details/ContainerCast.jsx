@@ -39,6 +39,11 @@ const LogicCast = (props) => {
     setIems(itemArr);
   }, [data]);
 
-  return <Cast element={item}></Cast>;
+  return (
+    <>
+      <Cast element={item}></Cast>
+      {/* {console} */}
+    </>
+  );
 };
 export default LogicCast;
