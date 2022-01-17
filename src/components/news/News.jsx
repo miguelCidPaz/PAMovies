@@ -80,7 +80,7 @@ export default function News() {
     arrows: true,
     autoplay: true,
     speed: 2000,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 3000,
     focusOnSelect: true,
 
     className: "container-news",
@@ -109,7 +109,10 @@ export default function News() {
                   <p className="date-news">
                     {element.published_date.slice(0, 9)}
                   </p>
-                  <h3 className="title-news">{element.title}</h3>
+                  <h3 className="title-news">{`${element.title.slice(
+                    0,
+                    125
+                  )}`}</h3>
                   <p className="sumary-news">{`${element.summary.slice(
                     0,
                     300

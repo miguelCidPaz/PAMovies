@@ -1,9 +1,13 @@
 .news {
   position: relative;
   height: 20rem;
-  padding: 1rem;
+  padding: 2rem;
   @media (min-width: 800px) {
-    padding: 1rem 6rem;
+    padding: 1rem 5rem;
+    height: 30rem;
+  }
+  @media (min-width: 1200px) {
+    padding: 1rem 10rem;
     height: 30rem;
   }
 
@@ -43,7 +47,7 @@
   .logo-news {
     height: 2.5rem;
 
-    border-radius: 50%;
+    // border-radius: 50%;
   }
   .date-news {
     text-align: end;
@@ -61,11 +65,10 @@
 .container-news {
   margin: 4rem auto;
   max-width: 100%;
-  //   box-shadow: -5px -5px 30px 5px $purple, 5px 5px 30px 5px $blue;
-  //   @media (min-width: 450px) {
-  //     display: flex;
-  //     justify-content: space-between;
-  //   }
+  // box-shadow: -5px -5px 30px 5px $purple, 5px 5px 30px 5px $blue;
+  @media (min-width: 1200px) {
+    max-width: 90%;
+  }
 }
 a {
   text-decoration: none;
