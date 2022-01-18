@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { shortString } from '../Details/Normalizer'
 
 const NavBox = (props) => {
-    const [table, setTable] = useState(0);
+    const [table, setTable] = useState(props.newTab);
     const [slot, setSlot] = useState(props.libraryFilms);
     const numItems = 6;
 
@@ -11,7 +11,7 @@ const NavBox = (props) => {
             return props.libraryFilms;
         }
 
-        let falseLibrary = props.libraryFilms;
+        let falseLibrary = [...props.libraryFilms];
 
         let newArr = [];
         while (falseLibrary.length > 0) {
@@ -20,21 +20,30 @@ const NavBox = (props) => {
         return newArr
     }
 
+    const changeTab = (index) => {
+        setTable(index)
+        props.setTab(index)
+    }
+
     useEffect(() => {
         setSlot(parseLibrary())
+        setTable(props.newTab)
     }, [props])
+
+    /*     useEffect(() => {
+        }, [props.newTab]) */
+
+    console.log(slot)
 
     return (
         <div className="details--main-column details--container-secondary">
-
-            {slot[table] !== undefined ? slot[table][0].map((element, index) =>
+            {slot[table][0] !== undefined ? slot[table][0].map((element, index) =>
                 <p key={index}
-                    className={props.nameSelected !== element.name ? "details--scenes" : "details--scenes-selected"}
+                    className={props.filmSelect.key !== element.key ? "details--scenes" : "details--scenes-selected"}
                     onClick={e => props.newIndex(element)}>{shortString(element.name)}</p>) : null}
             <div className='details--container-nav-trailer'>
-                {slot !== undefined ? slot.map((element, index) => <button className={table === index ? 'details--button-nav-select' : 'details--button-nav'} onClick={e => setTable(index)} />) : null}
+                {slot !== undefined ? slot.map((element, index) => <button key={index} className={table === index ? 'details--button-nav-select' : 'details--button-nav'} onClick={e => changeTab(index)} />) : null}
             </div>
-            {/* {props.libraryFilms !== undefined ? props.libraryFilms.map((element, indexInterno) => <p key={indexInterno} className={props.libraryFilms[props.index].name !== element.name ? "details--scenes" : "details--scenes-selected"} onClick={e => props.setIndex(indexInterno)}>{shortString(element.name)}</p>) : null} */}
         </div>
     )
 }

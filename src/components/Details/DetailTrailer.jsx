@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import Divisor from "../Divisor/Divisor";
-import { shortString } from "./Normalizer";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Button } from "@mui/material";
 import NavBox from "../NavBox/NavBox";
 
 const DetailTrailer = (props) => {
     const [film, setFilm] = useState();
     const [libraryFilms, setLibraryFilms] = useState([]);
     const [index, setIndex] = useState(0);
+    const [tab, setTab] = useState(0)
+    const numItems = 6;
 
     const requestApi = async () => {
         const id = props.id;
@@ -25,13 +25,30 @@ const DetailTrailer = (props) => {
     };
 
     const newIndex = (filmSelect) => {
-        console.log(filmSelect);
-        const newIndex = libraryFilms.indexOf(filmSelect.key);
-        console.log(libraryFilms.map((element, index) => {
-            if (element.key === filmSelect.key) {
-                return element
+        setFilm(filmSelect)
+        let indice = 0;
+        libraryFilms.find((element, index) => element.key === filmSelect.key ? indice = index : null)
+        setIndex(indice)
+    }
+
+    const ChangeTab = (e) => {
+
+        console.log(tab / numItems)
+
+        if (e.currentTarget.value === 'back') {
+            index < 0 ? setIndex(libraryFilms.length) : setIndex(index - 1)
+            const comp = index % numItems === 0 ? true : false;
+            if (comp) {
+                setTab(tab > 0 ? tab - 1 : tab);
             }
-        }))
+        } else if (e.currentTarget.value === 'next') {
+            index > libraryFilms.length ? setIndex(0) : setIndex(index + 1)
+            const indice = index + 1;
+            const comp = indice % numItems === 0 || indice % numItems === 1 ? true : false;
+            if (comp) {
+                setTab(tab / numItems >= 0 ? tab + 1 : tab)
+            }
+        }
     }
 
     useEffect(() => {
@@ -39,8 +56,12 @@ const DetailTrailer = (props) => {
     }, [props])
 
     useEffect(() => {
-
+        setFilm(libraryFilms[index])
     }, [index])
+
+    useEffect(() => {
+
+    }, [tab])
 
     return (
         <section className="details--main-container details--main-column">
@@ -50,19 +71,24 @@ const DetailTrailer = (props) => {
                 <div className="details--interior-row">
 
                     <div className="details--interior-row-nowrap">
-                        <button className="details--scenes details--button" onClick={e => index - 1 < 0 ? setIndex(libraryFilms.length - 1) : setIndex(index - 1)}><ArrowBackIosIcon /></button>
+                        <button className="details--scenes details--button" onClick={e => ChangeTab(e)} value={"back"}><ArrowBackIosIcon /></button>
                         <iframe className="details--frame-video" src={`https://www.youtube.com/embed/${libraryFilms[index] !== undefined ? libraryFilms[index].key : null}`}
                             title="YouTube video player" frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                         />
-                        <button className="details--scenes details--button" onClick={e => index + 1 > libraryFilms.length - 1 ? setIndex(0) : setIndex(index + 1)}><ArrowForwardIosIcon /></button>
+                        <button className="details--scenes details--button" onClick={e => ChangeTab(e)} value={'next'}><ArrowForwardIosIcon /></button>
                     </div>
+                    {libraryFilms.length > 0 ?
+                        <NavBox
+                            libraryFilms={libraryFilms}
+                            filmSelect={film}
+                            index={index}
+                            newIndex={newIndex}
+                            newTab={tab}
+                            setTab={setTab}
+                        /> : null}
 
-                    <NavBox
-                        libraryFilms={libraryFilms}
-                        nameSelect={libraryFilms[props.index] !== undefined ? libraryFilms[props.index].name : null}
-                        newIndex={newIndex} />
 
                 </div>
             </section>
