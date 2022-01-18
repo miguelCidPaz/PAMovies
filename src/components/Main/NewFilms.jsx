@@ -9,32 +9,19 @@ export function SampleNextArrow(props) {
   const { className, style, onClick } = props;
 
   return (
-    <ArrowForwardIosIcon
-      className={className}
-      style={{
-        ...style,
-        background: "transparent",
-        color: "white",
-        height: "50px",
-      }}
-      onClick={onClick}
-    />
+    <ArrowForwardIosIcon 
+    className={className} 
+    style={{...style, color:"white", fontSize:"35px" }} 
+    onClick={onClick}/>   
   );
 }
 
 export function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <ArrowBackIosIcon
-      className={className}
-      style={{
-        ...style,
-        background: "transparent",
-        color: "white",
-        height: "50px",
-      }}
-      onClick={onClick}
-    />
+    <ArrowBackIosIcon className={className}
+    style={{...style, color:"white", fontSize:"35px", height:"50px" }} 
+    onClick={onClick}/>   
   );
 }
 

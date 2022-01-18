@@ -3,7 +3,6 @@ import axios from "axios";
 import { genres } from "./data-main";
 import Genres from "./Genres";
 import NewFilms from "./NewFilms";
-import { Grid, ThemeProvider } from "@material-ui/core";
 import Divisor from "../Divisor/Divisor";
 
 export default function Main() {
@@ -12,7 +11,7 @@ export default function Main() {
   useEffect(async () => {
     await axios
       .get(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=198b2f6e124efb8ffaed4dd22cc65a8c&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=198b2f6e124efb8ffaed4dd22cc65a8c&language=en-US&page=1adult=false`
       )
       .then((res) => {
         setGetFilms(res.data.results);
@@ -23,19 +22,19 @@ export default function Main() {
 
   return (
     <div className="container">
-      <Divisor title="ESTRENOS"></Divisor>
-      <div className="main-container ">
-        <div className="films-container background-color">
-          <NewFilms data={data} />
+      <Divisor title="PREMIERES"></Divisor>
+        <div className="main-container ">
+          <div className="films-container background-color">
+            <NewFilms data={data} />
+          </div>
         </div>
-      </div>
-
-      <Divisor title="CATEGORÍAS"></Divisor>
-      <div className="main-container">
-        <div className="distribution">
-          <Genres genres={genres} />
-        </div>
-      </div>
+     
+      <Divisor title="CATEGORIES"></Divisor>
+          <div className="main-container">
+            <div className="distribution">
+              <Genres genres={genres} data={data} />
+            </div>
+          </div>
     </div>
   );
 }

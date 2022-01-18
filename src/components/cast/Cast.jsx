@@ -45,31 +45,6 @@ function SamplePrevArrow(props) {
 }
 
 const Cast = (props) => {
-  const [data, setData] = useState("");
-  const [item, setIems] = useState([""]);
-  let id = props.id;
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let getData = await axios.get(
-          `https://api.themoviedb.org/3/movie/${id}/credits?api_key=fb1999e69926d1387eb44c3abee6e7c5&language=en-US`
-        );
-        setData(getData.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchData();
-  }, [props]);
-  useEffect(() => {
-    let itemArr = [];
-    data.cast?.slice(0, 4).map((element) => itemArr.push(element));
-    data.crew?.slice(0, 4).map((element) => itemArr.push(element));
-    setIems(itemArr);
-  }, [data]);
-
-  let link = "https://image.tmdb.org/t/p/w500";
-
   let settings = {
     // infinite: true,
     speed: 500,
@@ -118,23 +93,20 @@ const Cast = (props) => {
   return (
     <>
       <div className="container ">
-        <Divisor title="CAST"></Divisor>
+        <Divisor title={props.title}></Divisor>
       </div>
       <Slider {...settings}>
-        {item?.map((element) => (
-          <div key={item.length} className="container-cast">
-            {element.profile_path === null ? (
+        {props.element?.map((element, key) => (
+          <div key={key} className="container-cast">
+            {element.picture?.includes("null") ? (
               <ImageNotSupportedIcon className="img-cast"></ImageNotSupportedIcon>
             ) : (
-              <img
-                className="img-cast"
-                src={link + element.profile_path}
-                alt=""
-              ></img>
+              <img className="img-cast" src={element.picture} alt=""></img>
             )}
             <div className="h2">
-              <p>({element.known_for_department})</p>
+              <p>({element.item})</p>
               <h2>{element.name}</h2>
+              {/* {console.log(element)} */}
             </div>
           </div>
         ))}

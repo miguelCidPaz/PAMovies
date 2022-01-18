@@ -5,7 +5,7 @@ import { filmDetail } from "../components/Details/Data";
 import Presentation from "../components/Details/Presentation";
 import { Normalizer } from './../components/Details/Normalizer'
 import DetailTrailer from "../components/Details/DetailTrailer";
-import Cast from "../components/cast/Cast";
+import ContainerCast from "../components/Details/ContainerCast";
 const Details = ({ state }) => {
   const [rating, setRating] = useState(0); //Rating para las estrellas
   const [casting, setCasting] = useState([]) //Reparto de la pelicula
@@ -71,7 +71,8 @@ const Details = ({ state }) => {
 
 
       </div>
-      {item.video !== null ? <Cast id={params.id}></Cast> : null} {/* Int */}
+      {item.video !== null ?  <ContainerCast id={params.id}></ContainerCast>: null} {/* Int */}
+
     </>
   );
 };
