@@ -103,12 +103,12 @@ figure .layer {
   }
 }
 .film-container {
-  margin-left: 34px;
-  display: flex;
-  flex-direction: row;
-  min-height: 4rem;
-  align-items: center;
-  margin: 20px;
+  // margin-left: 34px;
+  // display: flex;
+  // flex-direction: row;
+  // min-height: 4rem;
+  // align-items: center;
+  // margin: 20px;
 }
 /*GenreType*/
 .type-container {
@@ -155,4 +155,9 @@ figure .layer {
     font-size: 15px;
     margin-top: 15px;
   }
+}
+
+.news-slider {
+  max-width: 50rem;
+  margin: 0 auto;
 }
