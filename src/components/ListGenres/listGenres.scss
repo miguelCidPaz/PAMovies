@@ -7,13 +7,14 @@
 }
 
 /*ListGenres*/
-.genre-container{
+.genre-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-    width: 1000px;
+    width: 100%;
+    align-items: center;
 }
 .title-genre{
     display: flex;
@@ -23,15 +24,12 @@
 
 /*Animation Genre*/
 .individual{
-    width: 200px;
-    height: 350px;
     margin-left: 20px;
     margin-right: 20px;
-    
 }
 
 .ind-title{
-    width: 200px;
+    width: 180px;
     height: 50px;
 }
 

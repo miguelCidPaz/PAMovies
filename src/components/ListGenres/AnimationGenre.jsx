@@ -3,9 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 function AnimationGenre(props) {
    const navigate = useNavigate();
-   {console.log(props)}
+ 
    return (
-
    props.data.map((item) => (
         <div className='individual'
         onClick={() => {
@@ -17,8 +16,8 @@ function AnimationGenre(props) {
             <img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
             height={280}
             width={170}
-            
             />
+            
         </div>
     ))
    )
