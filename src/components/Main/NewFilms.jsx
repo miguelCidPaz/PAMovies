@@ -27,11 +27,13 @@ export function SamplePrevArrow(props) {
 export default function NewFilms(props) {
   let settings = {
     dots: true,
-    speed: 500,
+    speed: 2000,
     slidesToShow: 3,
     slidesToScroll: 3,
     initialSlide: 3,
     arrows: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
     focusOnSelect: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
