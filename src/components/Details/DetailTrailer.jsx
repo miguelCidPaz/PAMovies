@@ -1,32 +1,97 @@
 import { useState, useEffect } from "react";
+import Divisor from "../Divisor/Divisor";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import NavBox from "../NavBox/NavBox";
 
 const DetailTrailer = (props) => {
-    const [url, setUrl] = useState("");
+    const [film, setFilm] = useState();
+    const [libraryFilms, setLibraryFilms] = useState([]);
+    const [index, setIndex] = useState(0);
+    const [tab, setTab] = useState(0)
+    const numItems = 6;
 
     const requestApi = async () => {
         const id = props.id;
         const ApiKey = "07e793aeac523d9f4455050b060257c7";
-        //https://api.themoviedb.org/3/movie/225886/videos?api_key=07e793aeac523d9f4455050b060257c7&language=en-US
         const URL = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${ApiKey}&language=en-US`;
+
         await fetch(URL)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data.results)
-                setUrl(data.results[0].key)
+                setFilm(data.results[index]);
+                setLibraryFilms(data.results)
             });
     };
 
+    const newIndex = (filmSelect) => {
+        setFilm(filmSelect)
+        let indice = 0;
+        libraryFilms.find((element, index) => element.key === filmSelect.key ? indice = index : null)
+        setIndex(indice)
+    }
+
+    const ChangeTab = (e) => {
+
+        console.log(tab / numItems)
+
+        if (e.currentTarget.value === 'back') {
+            index < 0 ? setIndex(libraryFilms.length) : setIndex(index - 1)
+            const comp = index % numItems === 0 ? true : false;
+            if (comp) {
+                setTab(tab > 0 ? tab - 1 : tab);
+            }
+        } else if (e.currentTarget.value === 'next') {
+            index > libraryFilms.length ? setIndex(0) : setIndex(index + 1)
+            const indice = index + 1;
+            const comp = indice % numItems === 0 || indice % numItems === 1 ? true : false;
+            if (comp) {
+                setTab(tab / numItems >= 0 ? tab + 1 : tab)
+            }
+        }
+    }
+
     useEffect(() => {
         requestApi();
-    }, [])
+    }, [props])
+
+    useEffect(() => {
+        setFilm(libraryFilms[index])
+    }, [index])
+
+    useEffect(() => {
+
+    }, [tab])
 
     return (
-        <section className='details--section details--frame-video'>
-            <iframe src={`https://www.youtube.com/embed/${url}`}
-                title="YouTube video player" frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-            />
+        <section className="details--main-container details--main-column">
+            <Divisor title="Videos" />
+            <section className='details--section'>
+                <p className="details--title details--padding-title">{libraryFilms[index] !== undefined ? libraryFilms[index].name : null}</p>
+                <div className="details--interior-row">
+
+                    <div className="details--interior-row-nowrap">
+                        <button className="details--scenes details--button" onClick={e => ChangeTab(e)} value={"back"}><ArrowBackIosIcon /></button>
+                        <iframe className="details--frame-video" src={`https://www.youtube.com/embed/${libraryFilms[index] !== undefined ? libraryFilms[index].key : null}`}
+                            title="YouTube video player" frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        />
+                        <button className="details--scenes details--button" onClick={e => ChangeTab(e)} value={'next'}><ArrowForwardIosIcon /></button>
+                    </div>
+                    {libraryFilms.length > 0 ?
+                        <NavBox
+                            libraryFilms={libraryFilms}
+                            filmSelect={film}
+                            index={index}
+                            newIndex={newIndex}
+                            newTab={tab}
+                            setTab={setTab}
+                        /> : null}
+
+
+                </div>
+            </section>
         </section>
     )
 }
