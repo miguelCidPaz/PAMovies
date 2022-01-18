@@ -11,7 +11,7 @@ export default function Main() {
   useEffect(async () => {
     await axios
       .get(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=198b2f6e124efb8ffaed4dd22cc65a8c&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=198b2f6e124efb8ffaed4dd22cc65a8c&language=en-US&page=1adult=false`
       )
       .then((res) => {
         setGetFilms(res.data.results);

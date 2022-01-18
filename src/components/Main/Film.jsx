@@ -25,7 +25,7 @@ function Film(props) {
             }
             <div className='layer'>
                 <div>{<InfoIcon fontSize='large'/>}</div>
-                <p>{props.item.release_date}</p>
+                <p>{props.item.release_date.slice(0,4)}</p>
                 <p><b>{props.item.title}</b></p>
             </div>
         </figure>
