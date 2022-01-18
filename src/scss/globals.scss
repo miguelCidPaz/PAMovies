@@ -35,7 +35,8 @@ p {
   color: #fff;
   font-size: 16px;
 }
-h1 {
+h1,
+h3 {
   color: #fff;
   font-size: 24px;
 }
@@ -43,7 +44,8 @@ h1 {
   p {
     font-size: 18px;
   }
-  h1 {
+  h1,
+  h3 {
     font-size: 32px;
   }
 }
@@ -52,7 +54,7 @@ h1 {
   margin: 0 auto;
   max-width: 1400px;
   @media (min-width: 750px) {
-    width: 55%;
+    width: 60%;
   }
 }
 

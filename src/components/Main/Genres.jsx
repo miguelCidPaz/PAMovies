@@ -42,13 +42,12 @@ export default function Genres(props) {
  
   let settings = {
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
     initialSlide: 0,
     infinite: true,
     centerMode: true,
-    variableWidth: true,
-    className: "gender-slider",
+    arrows: true,
     focusOnSelect: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -57,24 +56,24 @@ export default function Genres(props) {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          rows: 1,
+          slidesToShow: 2,
           slidesToScroll: 3,
-          initialSlide: 3,
         },
       },
       {
         breakpoint: 600,
         settings: {
+          rows: 1,
           slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToScroll: 3,
         },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
         },
       },
     ],
