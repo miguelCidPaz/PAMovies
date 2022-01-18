@@ -33,8 +33,6 @@ const NavBox = (props) => {
     /*     useEffect(() => {
         }, [props.newTab]) */
 
-    console.log(slot)
-
     return (
         <div className="details--main-column details--container-secondary">
             {slot[table][0] !== undefined ? slot[table][0].map((element, index) =>
