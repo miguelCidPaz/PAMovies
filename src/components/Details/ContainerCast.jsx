@@ -41,7 +41,7 @@ const LogicCast = (props) => {
 
   return (
     <>
-      <Cast element={item}></Cast>
+      <Cast element={item} title="CAST"></Cast>
       {/* {console} */}
     </>
   );

@@ -27,7 +27,7 @@ const BirthdayPeople = () => {
 
   useEffect(() => {
     let itemData = [];
-    data.map((element) => {
+    data?.map((element) => {
       const axiosData = async () => {
         const getData = await axios.get(
           `https://api.themoviedb.org/3/search/person?api_key=fb1999e69926d1387eb44c3abee6e7c5&language=en-US&query=${element.name}&page=1&include_adult=false`
@@ -47,9 +47,9 @@ const BirthdayPeople = () => {
 
   return (
     <>
-      {/* {console.log(item[0])} */}
+      {/* {console.log(item)} */}
       {/* <button onClick={axiosData}>rewrer</button> */}
-      <Cast element={item[0]}></Cast>
+      <Cast element={item[0]} title="BIRTHDAY"></Cast>
     </>
   );
 };

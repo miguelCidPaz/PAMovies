@@ -93,7 +93,7 @@ const Cast = (props) => {
   return (
     <>
       <div className="container ">
-        <Divisor title="CAST"></Divisor>
+        <Divisor title={props.title}></Divisor>
       </div>
       <Slider {...settings}>
         {props.element?.map((element, key) => (
