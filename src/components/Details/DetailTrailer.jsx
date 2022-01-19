@@ -34,36 +34,31 @@ const DetailTrailer = (props) => {
     const ChangeTab = (e) => {
 
         if (e.currentTarget.value === 'back') {
-            let numMax = (libraryFilms.length / numItems) - 1
+            const slots = Math.floor(libraryFilms.length / numItems) - 1
+            let numMax = slots < 0 ? 0 : slots
 
-            if (index <= 0) {
+            if (index === 0) {
                 setIndex(libraryFilms.length - 1)
                 setTab(numMax)
             } else {
                 setIndex(index - 1)
-            }
-
-            const comp = index % numItems === 0 ? true : false;
-            if (comp) {
-                setTab(tab > 0 ? tab - 1 : numMax);
+                setTab(index % numItems === 0 ? tab - 1 : tab);
             }
 
         } else if (e.currentTarget.value === 'next') {
-            const indice = index + 1;
+            const indice = index === libraryFilms.length - 1 ? index : index + 1;
+            const slots = Math.floor(libraryFilms.length / numItems) - 1
+            let numMax = slots < 0 ? 0 : slots
 
-            if (indice >= libraryFilms.length) {
+            if (index === libraryFilms.length - 1) {
                 setIndex(0)
+                setTab(tab + 1 < numMax ? tab + 1 : 0);
             } else {
                 setIndex(index + 1)
-            }
-
-            const comp = indice % numItems === 0 || indice % numItems === 1 ? true : false;
-            if (comp) {
-                let aux = tab + 1
-                //console.log(aux < libraryFilms.length / numItems)
-                setTab(aux < libraryFilms.length / numItems ? tab + 1 : 0);
+                setTab(indice % numItems === 0 ? tab + 1 : tab);
             }
         }
+
     }
 
     useEffect(() => {
