@@ -8,8 +8,8 @@ import DetailTrailer from "../components/Details/DetailTrailer";
 import ContainerCast from "../components/Details/ContainerCast";
 const Details = ({ state }) => {
   const [rating, setRating] = useState(0); //Rating para las estrellas
-  const [casting, setCasting] = useState([]) //Reparto de la pelicula
-  const [director, setDirector] = useState("");
+  const [casting, setCasting] = useState(undefined) //Reparto de la pelicula
+  const [director, setDirector] = useState(undefined);
   const [item, setItem] = useState(filmDetail); //Pasara a ser o bien una llamada a la Api o el objeto que reciba por prop
   const params = useParams(); //Parametros de la URL
 
@@ -37,7 +37,7 @@ const Details = ({ state }) => {
           .then((res) => res.json())
           .then((data) => {
             setCasting(Object.values(data.cast))
-            setDirector(data.crew[0])
+            setDirector(Object.values(data.crew))
           })
       }
     };
@@ -60,7 +60,7 @@ const Details = ({ state }) => {
           rating={rating} //Rating obtenido de mockeo en filmdetail
           selectScore={selectScore} //Funcion para interactuar con el rating
           casting={casting} //Array de Objetos
-          director={director} //Array de Objetos (proximamente)
+          director={director} //Array de Objetos
         />
 
         <Description
@@ -71,7 +71,7 @@ const Details = ({ state }) => {
 
 
       </div>
-      {item.video !== null ?  <ContainerCast id={params.id}></ContainerCast>: null} {/* Int */}
+      {item.video !== null ? <ContainerCast id={params.id}></ContainerCast> : null} {/* Int */}
 
     </>
   );

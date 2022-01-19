@@ -28,9 +28,6 @@ const NavBox = (props) => {
         setTable(props.newTab)
     }, [props])
 
-    /*     useEffect(() => {
-        }, [props.newTab]) */
-
     return (
         <div className="details--main-column details--container-secondary">
             {slot[table][0] !== undefined ? slot[table][0].map((element, index) =>
