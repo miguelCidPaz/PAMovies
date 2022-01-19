@@ -33,20 +33,35 @@ const DetailTrailer = (props) => {
 
     const ChangeTab = (e) => {
 
-        console.log(tab / numItems)
-
         if (e.currentTarget.value === 'back') {
-            index < 0 ? setIndex(libraryFilms.length) : setIndex(index - 1)
+            let numMax = (libraryFilms.length / numItems) - 1
+
+            if (index <= 0) {
+                setIndex(libraryFilms.length - 1)
+                setTab(numMax)
+            } else {
+                setIndex(index - 1)
+            }
+
             const comp = index % numItems === 0 ? true : false;
             if (comp) {
-                setTab(tab > 0 ? tab - 1 : tab);
+                setTab(tab > 0 ? tab - 1 : numMax);
             }
+
         } else if (e.currentTarget.value === 'next') {
-            index > libraryFilms.length ? setIndex(0) : setIndex(index + 1)
             const indice = index + 1;
+
+            if (indice >= libraryFilms.length) {
+                setIndex(0)
+            } else {
+                setIndex(index + 1)
+            }
+
             const comp = indice % numItems === 0 || indice % numItems === 1 ? true : false;
             if (comp) {
-                setTab(tab / numItems >= 0 ? tab + 1 : tab)
+                let aux = tab + 1
+                //console.log(aux < libraryFilms.length / numItems)
+                setTab(aux < libraryFilms.length / numItems ? tab + 1 : 0);
             }
         }
     }
@@ -79,6 +94,7 @@ const DetailTrailer = (props) => {
                         />
                         <button className="details--scenes details--button" onClick={e => ChangeTab(e)} value={'next'}><ArrowForwardIosIcon /></button>
                     </div>
+
                     {libraryFilms.length > 0 ?
                         <NavBox
                             libraryFilms={libraryFilms}
@@ -88,7 +104,6 @@ const DetailTrailer = (props) => {
                             newTab={tab}
                             setTab={setTab}
                         /> : null}
-
 
                 </div>
             </section>
