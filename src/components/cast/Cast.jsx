@@ -106,7 +106,6 @@ const Cast = (props) => {
             <div className="h2">
               <p>({element.item})</p>
               <h2>{element.name}</h2>
-              {/* {console.log(element)} */}
             </div>
           </div>
         ))}

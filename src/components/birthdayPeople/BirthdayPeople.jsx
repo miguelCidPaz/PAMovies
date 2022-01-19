@@ -6,6 +6,7 @@ import Cast from "../cast/Cast";
 const BirthdayPeople = () => {
   const [data, setData] = useState([]);
   const [item, setItem] = useState([]);
+
   let link = "https://image.tmdb.org/t/p/w500";
   var options = {
     method: "GET",
@@ -24,10 +25,9 @@ const BirthdayPeople = () => {
 
     axiosData();
   }, []);
-
+  let itemData = [];
   useEffect(() => {
-    let itemData = [];
-    data?.map((element) => {
+    data?.map((element, key) => {
       const axiosData = async () => {
         const getData = await axios.get(
           `https://api.themoviedb.org/3/search/person?api_key=fb1999e69926d1387eb44c3abee6e7c5&language=en-US&query=${element.name}&page=1&include_adult=false`
@@ -38,7 +38,9 @@ const BirthdayPeople = () => {
           item: element.dob,
           name: getData.data.results[0].name,
         });
-        setItem([itemData]);
+        if (key === data.length - 1) {
+          return setItem(itemData);
+        }
       };
 
       axiosData();
@@ -47,9 +49,7 @@ const BirthdayPeople = () => {
 
   return (
     <>
-      {/* {console.log(item)} */}
-      {/* <button onClick={axiosData}>rewrer</button> */}
-      <Cast element={item[0]} title="BIRTHDAY"></Cast>
+      <Cast element={item} title="BIRTHDAY"></Cast>
     </>
   );
 };
