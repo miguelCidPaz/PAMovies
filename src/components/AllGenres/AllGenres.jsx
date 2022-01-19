@@ -1,24 +1,31 @@
-import react, {Component} from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import {genres} from '../Main/data-main'
+import Divisor from '../Divisor/Divisor'
 
-export default function AllGenres(props) {
-    {console.log(props)}
-    return(
-        <>
-        Funciona
-        </>
-    //     props.dataGenres.map((item) => ( 
-    //     <div className="news-container"
-    //     key={item.id}
-    //     onClick={() => {
-    //       }}>
-    //          <p>{item.id}</p>
-    //         <p>{item.name}</p>
-    //     </div>
-
-    // ))   
+export default function AllGenres() {
+    const location = useLocation().state;
+    const navigate = useNavigate();
     
+    return(<div>
+    <Divisor title="ALL CATEGORIES"></Divisor>
+    <div className="containerGenres container">
+    {location.map((element) => (
+        <div
+        className='type-container'
+        key={element.id}
+        onClick={() => {
+            navigate(`/Genres/${element.name}/${element.id}`);
+        }}
+        key={element.id}
+        >
+            <img src={genres.src} height={250} width={160} className='image-film'/>
+            <p className='centerGender big'>{element.name}</p>
+        </div>
+    ))}
+    </div>
+    </div>
     )
     
 }
