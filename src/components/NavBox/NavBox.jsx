@@ -7,16 +7,17 @@ const NavBox = (props) => {
     const numItems = 6;
 
     const parseLibrary = () => {
-        if (props.libraryFilms.length < numItems) {
-            return props.libraryFilms;
-        }
+        console.log(props.libraryFilms)
 
         let falseLibrary = [...props.libraryFilms];
 
         let newArr = [];
         while (falseLibrary.length > 0) {
-            newArr.push([falseLibrary.splice(0, numItems)])
+            let aux = [falseLibrary.splice(0, numItems)]
+            newArr.push(aux)
+            console.log(aux)
         }
+        console.log(newArr)
         return newArr
     }
 
