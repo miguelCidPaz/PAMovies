@@ -33,22 +33,32 @@ const DetailTrailer = (props) => {
 
     const ChangeTab = (e) => {
 
-        console.log(tab / numItems)
-
         if (e.currentTarget.value === 'back') {
-            index < 0 ? setIndex(libraryFilms.length) : setIndex(index - 1)
-            const comp = index % numItems === 0 ? true : false;
-            if (comp) {
-                setTab(tab > 0 ? tab - 1 : tab);
+            const slots = Math.floor(libraryFilms.length / numItems) - 1
+            let numMax = slots < 0 ? 0 : slots
+
+            if (index === 0) {
+                setIndex(libraryFilms.length - 1)
+                setTab(numMax)
+            } else {
+                setIndex(index - 1)
+                setTab(index % numItems === 0 ? tab - 1 : tab);
             }
+
         } else if (e.currentTarget.value === 'next') {
-            index > libraryFilms.length ? setIndex(0) : setIndex(index + 1)
-            const indice = index + 1;
-            const comp = indice % numItems === 0 || indice % numItems === 1 ? true : false;
-            if (comp) {
-                setTab(tab / numItems >= 0 ? tab + 1 : tab)
+            const indice = index === libraryFilms.length - 1 ? index : index + 1;
+            const slots = Math.floor(libraryFilms.length / numItems) - 1
+            let numMax = slots < 0 ? 0 : slots
+
+            if (index === libraryFilms.length - 1) {
+                setIndex(0)
+                setTab(tab + 1 < numMax ? tab + 1 : 0);
+            } else {
+                setIndex(index + 1)
+                setTab(indice % numItems === 0 ? tab + 1 : tab);
             }
         }
+
     }
 
     useEffect(() => {
@@ -79,6 +89,7 @@ const DetailTrailer = (props) => {
                         />
                         <button className="details--scenes details--button" onClick={e => ChangeTab(e)} value={'next'}><ArrowForwardIosIcon /></button>
                     </div>
+
                     {libraryFilms.length > 0 ?
                         <NavBox
                             libraryFilms={libraryFilms}
@@ -88,7 +99,6 @@ const DetailTrailer = (props) => {
                             newTab={tab}
                             setTab={setTab}
                         /> : null}
-
 
                 </div>
             </section>

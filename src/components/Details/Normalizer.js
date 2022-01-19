@@ -2,8 +2,6 @@ import { filmDetail } from "./Data";
 
 export const Normalizer = (data, type) => {
 
-    console.log(data)
-
     const normalize = {
         name: "",
         photo_principal: "",

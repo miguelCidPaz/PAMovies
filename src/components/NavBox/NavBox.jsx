@@ -7,16 +7,14 @@ const NavBox = (props) => {
     const numItems = 6;
 
     const parseLibrary = () => {
-        if (props.libraryFilms.length < numItems) {
-            return props.libraryFilms;
-        }
-
         let falseLibrary = [...props.libraryFilms];
 
         let newArr = [];
         while (falseLibrary.length > 0) {
-            newArr.push([falseLibrary.splice(0, numItems)])
+            let aux = [falseLibrary.splice(0, numItems)]
+            newArr.push(aux)
         }
+
         return newArr
     }
 
@@ -32,8 +30,6 @@ const NavBox = (props) => {
 
     /*     useEffect(() => {
         }, [props.newTab]) */
-
-    console.log(slot)
 
     return (
         <div className="details--main-column details--container-secondary">
