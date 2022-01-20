@@ -19,7 +19,7 @@ const DetailValorations = (props) => {
                     <span>★</span>
                 </button>
             })}
-            <p>({props.media})</p>
+            <p className='details--media-valorations'>({props.media})</p>
         </div>
     )
 }

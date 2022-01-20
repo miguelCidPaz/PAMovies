@@ -80,15 +80,19 @@ const DetailTrailer = (props) => {
                 <p className="details--title details--padding-title">{libraryFilms[index] !== undefined ? libraryFilms[index].name : null}</p>
                 <div className="details--interior-row">
 
-                    <div className="details--interior-row-nowrap">
-                        <button className="details--scenes details--button" onClick={e => ChangeTab(e)} value={"back"}><ArrowBackIosIcon /></button>
-                        <iframe className="details--frame-video" src={`https://www.youtube.com/embed/${libraryFilms[index] !== undefined ? libraryFilms[index].key : null}`}
-                            title="YouTube video player" frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                        />
-                        <button className="details--scenes details--button" onClick={e => ChangeTab(e)} value={'next'}><ArrowForwardIosIcon /></button>
-                    </div>
+                    {libraryFilms[index !== undefined] ?
+                        <div className="details--container-spinner"><span className="details--spinner"></span></div>
+                        :
+                        <div className="details--interior-row-nowrap">
+                            <button className="details--scenes details--button" onClick={e => ChangeTab(e)} value={"back"}><ArrowBackIosIcon /></button>
+                            <iframe className="details--frame-video" src={`https://www.youtube.com/embed/${libraryFilms[index] !== undefined ? libraryFilms[index].key : null}`}
+                                title="YouTube video player" frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            />
+                            <button className="details--scenes details--button" onClick={e => ChangeTab(e)} value={'next'}><ArrowForwardIosIcon /></button>
+                        </div>}
+
 
                     {libraryFilms.length > 0 ?
                         <NavBox

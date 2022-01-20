@@ -67,11 +67,17 @@ const Details = ({ state }) => {
           item={item} //Objeto con datos de la api
         />
 
-        {item.video !== null ? <DetailTrailer id={params.id} /> : null} {/* Int */}
+        {item.video !== null ?
+          <DetailTrailer id={params.id} />
+          :
+          <div className="details--container-spinner"><span className="details--spinner"></span></div>} {/* Int */}
 
 
       </div>
-      {item.video !== null ? <ContainerCast id={params.id}></ContainerCast> : null} {/* Int */}
+      {item.video !== null ?
+        <ContainerCast id={params.id}></ContainerCast>
+        :
+        <div className="details--container-spinner"><span className="details--spinner"></span></div>} {/* Int */}
 
     </>
   );

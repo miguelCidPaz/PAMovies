@@ -151,6 +151,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 0% 1%;
 }
 
@@ -287,5 +288,11 @@
       -ms-transform: rotate(1turn);
       -o-transform: rotate(1turn);
     }
+  }
+
+  .details--media-valorations{
+    margin: 5px;
+    margin-top: 8px;  
+    font-size: 20px;
   }
   
