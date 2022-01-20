@@ -11,7 +11,6 @@ import ListGenres from "./components/ListGenres/listGenres";
 import AllGenres from "./components/AllGenres/AllGenres";
 
 function App() {
-
   return (
     <main>
       <BrowserRouter>
@@ -19,9 +18,9 @@ function App() {
         <Routes>
           <Route exact path="/details/:type/:id" element={<Details />} />
           <Route path="/" element={<MainView />} />
-          <Route exact path="/AllGenres/" element={<AllGenres/>}/>
-          <Route exact path="/Genres/:title/:id" element={<ListGenres/>}/>
-          <Route path="/listSearch" element={<ListSearch/>}/>
+          <Route exact path="/AllGenres/" element={<AllGenres />} />
+          <Route exact path="/Genres/:title/:id" element={<ListGenres />} />
+          <Route path="/listSearch" element={<ListSearch />} />
         </Routes>
       </BrowserRouter>
     </main>
