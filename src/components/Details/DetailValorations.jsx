@@ -1,7 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const DetailValorations = (props) => {
     const [isSelect, setIsSelect] = useState(0);
+
+    useEffect(() => {
+
+    }, [props])
 
     return (
         <div className='details--stars'>
@@ -15,6 +19,7 @@ const DetailValorations = (props) => {
                     <span>★</span>
                 </button>
             })}
+            <p className='details--media-valorations'>({props.media})</p>
         </div>
     )
 }
