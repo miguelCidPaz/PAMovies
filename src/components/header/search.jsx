@@ -9,7 +9,7 @@ export default function ComboBox() {
   const [input, setInput] = useState([]);
   const [data, setData] = useState([]);
   const [value, setValue] = useState("");
-  const navigate = useNavigate();
+  let navigate = useNavigate();
 
   useEffect(() => {
     let fitrando = input.find((element) => element.title === data[0]);
@@ -19,7 +19,8 @@ export default function ComboBox() {
     } else if (data[0] != null) {
       navigate("/listSearch", { state: input });
     }
-  }, [data]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, input]);
   useEffect(() => {
     const fetchData = async () => {
       if (/[a-zA-ZñÑ0-9]/.test(value)) {

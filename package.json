@@ -58,5 +58,8 @@
       "extensionName": ".css",
       "savePath": "/src/assets/css"
     }
-  ]
+  ],
+  "devDependencies": {
+    "eslint": "^8.7.0"
+  }
 }
