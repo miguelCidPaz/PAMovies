@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Details from "./views/Details";
 import ListGenres from "./components/ListGenres/listGenres";
 import AllGenres from "./components/AllGenres/AllGenres";
+import Error404 from "./components/Error404/Error404";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/AllGenres/" element={<AllGenres />} />
           <Route exact path="/Genres/:title/:id" element={<ListGenres />} />
           <Route path="/listSearch" element={<ListSearch />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </BrowserRouter>
     </main>
