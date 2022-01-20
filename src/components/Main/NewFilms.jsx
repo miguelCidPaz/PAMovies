@@ -1,26 +1,29 @@
 import React from "react";
 import Slider from "react-slick";
 import Film from "./Film";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 export function SampleNextArrow(props) {
   const { className, style, onClick } = props;
 
   return (
-    <ArrowForwardIosIcon 
-    className={className} 
-    style={{...style, color:"white", fontSize:"35px" }} 
-    onClick={onClick}/>   
+    <ArrowForwardIosIcon
+      className={className}
+      style={{ ...style, color: "white", fontSize: "35px" }}
+      onClick={onClick}
+    />
   );
 }
 
 export function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <ArrowBackIosIcon className={className}
-    style={{...style, color:"white", fontSize:"35px", height:"50px" }} 
-    onClick={onClick}/>   
+    <ArrowBackIosIcon
+      className={className}
+      style={{ ...style, color: "white", fontSize: "35px", height: "50px" }}
+      onClick={onClick}
+    />
   );
 }
 
@@ -71,9 +74,7 @@ export default function NewFilms(props) {
       <Slider {...settings}>
         {props.data.map((item) => (
           <div className="news-container" key={item.id}>
-            <Film
-              item={item}
-            />
+            <Film item={item} />
           </div>
         ))}
       </Slider>
