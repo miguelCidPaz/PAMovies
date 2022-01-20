@@ -20,7 +20,7 @@ export default function ComboBox() {
       navigate("/listSearch", { state: input });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, input]);
+  }, [data]);
   useEffect(() => {
     const fetchData = async () => {
       if (/[a-zA-ZñÑ0-9]/.test(value)) {

@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Divisor from "../../components/Divisor/Divisor";
 import Star from "../../components/stars/Stars";
