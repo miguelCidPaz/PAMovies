@@ -4,8 +4,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@material-ui/core";
 
@@ -19,7 +19,7 @@ export function SampleNextArrow(props) {
 export function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <ArrowBackIosIcon className={className} style={{...style, fontSize:"35px",color:"white", height:"50px" }}  onClick={onClick}/>   
+    <ArrowBackIosNewIcon className={className} style={{...style, fontSize:"35px",color:"white", height:"50px" }}  onClick={onClick}/>   
   );
 }
 
@@ -45,6 +45,8 @@ export default function Genres(props) {
     slidesToShow: 3,
     slidesToScroll: 1,
     initialSlide: 0,
+    // centerPadding: 55,
+    centerMode: true,
     infinite: true,
     centerMode: true,
     arrows: true,
@@ -81,12 +83,12 @@ export default function Genres(props) {
 
   return (
     <>
-      <div className="row-container">
+      <div className="">
         <div className="row-title">
           <Button
-          {...dataGenres}
+         
           onClick={() => {   
-            navigate(`/AllGenres`);
+            navigate(`/AllGenres`, {state: dataGenres});
           }}>ALL CATEGORIES</Button>
         </div>
 

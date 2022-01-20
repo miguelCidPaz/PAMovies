@@ -1,0 +1,13 @@
+/*AllGenres*/
+
+.containerGenres{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.big{
+font-size:25px;
+}
