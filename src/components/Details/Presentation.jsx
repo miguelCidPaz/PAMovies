@@ -1,24 +1,40 @@
-import { Link } from "react-router-dom"
 import DetailValorations from "./DetailValorations"
 import { filmDetail } from "./Data"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom";
+import SlotRow from "./SlotRow";
+import { useLocalStorage } from "./CustomStorage";
+import ButtonsBack from "./ButtonsBack";
 
 const DetailPresentation = (props) => {
+    const params = useParams();
+    const [ratingSave, setRatingSave] = useLocalStorage(props.item.photo_principal, { totalPuntuation: 0, numVotes: 0 })
+    const [rating, setRating] = useState(Math.floor(ratingSave.totalPuntuation / ratingSave.numVotes)); //Rating para las estrellas
+    const [movie, setMovie] = useState()
 
-    //Route detecta que estamos en la misma ruta, asi que creamos un objeto sustituto con una clave unica para forzarlo
-    const routeLink = (id) => {
-        return {
-            pathname: `/details/person/${id}`,
-            key: Math.random(), // we could use Math.random, but that's not guaranteed unique.
-            state: {
-                applied: true
-            }
+    const filterDirecting = (directing) => {
+        if (directing !== undefined) {
+            const newArr = directing.filter(element => {
+                if (element.department === 'Directing') {
+                    return element
+                }
+            })
+            return newArr;
         }
     }
 
+    const selectScore = async (value) => {
+        setRatingSave({ totalPuntuation: ratingSave.totalPuntuation + parseInt(value), numVotes: ratingSave.numVotes + 1 })
+        setRating(value)
+    };
+
     useEffect(() => {
 
-    }, [props])
+        if (params.type === 'movie') {
+            setMovie(params.id);
+        }
+
+    }, [props, rating, ratingSave])
 
     return (
         <section className="details--main-container">
@@ -31,29 +47,55 @@ const DetailPresentation = (props) => {
                 <p className="details--title">{props.item.name}</p>
                 <div className="details--interior-row details--interior-row-extra">
                     <p>({props.item.date})</p>
-                    {props.item.date !== null ? <DetailValorations
-                        puntuation={props.rating}
-                        rating={filmDetail.rating}
-                        selectScore={props.selectScore}
-                    /> : null}
+                    {props.item.date !== null ?
+                        <DetailValorations
+                            puntuation={rating}
+                            media={(ratingSave.totalPuntuation / ratingSave.numVotes) <= 0 ? 0 : Math.floor(ratingSave.totalPuntuation / ratingSave.numVotes) || 0}
+                            rating={filmDetail.rating}
+                            selectScore={selectScore}
+                        />
+                        :
+                        null}
                 </div>
 
-                <div className="details--interior-row">
-                    {props.item.countries !== null ? <p className="details--text-resalt">Countrie:</p> : null}
-                    {props.item.countries !== undefined ? props.item.countries.map((element, index) => <p key={index} className="details--link">{element}</p>) : null}
-                </div>
+                {props.item.countries !== undefined ?
+                    <SlotRow
+                        title={"Countrie: "} //Texto a resaltar, el titulo
+                        areLinks={false} //Para señalar si el arr debe ser de links o no
+                        items={props.item.countries} //El item es un arr de items
+                    />
+                    : null}
 
-                <div className="details--interior-row">
-                    <p className="details--text-resalt">Director:</p>
-                    <Link className={"details--casting"} to={routeLink(props.director.id)}>{props.director.name}</Link>
-                </div>
+                {props.director !== undefined ?
+                    <SlotRow
+                        title={"Director: "} //Texto a resaltar, el titulo
+                        areLinks={true} //Para señalar si el arr debe ser de links o no
+                        items={filterDirecting(props.director)} //El item es un arr de items
+                    />
+                    : null}
 
-                <div className="details--interior-row">
-                    <p className="details--text-resalt">Reparto:</p>
-                    {props.casting.map((element, index) => index < 15 ? <Link key={index} className={"details--casting"} to={routeLink(element.id)}>{element.name}</Link> : null)}
-                </div>
+                {props.casting !== undefined ?
+                    <SlotRow
+                        title={"Reparto: "} //Texto a resaltar, el titulo
+                        areLinks={true} //Para señalar si el arr debe ser de links o no
+                        items={props.casting} //El item es un arr de items
+                    />
+                    : null}
 
             </div>
+
+            {props.item.date !== null ?
+                <ButtonsBack
+                    type={props.casting !== undefined ? 'movie' : null} //true -> a main || false -> a movie
+                    //Con type distinguimos si entramos con movie en recamara o a pelo
+                    idSaved={movie}
+                    inMovie={params.type === 'movie' ? true : false}
+                    movieName={params.type === 'movie' ? props.item.name : null}
+                />
+                :
+                null}
+
+
         </section>
     )
 }
