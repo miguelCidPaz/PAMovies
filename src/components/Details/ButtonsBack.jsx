@@ -19,8 +19,6 @@ const ButtonsBack = (props) => {
         }
     }
 
-    console.log(props.type)
-
     return (
         <div className="details--container-back">
             <Link className="details--back" to={routeLink(props.idSaved, props.type)}>{props.inMovie ? 'Home' : props.type !== null ? `Vuelve a ${name}` : 'Home'}</Link>

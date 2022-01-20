@@ -6,6 +6,7 @@ import Presentation from "../components/Details/Presentation";
 import { Normalizer } from './../components/Details/Normalizer'
 import DetailTrailer from "../components/Details/DetailTrailer";
 import ContainerCast from "../components/Details/ContainerCast";
+import Omnibar from "../components/Omnibar/Omnibar";
 const Details = ({ state }) => {
   const [casting, setCasting] = useState(undefined) //Reparto de la pelicula
   const [director, setDirector] = useState(undefined);
@@ -73,6 +74,7 @@ const Details = ({ state }) => {
           :
           null} {/* Int */}
 
+        {item !== undefined ? <Omnibar id={params.id} value={params.type} /> : null}
 
       </div>
       {item.video !== null ?
