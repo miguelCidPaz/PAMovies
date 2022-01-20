@@ -23,7 +23,6 @@
   align-items: center;
 }
 
-
 .full-container {
   display: flex;
   justify-content: center;
@@ -52,7 +51,6 @@ figure .layer {
   visibility: hidden;
   transition: all 500ms ease-out;
   text-align: center;
-  
 }
 
 .full-container figure:hover > .layer {
@@ -68,7 +66,7 @@ figure .layer {
   visibility: visible;
 }
 
-.full-container figure> .layer > div {
+.full-container figure > .layer > div {
   opacity: 1;
   margin-top: 6px;
   margin-bottom: 5px;
@@ -153,4 +151,3 @@ figure .layer {
     margin-top: 15px;
   }
 }
-
