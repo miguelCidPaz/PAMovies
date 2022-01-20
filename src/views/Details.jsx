@@ -7,7 +7,6 @@ import { Normalizer } from './../components/Details/Normalizer'
 import DetailTrailer from "../components/Details/DetailTrailer";
 import ContainerCast from "../components/Details/ContainerCast";
 const Details = ({ state }) => {
-  const [rating, setRating] = useState(0); //Rating para las estrellas
   const [casting, setCasting] = useState(undefined) //Reparto de la pelicula
   const [director, setDirector] = useState(undefined);
   const [item, setItem] = useState(filmDetail); //Pasara a ser o bien una llamada a la Api o el objeto que reciba por prop
@@ -31,6 +30,10 @@ const Details = ({ state }) => {
         .then((data) => {
           setItem(Normalizer(data, type));
         });
+
+      //Aqui tendriamos que tener el seteo del rating con el LocalStorage usando el photo_principal
+
+
       if (type === "movie") {
         const URLReparto = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${ApiKey}&language=en-US`;
         await fetch(URLReparto)
@@ -44,24 +47,21 @@ const Details = ({ state }) => {
     requestApi();
   }, [params]);
 
-  const selectScore = (value) => {
-    setRating(value);
-  };
-
   //Controlando renders innecesarios
-  console.log("Renderizado en details");
+  console.log('Render en details')
 
   return (
     <>
       <div className="container">
-        <Presentation
-          urlImage={urlForImages + item.photo_principal} // 2 strings
-          item={item} //Objeto con datos de la api
-          rating={rating} //Rating obtenido de mockeo en filmdetail
-          selectScore={selectScore} //Funcion para interactuar con el rating
-          casting={casting} //Array de Objetos
-          director={director} //Array de Objetos
-        />
+        {item.photo_principal !== undefined ?
+          <Presentation
+            urlImage={urlForImages + item.photo_principal} // 2 strings
+            item={item} //Objeto con datos de la api
+            casting={casting} //Array de Objetos
+            director={director} //Array de Objetos
+          />
+          : <div className="details--container-spinner"><span className="details--spinner"></span></div>}
+
 
         <Description
           item={item} //Objeto con datos de la api
