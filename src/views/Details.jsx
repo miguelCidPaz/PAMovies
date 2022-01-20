@@ -62,22 +62,23 @@ const Details = ({ state }) => {
           />
           : <div className="details--container-spinner"><span className="details--spinner"></span></div>}
 
+        {item !== undefined ?
+          <Description item={item} /> //Objeto con datos de la api
+          :
+          <div className="details--container-spinner"><span className="details--spinner"></span></div>}
 
-        <Description
-          item={item} //Objeto con datos de la api
-        />
 
         {item.video !== null ?
           <DetailTrailer id={params.id} />
           :
-          <div className="details--container-spinner"><span className="details--spinner"></span></div>} {/* Int */}
+          null} {/* Int */}
 
 
       </div>
       {item.video !== null ?
         <ContainerCast id={params.id}></ContainerCast>
         :
-        <div className="details--container-spinner"><span className="details--spinner"></span></div>} {/* Int */}
+        null} {/* Int */}
 
     </>
   );

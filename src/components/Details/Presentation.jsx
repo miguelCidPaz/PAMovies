@@ -1,12 +1,16 @@
 import DetailValorations from "./DetailValorations"
 import { filmDetail } from "./Data"
 import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom";
 import SlotRow from "./SlotRow";
 import { useLocalStorage } from "./CustomStorage";
+import ButtonsBack from "./ButtonsBack";
 
 const DetailPresentation = (props) => {
+    const params = useParams();
     const [ratingSave, setRatingSave] = useLocalStorage(props.item.photo_principal, { totalPuntuation: 0, numVotes: 0 })
     const [rating, setRating] = useState(Math.floor(ratingSave.totalPuntuation / ratingSave.numVotes)); //Rating para las estrellas
+    const [movie, setMovie] = useState()
 
     const filterDirecting = (directing) => {
         if (directing !== undefined) {
@@ -25,6 +29,10 @@ const DetailPresentation = (props) => {
     };
 
     useEffect(() => {
+
+        if (params.type === 'movie') {
+            setMovie(params.id);
+        }
 
     }, [props, rating, ratingSave])
 
@@ -75,6 +83,19 @@ const DetailPresentation = (props) => {
                     : null}
 
             </div>
+
+            {props.item.date !== null ?
+                <ButtonsBack
+                    type={props.casting !== undefined ? 'movie' : null} //true -> a main || false -> a movie
+                    //Con type distinguimos si entramos con movie en recamara o a pelo
+                    idSaved={movie}
+                    inMovie={params.type === 'movie' ? true : false}
+                    movieName={params.type === 'movie' ? props.item.name : null}
+                />
+                :
+                null}
+
+
         </section>
     )
 }

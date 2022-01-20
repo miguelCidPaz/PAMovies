@@ -74,7 +74,7 @@ const DetailTrailer = (props) => {
     }, [tab])
 
     return (
-        <section className="details--main-container details--main-column">
+        <section className="details--main-container details--main-column details--trailer-container">
             <Divisor title="Videos" />
             <section className='details--section'>
                 <p className="details--title details--padding-title">{libraryFilms[index] !== undefined ? libraryFilms[index].name : null}</p>
