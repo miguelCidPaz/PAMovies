@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import Nav from "./nav";
 import Search from "./search";
-import { createContext, useState, useContext } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
@@ -49,9 +49,9 @@ export default function Header() {
     <>
       <header className="header">
         <div className="container-header">
-          <a className="logo" onClick={() => navigate("/")}>
-            logo{" "}
-          </a>
+          <p className="logo" onClick={() => navigate("/")}>
+            logo
+          </p>
           <div className="faBars">
             {mobile ? (
               screenChange()

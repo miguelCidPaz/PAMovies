@@ -1,5 +1,3 @@
-import axios from "axios";
-import react, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import ImageNotSupportedIcon from "@mui/icons-material/ImageNotSupported";
 import Divisor from "../Divisor/Divisor";
