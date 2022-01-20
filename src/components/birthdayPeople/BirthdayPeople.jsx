@@ -42,7 +42,7 @@ const BirthdayPeople = () => {
         }
       };
 
-      axiosData();
+      return axiosData();
     });
   }, [data]);
 
