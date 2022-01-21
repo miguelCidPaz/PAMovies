@@ -6,7 +6,7 @@ const ButtonsBack = (props) => {
 
     useEffect(() => {
         props.movieName !== null ? setName(props.movieName) : setName(name)
-    }, [props])
+    }, [name, props])
 
     //Route detecta que estamos en la misma ruta, asi que creamos un objeto sustituto con una clave unica para forzarlo
     const routeLink = (id, type) => {
