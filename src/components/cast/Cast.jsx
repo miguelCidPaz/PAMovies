@@ -1,5 +1,3 @@
-import axios from "axios";
-import react, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import ImageNotSupportedIcon from "@mui/icons-material/ImageNotSupported";
 import Divisor from "../Divisor/Divisor";
@@ -106,7 +104,6 @@ const Cast = (props) => {
             <div className="h2">
               <p>({element.item})</p>
               <h2>{element.name}</h2>
-              {/* {console.log(element)} */}
             </div>
           </div>
         ))}

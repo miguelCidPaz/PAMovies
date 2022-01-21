@@ -72,7 +72,7 @@ export default function News() {
 
   let settings = {
     dots: true,
-    speed: 500,
+
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
@@ -102,7 +102,7 @@ export default function News() {
         {data?.slice(0, 7).map((element, key) => {
           return (
             <div key={key} className="news">
-              <a href={element.link} target="_blank">
+              <a href={element.link} target="_blank" rel="noreferrer">
                 <div className="container-content">
                   <img className="img-news" src={element.media} alt="" />
                   <div className="shadow"></div>
@@ -121,6 +121,7 @@ export default function News() {
                     <img
                       className="logo-news"
                       src={`${logo}${element.clean_url}`}
+                      alt="logo"
                     ></img>
                   </div>
                 </div>

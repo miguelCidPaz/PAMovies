@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { filmDetail } from "../components/Details/Data";
 import Presentation from "../components/Details/Presentation";
-import { Normalizer } from './../components/Details/Normalizer'
+import { Normalizer } from "./../components/Details/Normalizer";
 import DetailTrailer from "../components/Details/DetailTrailer";
 import ContainerCast from "../components/Details/ContainerCast";
 import Omnibar from "../components/Omnibar/Omnibar";
 const Details = ({ state }) => {
-  const [casting, setCasting] = useState(undefined) //Reparto de la pelicula
+  const [casting, setCasting] = useState(undefined); //Reparto de la pelicula
   const [director, setDirector] = useState(undefined);
   const [item, setItem] = useState(filmDetail); //Pasara a ser o bien una llamada a la Api o el objeto que reciba por prop
   const params = useParams(); //Parametros de la URL
@@ -34,35 +34,37 @@ const Details = ({ state }) => {
 
       //Aqui tendriamos que tener el seteo del rating con el LocalStorage usando el photo_principal
 
-
       if (type === "movie") {
         const URLReparto = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${ApiKey}&language=en-US`;
         await fetch(URLReparto)
           .then((res) => res.json())
           .then((data) => {
-            setCasting(Object.values(data.cast))
-            setDirector(Object.values(data.crew))
-          })
+            setCasting(Object.values(data.cast));
+            setDirector(Object.values(data.crew));
+          });
       }
     };
     requestApi();
   }, [params]);
 
   //Controlando renders innecesarios
-  console.log('Render en details')
+  console.log("Render en details");
 
   return (
     <>
       <div className="container">
-        {item.photo_principal !== undefined ?
+        {item.photo_principal !== undefined ? (
           <Presentation
             urlImage={urlForImages + item.photo_principal} // 2 strings
             item={item} //Objeto con datos de la api
             casting={casting} //Array de Objetos
             director={director} //Array de Objetos
           />
-          : <div className="details--container-spinner"><span className="details--spinner"></span></div>}
-
+        ) : (
+          <div className="details--container-spinner">
+            <span className="details--spinner"></span>
+          </div>
+        )}
         {item !== undefined ?
           <Description item={item} /> //Objeto con datos de la api
           :
@@ -77,11 +79,10 @@ const Details = ({ state }) => {
         {item !== undefined ? <Omnibar id={params.id} value={params.type} /> : null}
 
       </div>
-      {item.video !== null ?
+      {item.video !== null ? (
         <ContainerCast id={params.id}></ContainerCast>
-        :
-        null} {/* Int */}
-
+      ) : null}{" "}
+      {/* Int */}
     </>
   );
 };

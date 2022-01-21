@@ -8,14 +8,17 @@ import Divisor from "../Divisor/Divisor";
 export default function Main() {
   const [getFilms, setGetFilms] = useState([]);
 
-  useEffect(async () => {
-    await axios
-      .get(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=198b2f6e124efb8ffaed4dd22cc65a8c&language=en-US&page=1adult=false`
-      )
-      .then((res) => {
-        setGetFilms(res.data.results);
-      });
+  useEffect(() => {
+    async function getInfo() {
+      await axios
+        .get(
+          `https://api.themoviedb.org/3/movie/upcoming?api_key=198b2f6e124efb8ffaed4dd22cc65a8c&language=en-US&page=1adult=false`
+        )
+        .then((res) => {
+          setGetFilms(res.data.results);
+        });
+    }
+    getInfo();
   }, []);
 
   let data = getFilms;
@@ -23,18 +26,18 @@ export default function Main() {
   return (
     <div className="container">
       <Divisor title="PREMIERES"></Divisor>
-        <div className="main-container ">
-          <div className="films-container background-color">
-            <NewFilms data={data} />
-          </div>
+      <div className="main-container ">
+        <div className="films-container background-color">
+          <NewFilms data={data} />
         </div>
-     
+      </div>
+
       <Divisor title="CATEGORIES"></Divisor>
-          <div className="main-container">
-            <div className="distribution">
-              <Genres genres={genres} data={data} />
-            </div>
-          </div>
+      <div className="main-container">
+        <div className="distribution">
+          <Genres genres={genres} data={data} />
+        </div>
+      </div>
     </div>
   );
 }
