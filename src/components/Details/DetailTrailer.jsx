@@ -62,16 +62,19 @@ const DetailTrailer = (props) => {
     }
 
     useEffect(() => {
+        console.log('desde effect')
         requestApi();
     }, [props])
 
     useEffect(() => {
         setFilm(libraryFilms[index])
-    }, [index])
+    }, [index, libraryFilms])
 
     useEffect(() => {
 
     }, [tab])
+
+    console.log('render en videos')
 
     return (
         <section className="details--main-container details--main-column details--trailer-container">
