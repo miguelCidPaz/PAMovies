@@ -28,7 +28,7 @@ export default function ListGenres() {
   let data = orderFilms;
 
   return (
-    <div className="title-genre">
+    <div className="title-genre container">
       <Divisor title={`${gender_name}`}></Divisor>
       <div className="genre-container">
         <AnimationGenre data={data} />

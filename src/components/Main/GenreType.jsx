@@ -22,8 +22,8 @@ function GenreType(props) {
       <img
         src={props.theme}
         className="image-film"
-        width={"190px"}
-        height={"270px"}
+        width={"220px"}
+        height={"350px"}
         alt="film"
       />
       <div>

@@ -4,10 +4,11 @@ const Error404 = () => {
   return (
     <div className="error">
       <div className="leftside">
-        <p className="cry">AWWW ... DON'T CRY!</p>
+        <p className="cry">Ooops!</p>
         <p className="just">It's just a 404 Error!</p>
         <p className="misplaced">
-          What you're looking for may have been misplaced in Long Term Memory
+          We can't find the page you're looking for.
+          <br /> Maybe you can find what you need from our homepage.
         </p>
       </div>
       <div className="rightside">
