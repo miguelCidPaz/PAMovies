@@ -39,8 +39,6 @@ const LogicCast = (props) => {
     setIems(itemArr);
   }, [data, link]);
 
-  console.log('render container cast')
-
   return (
     <>
       <Cast element={item} title="CAST"></Cast>
