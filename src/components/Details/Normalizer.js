@@ -55,3 +55,12 @@ export const shortString = (text) => {
     }
     return text.split("").map((element, index) => index < 30 ? element : null)
 }
+
+export const normalizeKeys = (text) => {
+    if (text !== undefined || text !== null) {
+        const length = text.search(".jpg");
+        return text.split("").map((element, index) => index > 0 && index < length ? element : null).join('')
+    } else {
+        return text
+    }
+}

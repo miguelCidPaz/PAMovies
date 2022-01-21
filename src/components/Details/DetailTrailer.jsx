@@ -68,13 +68,11 @@ const DetailTrailer = (props) => {
 
     useEffect(() => {
         setFilm(libraryFilms[index])
-    }, [index, libraryFilms])
+    }, [index])
 
     useEffect(() => {
 
     }, [tab])
-
-    console.log('render en videos')
 
     return (
         <section className="details--main-container details--main-column details--trailer-container">

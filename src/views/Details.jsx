@@ -1,17 +1,19 @@
 import Description from "../components/Details/Description";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { filmDetail } from "../components/Details/Data";
 import Presentation from "../components/Details/Presentation";
 import { Normalizer } from "./../components/Details/Normalizer";
 import DetailTrailer from "../components/Details/DetailTrailer";
 import ContainerCast from "../components/Details/ContainerCast";
 import Omnibar from "../components/Omnibar/Omnibar";
+
 const Details = ({ state }) => {
   const [casting, setCasting] = useState(undefined); //Reparto de la pelicula
   const [director, setDirector] = useState(undefined);
   const [item, setItem] = useState(filmDetail); //Pasara a ser o bien una llamada a la Api o el objeto que reciba por prop
   const params = useParams(); //Parametros de la URL
+  const navigate = useNavigate();
 
   //Url necesaria para las imagenes
   const urlForImages = "https://image.tmdb.org/t/p/w500/";
@@ -29,6 +31,12 @@ const Details = ({ state }) => {
       await fetch(URLPrincipal)
         .then((res) => res.json())
         .then((data) => {
+          if (data.status_code === 34) {
+            navigate("/ERROR")
+          } else if (data.status_code === 404) {
+            navigate("/ERROR")
+          } else {
+          }
           setItem(Normalizer(data, type));
         });
 
@@ -79,10 +87,10 @@ const Details = ({ state }) => {
         {item !== undefined ? <Omnibar id={params.id} value={params.type} /> : null}
 
       </div>
-      {item.video !== null ? (
+
+      {item !== undefined ? (
         <ContainerCast id={params.id}></ContainerCast>
-      ) : null}{" "}
-      {/* Int */}
+      ) : null}
     </>
   );
 };

@@ -1,5 +1,6 @@
 import DetailValorations from "./DetailValorations"
 import { filmDetail } from "./Data"
+import { normalizeKeys } from "./Normalizer";
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import SlotRow from "./SlotRow";
@@ -8,7 +9,7 @@ import ButtonsBack from "./ButtonsBack";
 
 const DetailPresentation = (props) => {
     const params = useParams();
-    const [ratingSave, setRatingSave] = useLocalStorage(props.item.photo_principal, { totalPuntuation: 0, numVotes: 0 })
+    const [ratingSave, setRatingSave] = useLocalStorage(normalizeKeys(props.item.photo_principal), { totalPuntuation: 0, numVotes: 0 })
     const [rating, setRating] = useState(Math.floor(ratingSave.totalPuntuation / ratingSave.numVotes)); //Rating para las estrellas
     const [movie, setMovie] = useState()
 
@@ -22,6 +23,8 @@ const DetailPresentation = (props) => {
             return newArr;
         }
     }
+
+    console.log(ratingSave)
 
     const selectScore = async (value) => {
         setRatingSave({ totalPuntuation: ratingSave.totalPuntuation + parseInt(value), numVotes: ratingSave.numVotes + 1 })
