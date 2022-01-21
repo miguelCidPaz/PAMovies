@@ -1,15 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import ListGenres from '../components/ListGenres/listGenres';
-import {Link} from 'react-router-dom'
+import React from "react";
+import ListGenres from "../components/ListGenres/listGenres";
+import { Link } from "react-router-dom";
 
-function GendersView (props) {
-    {console.log(props)}
-    return (
-        <div className='centerContent'>
-           <Link to="/">Back</Link>
-           <ListGenres/>
-        </div>
-    )
+function GendersView() {
+  return (
+    <div className="centerContent">
+      <Link to="/">Back</Link>
+      <ListGenres />
+    </div>
+  );
 }
-export default GendersView
+export default GendersView;

@@ -12,14 +12,22 @@ import { Button } from "@material-ui/core";
 export function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <ArrowForwardIosIcon className={className} style={{...style, fontSize:"35px", color:"white", height:"50px" }} onClick={onClick}/>   
+    <ArrowForwardIosIcon
+      className={className}
+      style={{ ...style, fontSize: "35px", color: "white", height: "50px" }}
+      onClick={onClick}
+    />
   );
 }
 
 export function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <ArrowBackIosNewIcon className={className} style={{...style, fontSize:"35px",color:"white", height:"50px" }}  onClick={onClick}/>   
+    <ArrowBackIosNewIcon
+      className={className}
+      style={{ ...style, fontSize: "35px", color: "white", height: "50px" }}
+      onClick={onClick}
+    />
   );
 }
 
@@ -28,18 +36,21 @@ export default function Genres(props) {
 
   const [getGenresFilms, setGetGenresFilms] = useState([]);
 
-  useEffect(async () => {
-    await axios
-      .get(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=198b2f6e124efb8ffaed4dd22cc65a8c&language=en-US`
-      )
-      .then((res) => {
-        setGetGenresFilms(res.data.genres);
-      });
+  useEffect(() => {
+    async function getData() {
+      await axios
+        .get(
+          `https://api.themoviedb.org/3/genre/movie/list?api_key=198b2f6e124efb8ffaed4dd22cc65a8c&language=en-US`
+        )
+        .then((res) => {
+          setGetGenresFilms(res.data.genres);
+        });
+    }
+    getData();
   }, []);
 
   let dataGenres = getGenresFilms;
- 
+
   let settings = {
     speed: 500,
     slidesToShow: 3,
@@ -48,7 +59,6 @@ export default function Genres(props) {
     // centerPadding: 55,
     centerMode: true,
     infinite: true,
-    centerMode: true,
     arrows: true,
     focusOnSelect: true,
     nextArrow: <SampleNextArrow />,
@@ -86,27 +96,26 @@ export default function Genres(props) {
       <div className="">
         <div className="row-title">
           <Button
-         
-          onClick={() => {   
-            navigate(`/AllGenres`, {state: dataGenres});
-          }}>ALL CATEGORIES</Button>
+            onClick={() => {
+              navigate(`/AllGenres`, { state: dataGenres });
+            }}
+          >
+            ALL CATEGORIES
+          </Button>
         </div>
 
         <Slider {...settings}>
-        {dataGenres.map((item) => (
-        <div className="news-container" key={item.id}>
-        
-          <GenreType
-            title={item.name}
-            id={item.id}
-            theme={props.genres.src}
-           
-          />
-        </div>
-        ))}
+          {dataGenres.map((item) => (
+            <div className="news-container" key={item.id}>
+              <GenreType
+                title={item.name}
+                id={item.id}
+                theme={props.genres.src}
+              />
+            </div>
+          ))}
         </Slider>
       </div>
     </>
   );
 }
-
