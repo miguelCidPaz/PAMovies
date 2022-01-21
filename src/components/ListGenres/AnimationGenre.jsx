@@ -12,13 +12,13 @@ function AnimationGenre(props) {
       }}
       key={item.id}
     >
-      <p className="ind-title">{item.title}</p>
       <img
         alt="film"
         src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
         height={280}
         width={170}
       />
+      <p className="ind-title">{item.title}</p>
     </div>
   ));
 }

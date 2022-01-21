@@ -1,13 +1,14 @@
 /*Main*/
 
 .main-container {
-  display: flex;
-  flex-direction: column;
-  color: white;
-  justify-content: center;
+  // display: flex;
+  // flex-direction: column;
+  // color: white;
+  // justify-content: center;
   margin: 0 auto;
   width: 90%;
-  max-width: 50rem;
+  // max-width: 50rem;
+
   .title-container {
     display: flex;
     margin: 40px;
@@ -129,15 +130,17 @@ figure .layer {
   .image-film {
     // margin-left: 20px;
     // margin-right: 20px;
-    border: 5px solid transparent;
-    background: black;
-    border-image: linear-gradient(
-        to bottom,
-        rgba(255, 0, 245, 0.7) 0%,
-        rgba(0, 128, 255, 0.918) 100%
-      )
-      1;
+    // border: 5px solid transparent;
+    // background: black;
+    // border-image: linear-gradient(
+    //     to bottom,
+    //     rgba(255, 0, 245, 0.7) 0%,
+    //     rgba(0, 128, 255, 0.918) 100%
+    //   )
+    //   1;
     filter: brightness(0.6);
+
+    box-shadow: -5px -5px 30px -4px $purple, 5px 5px 30px -4px $blue;
   }
 }
 
