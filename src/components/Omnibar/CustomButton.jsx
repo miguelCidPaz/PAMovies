@@ -13,8 +13,9 @@ const CustomButton = (props) => {
                     style={{
                         ...style,
                         color: "white",
-                        width: '50px',
-                        height: '40px',
+                        width: '100px',
+                        height: '100px',
+                        padding: '10px'
                     }}
                     onClick={onClick}
                 />
@@ -27,8 +28,9 @@ const CustomButton = (props) => {
                         ...style,
                         color: "white",
                         right: "0px",
-                        width: '50px',
-                        height: '40px',
+                        width: '100px',
+                        height: '100px',
+                        padding: '10px'
                     }}
 
                     onClick={onClick}

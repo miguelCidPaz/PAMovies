@@ -25,7 +25,9 @@ export const decisionForType = async (value, id) => {
                 fetch(URLPrincipal)
                     .then((res) => res.json())
                     .then(data => {
-                        resolve(iteratorObjects(data.crew, 'movie_credits'))
+                        if (data.status_code === 200) {
+                            resolve(iteratorObjects(data.crew, 'movie_credits'))
+                        }
                     });
             })
             return promise
@@ -47,9 +49,7 @@ export const decisionForType = async (value, id) => {
 
 const iteratorObjects = (data, media) => {
     if (data !== undefined) {
-        const newArr = data.map((element) => {
-            return OmniNormalizer(element, media)
-        })
+        const newArr = data.map((element, index) => index < 30 ? OmniNormalizer(element, media) : null)
         return newArr;
     }
 }
@@ -68,7 +68,7 @@ const OmniNormalizer = (data, media) => {
         switch (media) {
             case 'similar':
                 newObject.title = data.original_title;
-                newObject.subtitle = data.department;
+                newObject.subtitle = undefined;
                 newObject.photo = data.poster_path;
                 newObject.date = data.release_date;
                 newObject.id = data.id;
@@ -76,8 +76,8 @@ const OmniNormalizer = (data, media) => {
 
             case 'movie_credits':
                 newObject.title = data.title;
-                newObject.subtitle = undefined;
-                newObject.photo = data.poster_path;
+                newObject.subtitle = data.department;
+                newObject.photo = data.poster_path !== null ? data.poster_path : undefined;
                 newObject.date = data.release_date;
                 newObject.id = data.id;
                 return newObject

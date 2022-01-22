@@ -13,6 +13,7 @@ const Details = ({ state }) => {
   const [director, setDirector] = useState(undefined);
   const [item, setItem] = useState(filmDetail); //Pasara a ser o bien una llamada a la Api o el objeto que reciba por prop
   const params = useParams(); //Parametros de la URL
+  const [saveparams, setSaveParams] = useState({ type: params.type, id: params.id });
   const navigate = useNavigate();
 
   //Url necesaria para las imagenes
@@ -53,6 +54,7 @@ const Details = ({ state }) => {
       }
     };
     requestApi();
+    setSaveParams({ type: params.type, id: params.id })
   }, [params]);
 
   //Controlando renders innecesarios
@@ -79,12 +81,17 @@ const Details = ({ state }) => {
           <div className="details--container-spinner"><span className="details--spinner"></span></div>}
 
 
-        {item.video !== null ?
+        {item.video !== null && params.type === 'movie' ?
           <DetailTrailer id={params.id} />
           :
           null} {/* Int */}
 
-        {item !== undefined ? <Omnibar id={params.id} value={params.type} /> : null}
+        {item !== undefined && item !== null
+          ? <Omnibar
+            text={item.video !== null ? 'Similar movies' : 'Other works'}
+            id={saveparams.id}
+            value={saveparams.type} />
+          : null}
 
       </div>
 

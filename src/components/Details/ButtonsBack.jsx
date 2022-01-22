@@ -13,7 +13,7 @@ const ButtonsBack = (props) => {
     //Route detecta que estamos en la misma ruta, asi que creamos un objeto sustituto con una clave unica para forzarlo
     const routeLink = (id, type) => {
         return {
-            pathname: type !== null ? props.inMovie ? '/' : `/details/${type}/${id.movie}` : '/',
+            pathname: type !== null ? props.inMovie ? '/' : `/details/${type}/${id}` : '/',
             key: Math.random(), // we could use Math.random, but that's not guaranteed unique.
             state: {
                 applied: true

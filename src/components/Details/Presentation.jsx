@@ -85,11 +85,11 @@ const DetailPresentation = (props) => {
 
             </div>
 
-            {props.item.date !== null || params.type === 'person' ?
+            {props.item.video !== null || params.type === 'person' ?
                 <ButtonsBack
                     type={props.item.video !== null ? null : 'movie'} //true -> a main || false -> a movie
                     //Con type distinguimos si entramos con movie en recamara o a pelo
-                    idSaved={props.item.video !== null ? { movie } : null}
+                    idSaved={props.item.video !== null ? movie !== undefined ? movie : null : null}
                     inMovie={params.type === 'movie' ? true : false}
                     movieName={props.item.video !== null ? props.item.name : null}
                 />
