@@ -29,14 +29,6 @@ export const decisionForType = async (value, id) => {
                     });
             })
             return promise
-        /*         //Generos
-                case 'genres':
-                    console.log(value)
-                    break;
-                //Birthdays
-                case 'birthday':
-                    console.log(value)
-                    break; */
         default:
             console.log(value)
             break;

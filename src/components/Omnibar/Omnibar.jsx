@@ -32,7 +32,7 @@ const Omnibar = (props) => {
     //console.log(decisionForType(props.value, props.id))
     return (
         <>
-            {item !== undefined && item !== null && item.length > 2
+            {item !== undefined && item !== null && item.length > 3
                 ? <section className="omnibar--main-container">
                     <Divisor title={props.text} />
                     <div className='omnibar--container-slider'>
@@ -41,7 +41,10 @@ const Omnibar = (props) => {
                                 return (
                                     <>
                                         {index < item.length 
-                                        ? <OmniItem element={element}/>
+                                        ? <OmniItem 
+                                        element={element}
+                                        type={props.value}
+                                        />
                                         : null}
                                     </>
                                 )

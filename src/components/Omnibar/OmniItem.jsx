@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { reduxName } from "./LogicAdapt";
+import { reduxName } from "./LogicAdapt"
+import { Link } from "react-router-dom";
 
 const OmniItem = (props) => {
     const [item, setItem] = useState();
@@ -12,11 +13,29 @@ const OmniItem = (props) => {
             setItem(props.element)
         }
     },[props])
-    console.log(item)
+
+    const routeLink = (id) => {
+        return {
+            pathname: `/details/movie/${id}`,
+            key: Math.random(), // we could use Math.random, but that's not guaranteed unique.
+            state: {
+                applied: true
+            }
+        }
+    }
+
+    const scrollToTop = () => {
+        // eslint-disable-next-line no-restricted-globals
+        scroll.scrollToTop();
+    };
+
     return(
     <div className='omnibar--external-frame'>
         {item !== undefined && item !== null  
-    ? <div className='omnibar--internal-frame'>
+    ? <Link 
+    onClick={() => scrollToTop()}
+    to={routeLink(item.id)}
+    className='omnibar--internal-frame'>
         <p className='omnibar--title-frame'>{reduxName(item.title) + '...'}</p>
         <img className='omnibar--poster-photo' 
         src={item.photo !== null && item.photo !== undefined 
@@ -26,7 +45,7 @@ const OmniItem = (props) => {
         {item.subtitle !== undefined
             ? <p className='omnibar--subtitle-frame'>{item.subtitle}</p>
             : null}
-    </div>
+    </Link>
     : null}
 </div>)
 }
