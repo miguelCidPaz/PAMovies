@@ -91,8 +91,8 @@ export const reduxName = (text) => {
         return text
     }
     const newArr = text.split(' ').filter((element, index) => index < numCharacters ? element : null).join('')
-    if(newArr.length > numCharacters*4){
-        return text.split('').filter((element, index) => index < numCharacters*4 ? element : null).join('')
+    if(newArr.length > numCharacters*3){
+        return text.split('').filter((element, index) => index < numCharacters*3 ? element : null).join('')
     }else{
         return newArr
     }

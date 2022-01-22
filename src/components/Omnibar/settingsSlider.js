@@ -2,11 +2,11 @@ import CustomButton from "./CustomButton";
 
 export default function settingsSlider() {
     const settings = {
-        // infinite: true,
+        infinite: true,
         speed: 500,
-        slidesToShow: 5,
+        slidesToShow: 4,
         slidesToScroll: 2,
-        initialSlide: 2,
+        initialSlide: 1,
 
         className: "omnibar--class-slider",
         nextArrow: <CustomButton value={true} className='omnibar--back-arrow' />, //Cambiar
