@@ -25,8 +25,7 @@ const OmniItem = (props) => {
     }
 
     const scrollToTop = () => {
-        // eslint-disable-next-line no-restricted-globals
-        scroll.scrollToTop();
+        window.scrollTo(0, 0)
     };
 
     return(

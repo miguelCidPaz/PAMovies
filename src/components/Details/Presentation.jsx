@@ -77,7 +77,7 @@ const DetailPresentation = (props) => {
 
                 {props.casting !== undefined ?
                     <SlotRow
-                        title={"Reparto: "} //Texto a resaltar, el titulo
+                        title={props.casting.length !== 0 ? "Reparto: " : null} //Texto a resaltar, el titulo
                         areLinks={true} //Para señalar si el arr debe ser de links o no
                         items={props.casting} //El item es un arr de items
                     />
