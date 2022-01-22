@@ -19,6 +19,7 @@ const LogicCast = (props) => {
       }
     };
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props]);
   useEffect(() => {
     let itemArr = [];
@@ -39,6 +40,7 @@ const LogicCast = (props) => {
       })
     );
     setIems(itemArr);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   return (
