@@ -1,5 +1,6 @@
 import DetailValorations from "./DetailValorations"
 import { filmDetail } from "./Data"
+import { normalizeKeys } from "./Normalizer";
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import SlotRow from "./SlotRow";
@@ -8,7 +9,7 @@ import ButtonsBack from "./ButtonsBack";
 
 const DetailPresentation = (props) => {
     const params = useParams();
-    const [ratingSave, setRatingSave] = useLocalStorage(props.item.photo_principal, { totalPuntuation: 0, numVotes: 0 })
+    const [ratingSave, setRatingSave] = useLocalStorage(normalizeKeys(props.item.photo_principal), { totalPuntuation: 0, numVotes: 0 })
     const [rating, setRating] = useState(Math.floor(ratingSave.totalPuntuation / ratingSave.numVotes)); //Rating para las estrellas
     const [movie, setMovie] = useState()
 
@@ -34,7 +35,7 @@ const DetailPresentation = (props) => {
             setMovie(params.id);
         }
 
-    }, [props, rating, ratingSave])
+    }, [params.id, params.type, props, rating, ratingSave])
 
     return (
         <section className="details--main-container">
@@ -84,13 +85,13 @@ const DetailPresentation = (props) => {
 
             </div>
 
-            {props.item.date !== null ?
+            {props.item.video !== null || params.type === 'person' ?
                 <ButtonsBack
-                    type={props.casting !== undefined ? 'movie' : null} //true -> a main || false -> a movie
+                    type={props.item.video !== null ? null : 'movie'} //true -> a main || false -> a movie
                     //Con type distinguimos si entramos con movie en recamara o a pelo
-                    idSaved={movie}
+                    idSaved={props.item.video !== null ? movie !== undefined ? movie : null : null}
                     inMovie={params.type === 'movie' ? true : false}
-                    movieName={params.type === 'movie' ? props.item.name : null}
+                    movieName={props.item.video !== null ? props.item.name : null}
                 />
                 :
                 null}

@@ -38,7 +38,7 @@ export const Normalizer = (data, type) => {
             normalize.details = undefined;
             normalize.video = null;
             normalize.date = data.birthday;
-            normalize.countries = data.place_of_birth.split(",")
+            normalize.countries = data.place_of_birth !== null ? data.place_of_birth.split(",") : undefined
             break;
 
         default:
@@ -54,4 +54,13 @@ export const shortString = (text) => {
         return text
     }
     return text.split("").map((element, index) => index < 30 ? element : null)
+}
+
+export const normalizeKeys = (text) => {
+    if (text !== undefined && text !== null) {
+        const length = text.search(".jpg");
+        return text.split("").map((element, index) => index > 0 && index < length ? element : null).join('')
+    } else {
+        return text
+    }
 }
