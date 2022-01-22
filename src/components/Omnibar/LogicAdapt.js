@@ -14,7 +14,11 @@ export const decisionForType = async (value, id) => {
                 fetch(URLPrincipal)
                     .then((res) => res.json())
                     .then(data => {
-                        resolve(iteratorObjects(data.results, 'similar'))
+                        if (data.status_code === 200) {
+                            resolve(iteratorObjects(data.results, 'similar'))
+                        } else {
+                            console.log(data.status_code)
+                        }
                     });
             })
             return promise
@@ -27,6 +31,8 @@ export const decisionForType = async (value, id) => {
                     .then(data => {
                         if (data.status_code === 200) {
                             resolve(iteratorObjects(data.crew, 'movie_credits'))
+                        } else {
+                            console.log(data.status_code)
                         }
                     });
             })
