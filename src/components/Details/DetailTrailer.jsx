@@ -62,7 +62,6 @@ const DetailTrailer = (props) => {
     }
 
     useEffect(() => {
-        console.log('desde effect')
         requestApi();
     }, [props])
 

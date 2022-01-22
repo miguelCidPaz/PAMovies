@@ -17,7 +17,6 @@ export const decisionForType = async (value, id) => {
                         resolve(iteratorObjects(data.results, 'similar'))
                     });
             })
-            console.log(promise)
             return promise
         //Credits
         case 'person':
@@ -29,7 +28,6 @@ export const decisionForType = async (value, id) => {
                         resolve(iteratorObjects(data.crew, 'movie_credits'))
                     });
             })
-            console.log(promise)
             return promise
         /*         //Generos
                 case 'genres':

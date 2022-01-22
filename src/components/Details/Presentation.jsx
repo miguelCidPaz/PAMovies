@@ -35,7 +35,7 @@ const DetailPresentation = (props) => {
             setMovie(params.id);
         }
 
-    }, [props, rating, ratingSave])
+    }, [params.id, params.type, props, rating, ratingSave])
 
     return (
         <section className="details--main-container">
@@ -85,13 +85,13 @@ const DetailPresentation = (props) => {
 
             </div>
 
-            {props.item.date !== null ?
+            {props.item.date !== null || params.type === 'person' ?
                 <ButtonsBack
-                    type={props.casting !== undefined ? 'movie' : null} //true -> a main || false -> a movie
+                    type={props.item.video !== null ? null : 'movie'} //true -> a main || false -> a movie
                     //Con type distinguimos si entramos con movie en recamara o a pelo
-                    idSaved={movie}
+                    idSaved={props.item.video !== null ? { movie } : null}
                     inMovie={params.type === 'movie' ? true : false}
-                    movieName={params.type === 'movie' ? props.item.name : null}
+                    movieName={props.item.video !== null ? props.item.name : null}
                 />
                 :
                 null}
