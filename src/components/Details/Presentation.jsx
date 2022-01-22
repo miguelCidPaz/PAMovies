@@ -15,11 +15,7 @@ const DetailPresentation = (props) => {
 
     const filterDirecting = (directing) => {
         if (directing !== undefined) {
-            const newArr = directing.filter(element => {
-                if (element.department === 'Directing') {
-                    return element
-                }
-            })
+            const newArr = directing.filter(element => element.department === 'Directing')
             return newArr;
         }
     }
