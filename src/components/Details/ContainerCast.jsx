@@ -1,5 +1,5 @@
 import axios from "axios";
-import react, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Cast from "../cast/Cast";
 
 const LogicCast = (props) => {
@@ -19,7 +19,7 @@ const LogicCast = (props) => {
       }
     };
     fetchData();
-  }, [props]);
+  }, [id, props]);
   useEffect(() => {
     let itemArr = [];
     data.cast?.slice(0, 4).map((element) =>
@@ -39,7 +39,7 @@ const LogicCast = (props) => {
       })
     );
     setIems(itemArr);
-  }, [data]);
+  }, [data, link]);
 
   return (
     <>
