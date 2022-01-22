@@ -26,6 +26,7 @@ const NavBox = (props) => {
   useEffect(() => {
     setSlot(parseLibrary());
     setTable(props.newTab);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props]);
 
   return (

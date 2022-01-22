@@ -3,7 +3,7 @@ import settingsSlider from './settingsSlider';
 import OmniItem from './OmniItem';
 import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
-import { decisionForType, reduxName } from './LogicAdapt';
+import { decisionForType } from './LogicAdapt';
 
 /* Que tendra Omnibar
 -id de busqueda
@@ -12,10 +12,6 @@ import { decisionForType, reduxName } from './LogicAdapt';
 
 const Omnibar = (props) => {
     const [item, setItem] = useState(undefined);
-    const [names, setNames] = useState([]);
-
-    const urlForImages = "https://image.tmdb.org/t/p/w500/";
-    const image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzG-F0HI6B8FiuAd97Mdps0ky1u-q58Q8iqA&usqp=CAU"
 
     useEffect(() => {
         const respuesta = async () => {

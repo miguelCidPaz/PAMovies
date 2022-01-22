@@ -1,5 +1,5 @@
 import axios from "axios";
-import react, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Cast from "../cast/Cast";
 
 const LogicCast = (props) => {
