@@ -31,7 +31,7 @@ const NavBox = (props) => {
 
   return (
     <div className="details--main-column details--container-secondary">
-      {slot[table][0] !== undefined && slot[table][0] !== undefined
+      {slot !== null && slot[table][0] !== undefined
         ? slot[table][0].map((element, index) => (
           <p
             key={index}
