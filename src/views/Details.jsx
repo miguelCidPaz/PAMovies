@@ -95,7 +95,7 @@ const Details = ({ state }) => {
 
       </div>
 
-      {item !== undefined ? (
+      {item !== undefined && params.type === 'movie' ? (
         <ContainerCast id={params.id}></ContainerCast>
       ) : null}
     </>
