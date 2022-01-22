@@ -86,12 +86,12 @@ const Details = ({ state }) => {
           :
           null} {/* Int */}
 
-        {/* {item !== undefined && item !== null
+        {item !== undefined && item !== null
           ? <Omnibar
             text={item.video !== null ? 'Similar movies' : 'Other works'}
             id={saveparams.id}
             value={saveparams.type} />
-          : null} */}
+          : null}
 
       </div>
 

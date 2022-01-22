@@ -47,8 +47,10 @@ export const decisionForType = async (value, id) => {
 
 const iteratorObjects = (data, media) => {
     if (data !== undefined) {
-        const newArr = data.map((element, index) => index < 30 ? OmniNormalizer(element, media) : null)
-        return newArr;
+        const newArr = data.map((element, index) => index < 30 && element.adult === false ? OmniNormalizer(element, media) : null)
+        const conjunto = new Set(newArr);
+        const unicos = [...conjunto];
+        return unicos
     }
 }
 
@@ -58,6 +60,7 @@ const OmniNormalizer = (data, media) => {
         const newObject = {
             title: undefined, //titulo
             subtitle: undefined, // trabajo
+            adult: undefined, // Evitar porno
             photo: undefined, // foto
             date: undefined, // fecha
             id: undefined // idBusqueda
@@ -67,6 +70,7 @@ const OmniNormalizer = (data, media) => {
             case 'similar':
                 newObject.title = data.original_title;
                 newObject.subtitle = undefined;
+                newObject.adult = data.adult;
                 newObject.photo = data.poster_path;
                 newObject.date = data.release_date;
                 newObject.id = data.id;
@@ -75,6 +79,7 @@ const OmniNormalizer = (data, media) => {
             case 'movie_credits':
                 newObject.title = data.title;
                 newObject.subtitle = data.department;
+                newObject.adult = data.adult;
                 newObject.photo = data.poster_path !== null ? data.poster_path : undefined;
                 newObject.date = data.release_date;
                 newObject.id = data.id;
@@ -85,5 +90,18 @@ const OmniNormalizer = (data, media) => {
         }
     } else {
         return undefined
+    }
+}
+
+export const reduxName = (text) => {
+    const numCharacters = 2
+    if (text === undefined || text === null || text.split(' ').length < numCharacters) {
+        return text
+    }
+    const newArr = text.split(' ').filter((element, index) => index < numCharacters ? element : null).join('')
+    if(newArr.length > numCharacters*4){
+        return text.split('').filter((element, index) => index < numCharacters*4 ? element : null).join('')
+    }else{
+        return newArr
     }
 }

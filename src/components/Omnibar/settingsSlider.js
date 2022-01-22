@@ -15,14 +15,15 @@ export default function settingsSlider() {
             {
                 breakpoint: 1441,
                 settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 2,
+                    centerMode: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
                 },
             },
             {
                 breakpoint: 1025,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 2,
                     slidesToScroll: 1,
                 },
             },
