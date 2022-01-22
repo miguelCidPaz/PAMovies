@@ -10,44 +10,45 @@ import { decisionForType } from './LogicAdapt';
 */
 
 const Omnibar = (props) => {
-    const [item, setItem] = useState();
-
-    const respuesta = async () => {
-        const response = await decisionForType(props.value, props.id)
-        setItem(response);
-    }
+    const [item, setItem] = useState(undefined);
 
     useEffect(() => {
+        const respuesta = async () => {
+            const response = await decisionForType(props.value, props.id)
+            setItem(response);
+        }
         respuesta();
-    }, [])
+    }, [props])
 
     console.log(item)
+
     //console.log(decisionForType(props.value, props.id))
-    return (
-        <section className="omnibar--main-container">
+    return (<>
+        {item !== undefined && item.length > 0 ? <section className="omnibar--main-container">
             <Divisor title="Omnibar" />
             <div className='omnibar--container-slider'>
-                {item !== undefined ?
-                    <Slider {...settingsSlider()}>
-                        {item.map((element, index) => {
-                            return (
-                                <div className='omnibar--external-frame'>
-                                    <div className='omnibar--internal-frame'>
-                                        <p className='omnibar--title-frame'>
-                                            {element.original_title}
-                                        </p>
-                                    </div>
+
+                <Slider {...settingsSlider()}>
+                    {item.map((element, index) => {
+                        return (
+                            <div className='omnibar--external-frame'>
+                                <div className='omnibar--internal-frame'>
+                                    <p className='omnibar--title-frame'>
+                                        {element.title}
+                                    </p>
                                 </div>
-                            )
-                        })}
-                    </Slider>
-                    :
-                    <div className="details--container-spinner"><span className="details--spinner"></span></div>}
+                            </div>
+                        )
+                    })}
+                </Slider>
             </div>
 
 
 
         </section>
+            :
+            null}
+    </>
     )
 
 }

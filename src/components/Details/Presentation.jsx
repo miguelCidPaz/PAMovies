@@ -24,8 +24,6 @@ const DetailPresentation = (props) => {
         }
     }
 
-    console.log(ratingSave)
-
     const selectScore = async (value) => {
         setRatingSave({ totalPuntuation: ratingSave.totalPuntuation + parseInt(value), numVotes: ratingSave.numVotes + 1 })
         setRating(value)
