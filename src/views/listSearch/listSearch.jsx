@@ -34,7 +34,7 @@ function ListSearch() {
             </div>
           </div>
         ))}
-        {console.log(location)}
+        {/* {console.log(location)} */}
       </div>
     </div>
   );
