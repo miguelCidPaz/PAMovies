@@ -63,10 +63,12 @@ const DetailTrailer = (props) => {
 
     useEffect(() => {
         requestApi();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props])
 
     useEffect(() => {
         setFilm(libraryFilms[index])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [index])
 
     useEffect(() => {
