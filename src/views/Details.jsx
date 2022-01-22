@@ -55,6 +55,7 @@ const Details = ({ state }) => {
     };
     requestApi();
     setSaveParams({ type: params.type, id: params.id })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 
   //Controlando renders innecesarios
