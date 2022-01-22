@@ -24,6 +24,7 @@ const LogicCast = (props) => {
     let itemArr = [];
     data.cast?.slice(0, 4).map((element) =>
       itemArr.push({
+        id: element.id,
         picture: link + element.profile_path,
         item: element.known_for_department,
         name: element.name,
@@ -31,6 +32,7 @@ const LogicCast = (props) => {
     );
     data.crew?.slice(0, 4).map((element) =>
       itemArr.push({
+        id: element.id,
         picture: link + element.profile_path,
         item: element.known_for_department,
         name: element.name,

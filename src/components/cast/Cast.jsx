@@ -1,8 +1,10 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import ImageNotSupportedIcon from "@mui/icons-material/ImageNotSupported";
 import Divisor from "../Divisor/Divisor";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
 
@@ -43,6 +45,7 @@ function SamplePrevArrow(props) {
 }
 
 const Cast = (props) => {
+  const navigate = useNavigate();
   let settings = {
     infinite: true,
     speed: 500,
@@ -95,7 +98,13 @@ const Cast = (props) => {
       </div>
       <Slider {...settings}>
         {props.element?.map((element, key) => (
-          <div key={key} className="container-cast">
+          <div
+            onClick={() => {
+              navigate(`/details/person/${element.id}`);
+            }}
+            key={key}
+            className="container-cast"
+          >
             {element.picture?.includes("null") ? (
               <ImageNotSupportedIcon className="img-cast"></ImageNotSupportedIcon>
             ) : (
