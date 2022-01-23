@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import ImageNotSupportedIcon from "@mui/icons-material/ImageNotSupported";
 import Divisor from "../Divisor/Divisor";

@@ -1,13 +1,17 @@
 /*AllGenres*/
 
-.containerGenres{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
+.containerGenres {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: inherit;
+  justify-content: space-around;
 
-.big{
-font-size:25px;
+  .centerGender {
+    font-size: 25px;
+  }
+  .image-film:hover {
+    filter: brightness(1);
+    box-shadow: -5px 0 15px $purple, 5px 0 15px $blue;
+  }
 }
