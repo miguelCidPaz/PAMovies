@@ -12,7 +12,6 @@ const Details = ({ state }) => {
   const [casting, setCasting] = useState(undefined); //Reparto de la pelicula
   const [director, setDirector] = useState(undefined);
   const [item, setItem] = useState(filmDetail); //Pasara a ser o bien una llamada a la Api o el objeto que reciba por prop
-  const [rating, setRating] = useState(0)
   const params = useParams(); //Parametros de la URL
   const [saveparams, setSaveParams] = useState({ type: params.type, id: params.id });
   const navigate = useNavigate();
@@ -60,9 +59,6 @@ const Details = ({ state }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 
-  //Controlando renders innecesarios
-  console.log("Render en details");
-
   return (
     <>
       <div className="container">
@@ -75,7 +71,6 @@ const Details = ({ state }) => {
             item={item} //Objeto con datos de la api
             casting={casting} //Array de Objetos
             director={director} //Array de Objetos
-            rating={0}
           />
         ) : (
           <div className="details--container-spinner">
