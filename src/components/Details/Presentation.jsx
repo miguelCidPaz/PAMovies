@@ -10,8 +10,10 @@ import ButtonsBack from "./ButtonsBack";
 const DetailPresentation = (props) => {
     const params = useParams();
     const [ratingSave, setRatingSave] = useLocalStorage(normalizeKeys(props.item.photo_principal), { totalPuntuation: 0, numVotes: 0 })
-    const [rating, setRating] = useState(Math.floor(ratingSave.totalPuntuation / ratingSave.numVotes)); //Rating para las estrellas
+    const [rating, setRating] = useState(props.rating); //Rating para las estrellas
     const [movie, setMovie] = useState()
+    const [id, setID] = useState(0)
+    const [type, setType] = useState(0)
     
 
     const filterDirecting = (directing) => {
@@ -21,9 +23,14 @@ const DetailPresentation = (props) => {
         }
     }
 
-    const selectScore = async (value) => {
-        setRatingSave({ totalPuntuation: ratingSave.totalPuntuation + parseInt(value), numVotes: ratingSave.numVotes + 1 })
+    const selectScore = (value) => {
+/*         console.log(value) */
+        setRatingSave({ 
+            totalPuntuation: ratingSave.totalPuntuation + parseInt(value), 
+            numVotes: ratingSave.numVotes + 1 })
+
         setRating(value)
+/*         console.log(ratingSave) */
     };
 
     useEffect(() => {
@@ -32,7 +39,22 @@ const DetailPresentation = (props) => {
             setMovie(params.id);
         }
 
-    }, [params.id, params.type, props, rating, ratingSave])
+        if(id !== params.id){
+            setID(params.id)
+        }
+
+        if(type !== params.type){
+            setType(params.type)
+        }
+
+/*         if(rating !== ratingSave.totalPuntuation){
+            setRating(ratingSave.totalPuntuation)
+        } */
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props, params, rating, ratingSave])
+
+    console.log('evaluando valorations')
 
     return (
         <section className="details--main-container">
@@ -60,7 +82,8 @@ const DetailPresentation = (props) => {
                     ?<p>({props.item.date})</p> 
                     : null}
                     
-                    {props.item.date !== null ?
+                    {props.item.photo_principal !== null
+                    && props.item.photo_principal !== undefined ?
                         <DetailValorations
                             puntuation={rating}
                             media={(ratingSave.totalPuntuation / ratingSave.numVotes) <= 0 ? 0 : Math.floor(ratingSave.totalPuntuation / ratingSave.numVotes) || 0}

@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 
 const DetailValorations = (props) => {
-    const [isSelect, setIsSelect] = useState(0);
+    const [isSelect, setIsSelect] = useState(props.media);
 
     useEffect(() => {
-
+        setIsSelect(props.media)
     }, [props])
 
     return (
