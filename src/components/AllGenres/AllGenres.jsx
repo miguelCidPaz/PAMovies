@@ -8,9 +8,9 @@ export default function AllGenres() {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="container">
       <Divisor title="ALL CATEGORIES"></Divisor>
-      <div className="containerGenres container">
+      <div className="containerGenres ">
         {location.map((element) => (
           <div
             className="type-container"

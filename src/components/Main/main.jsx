@@ -26,17 +26,13 @@ export default function Main() {
   return (
     <div className="container">
       <Divisor title="PREMIERES"></Divisor>
-      <div className="main-container ">
-        <div className="films-container background-color">
-          <NewFilms data={data} />
-        </div>
+      <div className="main-container background-color">
+        <NewFilms data={data} />
       </div>
 
       <Divisor title="CATEGORIES"></Divisor>
       <div className="main-container">
-        <div className="distribution">
-          <Genres genres={genres} data={data} />
-        </div>
+        <Genres genres={genres} data={data} />
       </div>
     </div>
   );

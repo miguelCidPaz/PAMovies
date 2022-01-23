@@ -1,28 +1,10 @@
 /*Main*/
 
 .main-container {
-  // display: flex;
-  // flex-direction: column;
-  // color: white;
-  // justify-content: center;
   margin: 0 auto;
-  width: 90%;
-  // max-width: 50rem;
-
-  .title-container {
-    display: flex;
-    margin: 40px;
-    justify-content: center;
-    align-items: center;
-  }
 }
 
 /*newFilms*/
-.news-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .full-container {
   display: flex;
@@ -32,7 +14,6 @@
 
   figure {
     position: relative;
-
     overflow: hidden;
   }
 
@@ -44,9 +25,9 @@
 
 figure .layer {
   position: absolute;
-  top: 50%;
+  top: 0;
   width: 100%;
-  height: 50%;
+  height: 100%;
   background: rgba(0, 4, 7, 0.8);
   opacity: 0;
   visibility: hidden;
@@ -61,15 +42,15 @@ figure .layer {
 
 .full-container figure:hover > .layer p {
   opacity: 1;
-  margin-top: 15px;
+  margin-top: 35px;
   margin-bottom: 15px;
-  font-size: 18px;
+  font-size: 22px;
   visibility: visible;
 }
 
 .full-container figure > .layer > div {
   opacity: 1;
-  margin-top: 6px;
+  margin-top: 40%;
   margin-bottom: 5px;
   font-size: 9px;
   visibility: visible;
@@ -77,7 +58,7 @@ figure .layer {
 }
 .full-container figure:hover > .layer > div {
   opacity: 1;
-  margin-top: 25px;
+  margin-top: 40%;
   margin-bottom: 20px;
   font-size: 18px;
   visibility: visible;
@@ -103,48 +84,40 @@ figure .layer {
   }
 }
 
-// .film-container {
-//   // margin-left: 34px;
-//   // display: flex;
-//   // flex-direction: row;
-//   // min-height: 4rem;
-//   // align-items: center;
-//   // margin: 20px;
-// }
+/*color del botón Allgenres*/
+span.MuiButton-label {
+  font-size: 15px;
+  color: #fff;
+}
 
 /*GenreType*/
 .type-container {
   position: relative;
   display: inline-block;
   text-align: center;
-  font-size: 20px;
-  margin-left: 10px;
+  margin: 22px 0px;
 
+  &:hover {
+    box-shadow: -5px 0 15px $purple, 5px 0 15px $blue;
+  }
   .centerGender {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
+}
+.image-film {
+  margin: 0 auto 0;
+  filter: brightness(0.5);
+  box-shadow: -5px -5px 30px -4px $purple, 5px 5px 30px -4px $blue;
 
-  .image-film {
-    // margin-left: 20px;
-    // margin-right: 20px;
-    // border: 5px solid transparent;
-    // background: black;
-    // border-image: linear-gradient(
-    //     to bottom,
-    //     rgba(255, 0, 245, 0.7) 0%,
-    //     rgba(0, 128, 255, 0.918) 100%
-    //   )
-    //   1;
-    filter: brightness(0.6);
-
-    box-shadow: -5px -5px 30px -4px $purple, 5px 5px 30px -4px $blue;
+  &:hover {
+    filter: brightness(1);
   }
 }
 
-/*botones de librería react slick*/
+/*circulitos de librería react slick*/
 .container .slick-dots {
   position: relative;
   display: inline-block;
