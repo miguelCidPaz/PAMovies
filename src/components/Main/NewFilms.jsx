@@ -2,28 +2,31 @@ import React from "react";
 import Slider from "react-slick";
 import Film from "./Film";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 export function SampleNextArrow(props) {
   const { className, style, onClick } = props;
-
   return (
-    <ArrowForwardIosIcon
-      className={className}
-      style={{ ...style, color: "white", fontSize: "35px" }}
-      onClick={onClick}
-    />
+    <div className="arrows arrow-2">
+      <ArrowForwardIosIcon
+        className={className}
+        style={{ ...style, fontSize: "35px", color: "white", right: "-35px" }}
+        onClick={onClick}
+      />
+    </div>
   );
 }
 
 export function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <ArrowBackIosIcon
-      className={className}
-      style={{ ...style, color: "white", fontSize: "35px", height: "50px" }}
-      onClick={onClick}
-    />
+    <div className="arrows arrow-1">
+      <ArrowBackIosNewIcon
+        className={className}
+        style={{ ...style, fontSize: "35px", color: "white", left: "-32px" }}
+        onClick={onClick}
+      />
+    </div>
   );
 }
 
@@ -36,11 +39,11 @@ export default function NewFilms(props) {
     initialSlide: 3,
     arrows: true,
     autoplay: true,
+    className: "container-slider-films",
     autoplaySpeed: 3000,
     focusOnSelect: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
-    className: "news-slider",
     rows: 2,
     responsive: [
       {
@@ -73,7 +76,7 @@ export default function NewFilms(props) {
     <>
       <Slider {...settings}>
         {props.data.map((item) => (
-          <div className="news-container" key={item.id}>
+          <div key={item.id}>
             <Film item={item} />
           </div>
         ))}

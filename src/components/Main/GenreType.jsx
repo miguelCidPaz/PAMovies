@@ -11,7 +11,6 @@ function GenreType(props) {
 
   return (
     <div
-      className="type-container"
       newid={myID.id}
       newtitle={myID.title}
       onClick={() => {
@@ -21,9 +20,9 @@ function GenreType(props) {
     >
       <img
         src={props.theme}
-        className="image-film"
-        width={"220px"}
-        height={"350px"}
+        className="image-genres"
+        // width={190}
+        // height={300}
         alt="film"
       />
       <div>

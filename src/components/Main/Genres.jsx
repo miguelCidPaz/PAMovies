@@ -12,22 +12,26 @@ import { Button } from "@material-ui/core";
 export function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <ArrowForwardIosIcon
-      className={className}
-      style={{ ...style, fontSize: "35px", color: "white", height: "50px" }}
-      onClick={onClick}
-    />
+    <div className="arrows arrow-2">
+      <ArrowForwardIosIcon
+        className={className}
+        style={{ ...style, fontSize: "35px", color: "white", right: "-13px" }}
+        onClick={onClick}
+      />
+    </div>
   );
 }
 
 export function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <ArrowBackIosNewIcon
-      className={className}
-      style={{ ...style, fontSize: "35px", color: "white", height: "50px" }}
-      onClick={onClick}
-    />
+    <div className="arrows arrow-1">
+      <ArrowBackIosNewIcon
+        className={className}
+        style={{ ...style, fontSize: "35px", color: "white", left: "-5%" }}
+        onClick={onClick}
+      />
+    </div>
   );
 }
 
@@ -52,40 +56,50 @@ export default function Genres(props) {
   let dataGenres = getGenresFilms;
 
   let settings = {
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    // centerPadding: 55,
-    centerMode: true,
-    infinite: true,
+    dots: true,
+    speed: 2000,
+    slidesToShow: 4,
+    slidesToScroll: 3,
+    initialSlide: 3,
     arrows: true,
+    className: "container-slider-genres",
     focusOnSelect: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
-    rows: 1,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1441,
         settings: {
-          rows: 1,
-          slidesToShow: 2,
-          slidesToScroll: 3,
+          slidesToShow: 3,
+          centerMode: true,
+          slidesToScroll: 2,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 1025,
         settings: {
-          rows: 1,
           slidesToShow: 2,
-          slidesToScroll: 3,
+          slidesToScroll: 2,
+          centerMode: true,
+          centerPadding: "60px",
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: "10px",
         },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: "75px",
         },
       },
     ],
@@ -93,29 +107,26 @@ export default function Genres(props) {
 
   return (
     <>
-      <div className="">
-        <div className="row-title">
-          <Button
-            onClick={() => {
-              navigate(`/AllGenres`, { state: dataGenres });
-            }}
-          >
-            ALL CATEGORIES
-          </Button>
-        </div>
+      <Button
+        className="buttonAll"
+        onClick={() => {
+          navigate(`/AllGenres`, { state: dataGenres });
+        }}
+      >
+        ALL CATEGORIES
+      </Button>
 
-        <Slider {...settings}>
-          {dataGenres.map((item) => (
-            <div className="news-container" key={item.id}>
-              <GenreType
-                title={item.name}
-                id={item.id}
-                theme={props.genres.src}
-              />
-            </div>
-          ))}
-        </Slider>
-      </div>
+      <Slider {...settings}>
+        {dataGenres.map((item) => (
+          <div className="type-container" key={item.id}>
+            <GenreType
+              title={item.name}
+              id={item.id}
+              theme={props.genres.src}
+            />
+          </div>
+        ))}
+      </Slider>
     </>
   );
 }
