@@ -12,6 +12,7 @@ const DetailPresentation = (props) => {
     const [ratingSave, setRatingSave] = useLocalStorage(normalizeKeys(props.item.photo_principal), { totalPuntuation: 0, numVotes: 0 })
     const [rating, setRating] = useState(Math.floor(ratingSave.totalPuntuation / ratingSave.numVotes)); //Rating para las estrellas
     const [movie, setMovie] = useState()
+    
 
     const filterDirecting = (directing) => {
         if (directing !== undefined) {
@@ -37,13 +38,28 @@ const DetailPresentation = (props) => {
         <section className="details--main-container">
             <div className="details--frame-photo">
                 <img src={props.urlImage} alt={`Poster de ${props.item.name}`} />
+                {props.item.video !== null || params.type === 'person' ?
+                <ButtonsBack
+                    type={props.item.video !== null ? null : 'movie'} //true -> a main || false -> a movie
+                    //Con type distinguimos si entramos con movie en recamara o a pelo
+                    idSaved={props.item.video !== null ? movie !== undefined ? movie : null : null}
+                    inMovie={params.type === 'movie' ? true : false}
+                    movieName={props.item.video !== null ? props.item.name : null}
+                />
+                :
+                null}
             </div>
 
             <div className="details--interior-container">
 
                 <p className="details--title">{props.item.name}</p>
                 <div className="details--interior-row details--interior-row-extra">
-                    <p>({props.item.date})</p>
+                    {props.item.date !== undefined 
+                    && props.item.date !== null
+                    && props.item.date.length > 0
+                    ?<p>({props.item.date})</p> 
+                    : null}
+                    
                     {props.item.date !== null ?
                         <DetailValorations
                             puntuation={rating}
@@ -81,16 +97,7 @@ const DetailPresentation = (props) => {
 
             </div>
 
-            {props.item.video !== null || params.type === 'person' ?
-                <ButtonsBack
-                    type={props.item.video !== null ? null : 'movie'} //true -> a main || false -> a movie
-                    //Con type distinguimos si entramos con movie en recamara o a pelo
-                    idSaved={props.item.video !== null ? movie !== undefined ? movie : null : null}
-                    inMovie={params.type === 'movie' ? true : false}
-                    movieName={props.item.video !== null ? props.item.name : null}
-                />
-                :
-                null}
+            
 
 
         </section>

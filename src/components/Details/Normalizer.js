@@ -53,7 +53,7 @@ export const shortString = (text) => {
     if (text.length < 30) {
         return text
     }
-    return text.split("").map((element, index) => index < 30 ? element : null)
+    return text.split("").map((element, index) => index < 30 ? element : null).join('')
 }
 
 export const normalizeKeys = (text) => {
