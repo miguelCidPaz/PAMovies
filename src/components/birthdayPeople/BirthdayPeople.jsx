@@ -33,6 +33,7 @@ const BirthdayPeople = () => {
         );
 
         itemData.push({
+          id: getData.data.results[0].id,
           picture: link + getData.data.results[0].profile_path,
           item: element.dob,
           name: getData.data.results[0].name,

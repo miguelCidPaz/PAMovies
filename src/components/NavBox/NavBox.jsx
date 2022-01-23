@@ -26,38 +26,39 @@ const NavBox = (props) => {
   useEffect(() => {
     setSlot(parseLibrary());
     setTable(props.newTab);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props]);
 
   return (
     <div className="details--main-column details--container-secondary">
-      {slot[table][0] !== undefined
+      {slot !== null && slot[table][0] !== undefined
         ? slot[table][0].map((element, index) => (
-            <p
-              key={index}
-              className={
-                props.filmSelect.key !== element.key
-                  ? "details--scenes"
-                  : "details--scenes-selected"
-              }
-              onClick={(e) => props.newIndex(element)}
-            >
-              {shortString(element.name)}
-            </p>
-          ))
+          <p
+            key={index}
+            className={
+              props.filmSelect.key !== element.key
+                ? "details--scenes"
+                : "details--scenes-selected"
+            }
+            onClick={(e) => props.newIndex(element)}
+          >
+            {shortString(element.name)}
+          </p>
+        ))
         : null}
       <div className="details--container-nav-trailer">
         {slot !== undefined
           ? slot.map((element, index) => (
-              <button
-                key={index}
-                className={
-                  table === index
-                    ? "details--button-nav-select"
-                    : "details--button-nav"
-                }
-                onClick={(e) => changeTab(index)}
-              />
-            ))
+            <button
+              key={index}
+              className={
+                table === index
+                  ? "details--button-nav-select"
+                  : "details--button-nav"
+              }
+              onClick={(e) => changeTab(index)}
+            />
+          ))
           : null}
       </div>
     </div>

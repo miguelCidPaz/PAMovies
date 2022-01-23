@@ -12,6 +12,8 @@ const SlotRow = (props) => {
         }
     }
 
+    props.title === "Reparto: " ? console.log(props.items) : console.log('otra zona')
+
     return (
         <div className="details--interior-row">
             {props.title !== undefined ? <p className="details--text-resalt">{props.title}</p> : null}
