@@ -18,6 +18,7 @@ const Details = ({ state }) => {
 
   //Url necesaria para las imagenes
   const urlForImages = "https://image.tmdb.org/t/p/w500/";
+  const image = "https://skillz4kidzmartialarts.com/wp-content/uploads/2017/04/default-image-620x600.jpg"
 
   //Llamada a la api
 
@@ -58,15 +59,15 @@ const Details = ({ state }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 
-  //Controlando renders innecesarios
-  console.log("Render en details");
-
   return (
     <>
       <div className="container">
         {item.photo_principal !== undefined ? (
           <Presentation
-            urlImage={urlForImages + item.photo_principal} // 2 strings
+            urlImage={item.photo_principal !== undefined 
+            && item.photo_principal !== null
+            ? urlForImages + item.photo_principal
+            : image} // 2 strings
             item={item} //Objeto con datos de la api
             casting={casting} //Array de Objetos
             director={director} //Array de Objetos

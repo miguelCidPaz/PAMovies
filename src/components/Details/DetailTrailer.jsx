@@ -96,7 +96,8 @@ const DetailTrailer = (props) => {
                         </div>}
 
 
-                    {libraryFilms.length > 0 && libraryFilms !== null && film !== null ?
+                    {libraryFilms.length > 0 && libraryFilms !== null 
+                    && film !== null && film !== undefined ?
                         <NavBox
                             libraryFilms={libraryFilms}
                             filmSelect={film}

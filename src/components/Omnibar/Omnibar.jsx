@@ -35,14 +35,13 @@ const Omnibar = (props) => {
                         <Slider {...settingsSlider()}>
                             {item.map((element, index) => {
                                 return (
-                                    <>
-                                        {index < item.length 
+                                        index < item.length 
                                         ? <OmniItem 
+                                        key={index}
                                         element={element}
                                         type={props.value}
                                         />
-                                        : null}
-                                    </>
+                                        : null
                                 )
                             })}
                         </Slider>
@@ -53,8 +52,8 @@ const Omnibar = (props) => {
                     <section className="omnibar--main-container-row">
                         <Divisor title={props.text} />
                         <div className='omnibar--row-container'>
-                        {item.map(element => {
-                            return <OmniItem element={element}/>
+                        {item.map((element, index) => {
+                            return <OmniItem key={index} element={element}/>
                             }) }
                         </div>
                         </section>

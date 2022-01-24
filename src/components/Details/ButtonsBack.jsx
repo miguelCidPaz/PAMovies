@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
+import { reduxName } from "../Omnibar/LogicAdapt";
 
 const ButtonsBack = (props) => {
     const [name, setName] = useState();
@@ -44,7 +45,7 @@ const ButtonsBack = (props) => {
                 {name !== null 
                 && name !== undefined
                 && !props.inMovie
-                ? `Vuelve a ${name}` : 'Home'}
+                ? `Vuelve a ${name.length > 10 ? reduxName(name)+'...' : name }` : 'Home'}
                 </Link>
         </div>
     )

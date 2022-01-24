@@ -1,25 +1,49 @@
 import { useState, useEffect } from 'react'
+import { useLocalStorage } from "./CustomStorage";
+import { normalizeKeys } from "./Normalizer";
 
 const DetailValorations = (props) => {
-    const [isSelect, setIsSelect] = useState(0);
+    const key = normalizeKeys(props.photo_principal);
+    const [ratingSave, setRatingSave] = useLocalStorage(key, { totalPuntuation: 0, numVotes: 0 })
+    const Media = ratingSave.totalPuntuation === 0 || ratingSave.numVotes === 0 ? 0 : Math.floor(ratingSave.totalPuntuation / ratingSave.numVotes )
+    const [isSelect, setIsSelect] = useState(Media);
+    
+    /*  Math.floor(ratingSave.totalPuntuation / ratingSave.numVotes ) < 0 
+    || Math.floor(ratingSave.totalPuntuation / ratingSave.numVotes ) === null
+    ? 0 : Math.floor(ratingSave.totalPuntuation / ratingSave.numVotes ); */
 
+    const IntermediateFunction = (value) => {
+
+        setRatingSave({
+            totalPuntuation: ratingSave.totalPuntuation + parseInt(value),
+            numVotes: ratingSave.numVotes + 1
+        })
+
+        props.selectScore(value)
+    }
+
+    
     useEffect(() => {
 
-    }, [props])
+    },[key])
+
+    useEffect(()=>{
+
+    },[])
 
     return (
         <div className='details--stars'>
             {props.rating.map((element, index) => {
                 return <button key={index}
-                    className={props.puntuation > index || isSelect > index ? 'star-point' : 'star'}
+                    className={Media > index || isSelect > index ? 'star-point' : 'star'}
                     value={element}
                     onMouseOver={(e) => setIsSelect(e.currentTarget.value)}
                     onMouseOut={(e) => setIsSelect(0)}
-                    onClick={(e) => props.selectScore(e.currentTarget.value)}>
+                    onClick={(e) => IntermediateFunction(e.currentTarget.value)}>
                     <span>★</span>
                 </button>
             })}
-            <p className='details--media-valorations'>({props.media})</p>
+            <p className='details--media-valorations'>({Media})</p>
         </div>
     )
 }
