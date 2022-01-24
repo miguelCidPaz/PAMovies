@@ -1,21 +1,22 @@
 import { useEffect, useState } from "react";
 
-export function useLocalStorage(key, initialValue, refresh) {
+export function useLocalStorage(key, initialValue) {
     const [storedValue, setStoredValue] = useState(() => {
         try {
-            console.log(refresh)
             const item = localStorage.getItem(key)
             return item ? JSON.parse(item) : initialValue
         } catch (error) {
+            console.log('fallo')
             return initialValue
         }
     })
 
     useEffect(() => {
-        console.log(refresh)
+        refreshValue({totalPuntuation: 0, numVotes: 0})
     },[key])
 
-    const setValue = (value) => {
+    const setValue = value => {
+
         try {
             setStoredValue(value)
             localStorage.setItem(key, JSON.stringify(value))
@@ -24,6 +25,21 @@ export function useLocalStorage(key, initialValue, refresh) {
         }
     }
 
-    return [storedValue, setValue];
+    const refreshValue = (value) => {
+        try{
+            const item = localStorage.getItem(key)
+            if(item){
+                setStoredValue(JSON.parse(item))
+                return JSON.parse(item)
+            }else{
+                setStoredValue(value)
+                return value
+            }
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    return [storedValue, setValue, /* refreshValue */];
 
 }
