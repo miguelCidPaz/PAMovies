@@ -4,7 +4,6 @@ import axios from "axios";
 
 export default function Nav() {
   const navigate = useNavigate();
-
   const [getGenresFilms, setGetGenresFilms] = useState([]);
 
   useEffect(() => {
@@ -19,7 +18,24 @@ export default function Nav() {
     }
     getData();
   }, []);
+
   let dataGenres = getGenresFilms;
+  const [getFilms, setGetFilms] = useState([]);
+
+  useEffect(() => {
+    async function getInfo() {
+      await axios
+        .get(
+          `https://api.themoviedb.org/3/movie/upcoming?api_key=198b2f6e124efb8ffaed4dd22cc65a8c&language=en-US&page=1adult=false`
+        )
+        .then((res) => {
+          setGetFilms(res.data.results);
+        });
+    }
+    getInfo();
+  }, []);
+
+  let data = getFilms;
 
   return (
     <>
@@ -27,7 +43,7 @@ export default function Nav() {
         <p
           className="views-nav"
           onClick={() => {
-            navigate(`/AllPremieres`);
+            navigate(`/AllPremieres`, { state: data });
           }}
         >
           All Premieres
@@ -40,7 +56,7 @@ export default function Nav() {
         >
           All Categories
         </p>
-        <p className="views-nav">inicio</p>
+        <p className="views-nav">About us</p>
         <p className="views-nav">inicio</p>
       </nav>
     </>
