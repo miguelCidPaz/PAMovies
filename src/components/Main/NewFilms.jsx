@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import Film from "./Film";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 export function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -19,9 +19,9 @@ export function SampleNextArrow(props) {
 export function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <ArrowBackIosIcon
+    <ArrowBackIosNewIcon
       className={className}
-      style={{ ...style, color: "white", fontSize: "35px", height: "50px" }}
+      style={{ ...style, color: "white", fontSize: "35px" }}
       onClick={onClick}
     />
   );
@@ -35,7 +35,7 @@ export default function NewFilms(props) {
     slidesToScroll: 3,
     initialSlide: 3,
     arrows: true,
-    autoplay: true,
+    // autoplay: true,
     autoplaySpeed: 3000,
     focusOnSelect: true,
     nextArrow: <SampleNextArrow />,

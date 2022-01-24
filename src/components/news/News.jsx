@@ -72,7 +72,6 @@ export default function News() {
 
   let settings = {
     dots: true,
-
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,

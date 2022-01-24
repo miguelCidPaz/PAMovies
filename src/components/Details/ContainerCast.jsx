@@ -1,3 +1,4 @@
+import { elementTypeAcceptingRef } from "@mui/utils";
 import axios from "axios";
 import react, { useState, useEffect } from "react";
 import Cast from "../cast/Cast";
@@ -22,23 +23,33 @@ const LogicCast = (props) => {
   }, [props]);
   useEffect(() => {
     let itemArr = [];
-    data.cast?.slice(0, 4).map((element) =>
+    data.cast?.slice(0, 4).map((element) => {
       itemArr.push({
         id: element.id,
         picture: link + element.profile_path,
         item: element.known_for_department,
         name: element.name,
-      })
-    );
-    data.crew?.slice(0, 4).map((element) =>
+      });
+    });
+
+    data.crew?.slice(0, 6).map((element) => {
       itemArr.push({
         id: element.id,
         picture: link + element.profile_path,
         item: element.known_for_department,
         name: element.name,
-      })
-    );
-    setIems(itemArr);
+      });
+    });
+    //con esta funcion recorro el array final y descarto las personas duplicadas que suele enviar la api
+    const duplicatePersons = (arr) => {
+      const duplicate = arr.map((person) => {
+        return [person.name, person]; // Pares de clave y valor
+      });
+
+      return [...new Map(duplicate).values()]; // Conversión a un array
+    };
+
+    setIems(duplicatePersons(itemArr));
   }, [data]);
 
   return (

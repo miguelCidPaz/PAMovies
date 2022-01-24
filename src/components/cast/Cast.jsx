@@ -51,8 +51,7 @@ const Cast = (props) => {
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 2,
-    initialSlide: 2,
-
+    focusOnSelect: true,
     className: "container-slider-cast",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -61,7 +60,7 @@ const Cast = (props) => {
         breakpoint: 1441,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
       {
