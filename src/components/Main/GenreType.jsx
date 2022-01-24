@@ -18,13 +18,7 @@ function GenreType(props) {
       }}
       key={newid}
     >
-      <img
-        src={props.theme}
-        className="image-genres"
-        // width={190}
-        // height={300}
-        alt="film"
-      />
+      <img src={props.theme} className="image-genres" alt="film" />
       <div>
         <p className="centerGender">{props.title}</p>
       </div>
