@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
+import { reduxName } from "../Omnibar/LogicAdapt";
 
 const ButtonsBack = (props) => {
     const [name, setName] = useState();
@@ -12,18 +13,40 @@ const ButtonsBack = (props) => {
 
     //Route detecta que estamos en la misma ruta, asi que creamos un objeto sustituto con una clave unica para forzarlo
     const routeLink = (id, type) => {
-        return {
-            pathname: type !== null ? props.inMovie ? '/' : `/details/${type}/${id}` : '/',
-            key: Math.random(), // we could use Math.random, but that's not guaranteed unique.
-            state: {
-                applied: true
+
+        if(id !== undefined && id !== null && type !== null && type !== undefined){
+
+            return {
+                pathname:`/details/${type}/${id}`,
+                key: Math.random(), // we could use Math.random, but that's not guaranteed unique.
+                state: {
+                    applied: true
+                }
             }
+
+        }else{
+
+            return {
+                pathname:`/`,
+                key: Math.random(), // we could use Math.random, but that's not guaranteed unique.
+                state: {
+                    applied: true
+                }
+            }
+
         }
+        
     }
 
     return (
         <div className="details--container-back">
-            <Link className="details--back" to={routeLink(idSave, props.type)}>{props.inMovie ? 'Home' : props.type !== null ? `Vuelve a ${name}` : 'Home'}</Link>
+            <Link className="details--back" 
+            to={routeLink(idSave, props.type)}>
+                {name !== null 
+                && name !== undefined
+                && !props.inMovie
+                ? `Vuelve a ${name.length > 10 ? reduxName(name)+'...' : name }` : 'Home'}
+                </Link>
         </div>
     )
 }

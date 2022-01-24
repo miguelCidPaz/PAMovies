@@ -6,13 +6,14 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 export function SampleNextArrow(props) {
   const { className, style, onClick } = props;
-
   return (
-    <ArrowForwardIosIcon
-      className={className}
-      style={{ ...style, color: "white", fontSize: "35px" }}
-      onClick={onClick}
-    />
+    <div className="arrows arrow-2">
+      <ArrowForwardIosIcon
+        className={className}
+        style={{ ...style, fontSize: "35px", color: "white", right: "-35px" }}
+        onClick={onClick}
+      />
+    </div>
   );
 }
 
@@ -21,7 +22,7 @@ export function SamplePrevArrow(props) {
   return (
     <ArrowBackIosNewIcon
       className={className}
-      style={{ ...style, color: "white", fontSize: "35px" }}
+      style={{ ...style, color: "white", fontSize: "35px", left: "-35px" }}
       onClick={onClick}
     />
   );
@@ -40,7 +41,6 @@ export default function NewFilms(props) {
     focusOnSelect: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
-    className: "news-slider",
     rows: 2,
     responsive: [
       {
@@ -73,7 +73,7 @@ export default function NewFilms(props) {
     <>
       <Slider {...settings}>
         {props.data.map((item) => (
-          <div className="news-container" key={item.id}>
+          <div key={item.id}>
             <Film item={item} />
           </div>
         ))}

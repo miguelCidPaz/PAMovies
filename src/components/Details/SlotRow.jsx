@@ -14,11 +14,17 @@ const SlotRow = (props) => {
 
     return (
         <div className="details--interior-row">
-            {props.title !== undefined ? <p className="details--text-resalt">{props.title}</p> : null}
+            {props.title !== undefined && props.items !== undefined 
+            && props.items.length > 0 
+            ? <p className="details--text-resalt">{props.title}</p> 
+            : null}
+
             {props.areLinks ?
-                props.items !== undefined ? props.items.map((element, index) => index < 15 ? <Link key={index} className={"details--casting"} to={routeLink(element.id, "person")}>{element.name}</Link> : null) : null
+                props.items !== undefined
+                && props.items.length > 0 ? props.items.map((element, index) => index < 15 ? <Link key={index} className={"details--casting"} to={routeLink(element.id, "person")}>{element.name}</Link> : null) : null
                 :
-                props.items !== undefined ? props.items.map((element, index) => <p key={index} className="details--link">{element}</p>) : null
+                props.items !== undefined
+                && props.items.length > 0 ? props.items.map((element, index) => index < 10 ? <p key={index} className="details--link">{element}</p> : null) : null
             }
         </div>
     )

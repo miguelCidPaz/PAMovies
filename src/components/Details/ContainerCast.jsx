@@ -1,6 +1,6 @@
 import { elementTypeAcceptingRef } from "@mui/utils";
 import axios from "axios";
-import react, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Cast from "../cast/Cast";
 
 const LogicCast = (props) => {
@@ -20,6 +20,7 @@ const LogicCast = (props) => {
       }
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props]);
   useEffect(() => {
     let itemArr = [];

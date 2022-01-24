@@ -1,35 +1,35 @@
 /*genderView*/
-.centerContent{
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    margin:40px;
+.centerContent {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin: 40px;
 }
 
 /*ListGenres*/
 .genre-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-    width: 100%;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
 }
-.title-genre{
-    display: flex;
-    flex-direction: column;
-    
+.title-genre {
+  display: flex;
+  flex-direction: column;
 }
 
 /*Animation Genre*/
-.individual{
-    margin-left: 20px;
-    margin-right: 20px;
+.individual {
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 380px;
 }
 
-.ind-title{
-    width: 180px;
-    height: 50px;
+.ind-title {
+  width: 180px;
+  height: 50px;
+  margin-top: 5px;
 }
-

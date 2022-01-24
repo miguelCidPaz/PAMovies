@@ -63,10 +63,12 @@ const DetailTrailer = (props) => {
 
     useEffect(() => {
         requestApi();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props])
 
     useEffect(() => {
         setFilm(libraryFilms[index])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [index])
 
     useEffect(() => {
@@ -94,7 +96,8 @@ const DetailTrailer = (props) => {
                         </div>}
 
 
-                    {libraryFilms.length > 0 ?
+                    {libraryFilms.length > 0 && libraryFilms !== null 
+                    && film !== null && film !== undefined ?
                         <NavBox
                             libraryFilms={libraryFilms}
                             filmSelect={film}
