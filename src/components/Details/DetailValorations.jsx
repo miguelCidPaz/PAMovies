@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
 import { useLocalStorage } from "./CustomStorage";
 import { normalizeKeys } from "./Normalizer";
 
@@ -8,7 +7,6 @@ const DetailValorations = (props) => {
     const [ratingSave, setRatingSave] = useLocalStorage(key, { totalPuntuation: 0, numVotes: 0 })
     const Media = ratingSave.totalPuntuation === 0 || ratingSave.numVotes === 0 ? 0 : Math.floor(ratingSave.totalPuntuation / ratingSave.numVotes )
     const [isSelect, setIsSelect] = useState(Media);
-    const params = useParams();
     
     /*  Math.floor(ratingSave.totalPuntuation / ratingSave.numVotes ) < 0 
     || Math.floor(ratingSave.totalPuntuation / ratingSave.numVotes ) === null
@@ -26,12 +24,11 @@ const DetailValorations = (props) => {
 
     
     useEffect(() => {
-        /* setRatingSave({ totalPuntuation: 0, numVotes: 0 }) */
-       /*  console.log('por key') */
+
     },[key])
 
     useEffect(()=>{
-        console.log('Solo una vez')
+
     },[])
 
     return (
