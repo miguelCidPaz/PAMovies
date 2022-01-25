@@ -9,7 +9,7 @@ import detector from "i18next-browser-languagedetector";
 import backend from "i18next-xhr-backend";
 i18next
   .use(detector)
-  .use(backend)
+  //.use(backend)
   .init({
     interpolation: { escapeValue: false },
     // lng: "es",
