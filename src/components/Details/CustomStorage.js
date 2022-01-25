@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function useLocalStorage(key, initialValue) {
     const [storedValue, setStoredValue] = useState(() => {
@@ -11,6 +11,11 @@ export function useLocalStorage(key, initialValue) {
         }
     })
 
+    useEffect(() => {
+        refreshValue({totalPuntuation: 0, numVotes: 0})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[key])
+
     const setValue = value => {
 
         try {
@@ -21,6 +26,21 @@ export function useLocalStorage(key, initialValue) {
         }
     }
 
-    return [storedValue, setValue];
+    const refreshValue = (value) => {
+        try{
+            const item = localStorage.getItem(key)
+            if(item){
+                setStoredValue(JSON.parse(item))
+                return JSON.parse(item)
+            }else{
+                setStoredValue(value)
+                return value
+            }
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    return [storedValue, setValue, /* refreshValue */];
 
 }

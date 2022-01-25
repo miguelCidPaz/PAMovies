@@ -40,14 +40,8 @@
     background-color: rgba(0, 0, 0, 0.74);
   }
 
-  //   .title-news {
-  //     font-size: 24px;
-  //     font-weight: bold;
-  //   }
   .logo-news {
     height: 2.5rem;
-
-    // border-radius: 50%;
   }
   .date-news {
     text-align: end;
@@ -65,9 +59,14 @@
 .container-news {
   margin: 4rem auto;
   max-width: 100%;
+  width: 85%;
+  height: 100%;
   box-shadow: -5px -5px 30px 5px $purple, 5px 5px 30px 5px $blue;
   @media (min-width: 1200px) {
     max-width: 90%;
+  }
+  .slick-dots {
+    position: absolute;
   }
 }
 a {
