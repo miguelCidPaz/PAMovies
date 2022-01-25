@@ -32,9 +32,6 @@ export default function Nav() {
         <p className="views-nav">inicio</p>
         <p className="views-nav">inicio</p>
 
-        {/* <p className="views-nav" onClick={changeLang}>
-          {language === true ? "Es" : "In"}
-        </p> */}
         <div className="views-nav">
           <Button
             id="fade-button"
