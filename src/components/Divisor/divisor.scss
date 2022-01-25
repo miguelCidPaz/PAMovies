@@ -43,5 +43,6 @@
   right: 0;
   z-index: -100;
   background: linear-gradient(to right, $blue 0%, $purple 100%);
+  -webkit-filter: blur(45px);
   filter: blur(45px);
 }
