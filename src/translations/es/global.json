@@ -19,10 +19,9 @@
     "backTo": "Volver a",
     "country": "Pais",
     "director": "Director",
-
     "producers": "Productoras",
     "description": "Descripcion",
-    "similarMovies": "pelicular similares",
+    "similarMovies": "peliculas similares",
     "otherMovies": "otras peliculas"
   },
   "movie": "Pelicula"

@@ -10,11 +10,10 @@ import backend from "i18next-xhr-backend";
 i18next
   .use(detector)
   .use(backend)
-
   .init({
     interpolation: { escapeValue: false },
     // lng: "es",
-    fallbackLng: "es",
+    // fallbackLng: "es",
     resources: {
       es: {
         global: global_es,
