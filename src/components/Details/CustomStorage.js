@@ -13,6 +13,7 @@ export function useLocalStorage(key, initialValue) {
 
     useEffect(() => {
         refreshValue({totalPuntuation: 0, numVotes: 0})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[key])
 
     const setValue = value => {
