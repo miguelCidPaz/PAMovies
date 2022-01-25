@@ -9,7 +9,7 @@ const Footer = () => {
       </div>
       <div className="subfooter">
         <p className="copy">
-          Desarrollada por PAM <span>todos los derechos reservados</span>
+          Desarrollada por PAM <span>todos los derechos reservados &copy;</span>
         </p>
       </div>
     </footer>
