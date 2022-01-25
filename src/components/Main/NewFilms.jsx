@@ -20,13 +20,11 @@ export function SampleNextArrow(props) {
 export function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <div className="arrows arrow-1">
-      <ArrowBackIosNewIcon
-        className={className}
-        style={{ ...style, fontSize: "35px", color: "white", left: "-32px" }}
-        onClick={onClick}
-      />
-    </div>
+    <ArrowBackIosNewIcon
+      className={className}
+      style={{ ...style, color: "white", fontSize: "35px", left: "-35px" }}
+      onClick={onClick}
+    />
   );
 }
 
@@ -38,8 +36,7 @@ export default function NewFilms(props) {
     slidesToScroll: 3,
     initialSlide: 3,
     arrows: true,
-    autoplay: true,
-    className: "container-slider-films",
+    // autoplay: true,
     autoplaySpeed: 3000,
     focusOnSelect: true,
     nextArrow: <SampleNextArrow />,

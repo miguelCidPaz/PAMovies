@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Details from "./views/Details";
 import ListGenres from "./components/ListGenres/listGenres";
 import AllGenres from "./components/AllGenres/AllGenres";
+import AllPremieres from "./components/AllPremieres/AllPremieres";
 import Error404 from "./components/Error404/Error404";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route exact path="/details/:type/:id" element={<Details />} />
           <Route path="/" element={<MainView />} />
+          <Route exact path="/AllPremieres/" element={<AllPremieres />} />
           <Route exact path="/AllGenres/" element={<AllGenres />} />
           <Route exact path="/Genres/:title/:id" element={<ListGenres />} />
           <Route path="/listSearch" element={<ListSearch />} />

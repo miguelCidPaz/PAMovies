@@ -1,0 +1,28 @@
+{
+  "header": {
+    "top-movies": "top-movies"
+  },
+  "dividers": {
+    "premieres": "premieres",
+    "categories": "CATEGORIES",
+    "news": "NEWS",
+    "birthday": "BIRTHDAY",
+    "video": "videos",
+    "similarMovies": "Similar Movies",
+    "cast": "Cast"
+  },
+  "categories": {
+    "allCategories": "All Categories"
+  },
+  "details": {
+    "home": "HOME",
+    "backTo": "Back To",
+    "country": "Country",
+    "director": "Director",
+    "producers": "Producers",
+    "description": "Description",
+    "similarMovies": "Similar Movies",
+    "otherMovies": "other movies"
+  },
+  "movie": "Movie"
+}
