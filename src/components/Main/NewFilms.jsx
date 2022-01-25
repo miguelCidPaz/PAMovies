@@ -7,7 +7,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 export function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <div className="arrows arrow-2">
+    <div>
       <ArrowForwardIosIcon
         className={className}
         style={{ ...style, fontSize: "35px", color: "white", right: "-35px" }}
