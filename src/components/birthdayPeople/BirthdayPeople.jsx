@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Cast from "../cast/Cast";
+import { useTranslation } from "react-i18next";
 
 const BirthdayPeople = () => {
   const [data, setData] = useState([]);
   const [item, setItem] = useState([]);
+  const [t, i18n] = useTranslation("global");
 
   let link = "https://image.tmdb.org/t/p/w500";
   var options = {
@@ -49,7 +51,7 @@ const BirthdayPeople = () => {
 
   return (
     <>
-      <Cast element={item} title="BIRTHDAY"></Cast>
+      <Cast element={item} title={t("dividers.birthday")}></Cast>
     </>
   );
 };

@@ -7,18 +7,25 @@ import { Normalizer } from "./../components/Details/Normalizer";
 import DetailTrailer from "../components/Details/DetailTrailer";
 import ContainerCast from "../components/Details/ContainerCast";
 import Omnibar from "../components/Omnibar/Omnibar";
+import { useTranslation } from "react-i18next";
 
 const Details = ({ state }) => {
   const [casting, setCasting] = useState(undefined); //Reparto de la pelicula
   const [director, setDirector] = useState(undefined);
   const [item, setItem] = useState(filmDetail); //Pasara a ser o bien una llamada a la Api o el objeto que reciba por prop
   const params = useParams(); //Parametros de la URL
-  const [saveparams, setSaveParams] = useState({ type: params.type, id: params.id });
+  const [saveparams, setSaveParams] = useState({
+    type: params.type,
+    id: params.id,
+  });
+  const [t, i18n] = useTranslation("global");
+
   const navigate = useNavigate();
 
   //Url necesaria para las imagenes
   const urlForImages = "https://image.tmdb.org/t/p/w500/";
-  const image = "https://skillz4kidzmartialarts.com/wp-content/uploads/2017/04/default-image-620x600.jpg"
+  const image =
+    "https://skillz4kidzmartialarts.com/wp-content/uploads/2017/04/default-image-620x600.jpg";
 
   //Llamada a la api
 
@@ -34,9 +41,9 @@ const Details = ({ state }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.status_code === 34) {
-            navigate("/ERROR")
+            navigate("/ERROR");
           } else if (data.status_code === 404) {
-            navigate("/ERROR")
+            navigate("/ERROR");
           } else {
           }
           setItem(Normalizer(data, type));
@@ -55,8 +62,8 @@ const Details = ({ state }) => {
       }
     };
     requestApi();
-    setSaveParams({ type: params.type, id: params.id })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    setSaveParams({ type: params.type, id: params.id });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 
   return (
@@ -64,10 +71,12 @@ const Details = ({ state }) => {
       <div className="container">
         {item.photo_principal !== undefined ? (
           <Presentation
-            urlImage={item.photo_principal !== undefined 
-            && item.photo_principal !== null
-            ? urlForImages + item.photo_principal
-            : image} // 2 strings
+            urlImage={
+              item.photo_principal !== undefined &&
+              item.photo_principal !== null
+                ? urlForImages + item.photo_principal
+                : image
+            } // 2 strings
             item={item} //Objeto con datos de la api
             casting={casting} //Array de Objetos
             director={director} //Array de Objetos
@@ -77,27 +86,31 @@ const Details = ({ state }) => {
             <span className="details--spinner"></span>
           </div>
         )}
-        {item !== undefined ?
+        {item !== undefined ? (
           <Description item={item} /> //Objeto con datos de la api
-          :
-          <div className="details--container-spinner"><span className="details--spinner"></span></div>}
-
-
-        {item.video !== null && params.type === 'movie' ?
+        ) : (
+          <div className="details--container-spinner">
+            <span className="details--spinner"></span>
+          </div>
+        )}
+        {item.video !== null && params.type === "movie" ? (
           <DetailTrailer id={params.id} />
-          :
-          null} {/* Int */}
-
-        {item !== undefined && item !== null
-          ? <Omnibar
-            text={item.video !== null ? 'Similar movies' : 'Other works'}
+        ) : null}{" "}
+        {/* Int */}
+        {item !== undefined && item !== null ? (
+          <Omnibar
+            text={
+              item.video !== null
+                ? t("details.similarMovies")
+                : t("details.otherMovies")
+            }
             id={saveparams.id}
-            value={saveparams.type} />
-          : null}
-
+            value={saveparams.type}
+          />
+        ) : null}
       </div>
 
-      {item !== undefined && params.type === 'movie' ? (
+      {item !== undefined && params.type === "movie" ? (
         <ContainerCast id={params.id}></ContainerCast>
       ) : null}
     </>

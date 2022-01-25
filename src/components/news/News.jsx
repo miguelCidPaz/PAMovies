@@ -4,9 +4,10 @@ import Slider from "react-slick";
 import Divisor from "../Divisor/Divisor";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { useTranslation } from "react-i18next";
+
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
-
   return (
     <div className=" ">
       <ArrowForwardIosIcon
@@ -40,6 +41,7 @@ function SamplePrevArrow(props) {
   );
 }
 export default function News() {
+  const [t, i18n] = useTranslation("global");
   const [data, setData] = useState([]);
   let logo = "https://logo.clearbit.com/";
 
@@ -95,7 +97,7 @@ export default function News() {
   return (
     <div className="container">
       {/* <button onClick={fecthData}>try</button> */}
-      <Divisor title="NEWS"></Divisor>
+      <Divisor title={t("dividers.news")}></Divisor>
 
       <Slider {...settings}>
         {data?.slice(0, 7).map((element, key) => {

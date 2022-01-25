@@ -1,63 +1,65 @@
-import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import TranslateIcon from "@mui/icons-material/Translate";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Fade from "@mui/material/Fade";
+import { Button } from "@mui/material";
 export default function Nav() {
-  const navigate = useNavigate();
-  const [getGenresFilms, setGetGenresFilms] = useState([]);
-
-  useEffect(() => {
-    async function getData() {
-      await axios
-        .get(
-          `https://api.themoviedb.org/3/genre/movie/list?api_key=198b2f6e124efb8ffaed4dd22cc65a8c&language=en-US`
-        )
-        .then((res) => {
-          setGetGenresFilms(res.data.genres);
-        });
-    }
-    getData();
-  }, []);
-
-  let dataGenres = getGenresFilms;
-  const [getFilms, setGetFilms] = useState([]);
-
-  useEffect(() => {
-    async function getInfo() {
-      await axios
-        .get(
-          `https://api.themoviedb.org/3/movie/upcoming?api_key=198b2f6e124efb8ffaed4dd22cc65a8c&language=en-US&page=1adult=false`
-        )
-        .then((res) => {
-          setGetFilms(res.data.results);
-        });
-    }
-    getInfo();
-  }, []);
-
-  let data = getFilms;
-
+  const [t, i18n] = useTranslation("global");
+  const [language, setLanguage] = useState(true);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const Spanish = (event) => {
+    handleClose();
+    i18n.changeLanguage("es");
+  };
+  const English = (event) => {
+    handleClose();
+    i18n.changeLanguage("en");
+  };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+    // changeLang();
+  };
   return (
     <>
       <nav className="nav">
-        <p
-          className="views-nav"
-          onClick={() => {
-            navigate(`/AllPremieres`, { state: data });
-          }}
-        >
-          All Premieres
-        </p>
-        <p
-          className="views-nav"
-          onClick={() => {
-            navigate(`/AllGenres`, { state: dataGenres });
-          }}
-        >
-          All Categories
-        </p>
-        <p className="views-nav">About us</p>
+        <p className="views-nav">{t("header.top-movies")}</p>
         <p className="views-nav">inicio</p>
+        <p className="views-nav">inicio</p>
+
+        {/* <p className="views-nav" onClick={changeLang}>
+          {language === true ? "Es" : "In"}
+        </p> */}
+        <div className="views-nav">
+          <Button
+            id="fade-button"
+            aria-controls={open ? "fade-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+          >
+            <TranslateIcon></TranslateIcon>
+          </Button>
+          <Menu
+            id="fade-menu"
+            MenuListProps={{
+              "aria-labelledby": "fade-button",
+            }}
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            TransitionComponent={Fade}
+            className="language"
+          >
+            <MenuItem onClick={Spanish}>Español</MenuItem>
+            <MenuItem onClick={English}>Ingles</MenuItem>
+          </Menu>
+        </div>
       </nav>
     </>
   );

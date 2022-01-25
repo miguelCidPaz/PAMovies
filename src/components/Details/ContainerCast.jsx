@@ -2,9 +2,11 @@ import { elementTypeAcceptingRef } from "@mui/utils";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Cast from "../cast/Cast";
+import { useTranslation } from "react-i18next";
 
 const LogicCast = (props) => {
   const [data, setData] = useState("");
+  const [t, i18n] = useTranslation("global");
   const [item, setIems] = useState([""]);
   let id = props.id;
   let link = "https://image.tmdb.org/t/p/w500";
@@ -33,7 +35,7 @@ const LogicCast = (props) => {
       });
     });
 
-    data.crew?.slice(0, 6).map((element) => {
+    data.crew?.map((element) => {
       itemArr.push({
         id: element.id,
         picture: link + element.profile_path,
@@ -55,7 +57,7 @@ const LogicCast = (props) => {
 
   return (
     <>
-      <Cast element={item} title="CAST"></Cast>
+      <Cast element={item} title={t("dividers.cast")}></Cast>
     </>
   );
 };

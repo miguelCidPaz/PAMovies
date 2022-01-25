@@ -4,9 +4,11 @@ import { genres } from "./data-main";
 import Genres from "./Genres";
 import NewFilms from "./NewFilms";
 import Divisor from "../Divisor/Divisor";
+import { useTranslation } from "react-i18next";
 
 export default function Main() {
   const [getFilms, setGetFilms] = useState([]);
+  const [t, i18n] = useTranslation("global");
 
   useEffect(() => {
     async function getInfo() {
@@ -25,12 +27,12 @@ export default function Main() {
 
   return (
     <div className="container">
-      <Divisor title="PREMIERES"></Divisor>
+      <Divisor title={t("dividers.premieres")}></Divisor>
       <div className="main-container background-color">
         <NewFilms data={data} />
       </div>
 
-      <Divisor title="CATEGORIES"></Divisor>
+      <Divisor title={t("dividers.categories")}></Divisor>
       <div className="main-container">
         <Genres genres={genres} data={data} />
       </div>
