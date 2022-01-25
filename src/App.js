@@ -11,6 +11,7 @@ import ListGenres from "./components/ListGenres/listGenres";
 import AllGenres from "./components/AllGenres/AllGenres";
 import AllPremieres from "./components/AllPremieres/AllPremieres";
 import Error404 from "./components/Error404/Error404";
+import Footer from "./components/footer/footer";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/listSearch" element={<ListSearch />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
+        <Footer></Footer>
       </BrowserRouter>
     </main>
   );
