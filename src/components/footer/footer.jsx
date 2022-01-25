@@ -8,7 +8,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="subfooter">
-        <p>
+        <p className="copy">
           Desarrollada por PAM <span>todos los derechos reservados</span>
         </p>
       </div>
