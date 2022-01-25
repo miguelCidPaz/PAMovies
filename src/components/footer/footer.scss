@@ -1,0 +1,21 @@
+.footer {
+  margin-top: 5rem;
+  background-color: rgb(51, 51, 51);
+  -webkit-box-shadow: -50px -50px 22px -30px rgba(7, 55, 255, 0.65),
+    50px -50px 22px -30px rgba(255, 20, 253, 0.65);
+  box-shadow: -50px -50px 22px -30px rgba(7, 55, 255, 0.65),
+    50px -50px 22px -30px rgba(255, 20, 253, 0.65);
+  .container-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 5rem;
+  }
+  .subfooter {
+    background-color: rgb(107, 107, 107);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+  }
+}
