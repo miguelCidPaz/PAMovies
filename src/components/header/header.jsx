@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
-import Nav from "./nav";
-import Search from "./search";
+import Nav from "./nav/nav";
+import Search from "./nav/search";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
