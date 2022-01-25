@@ -31,7 +31,7 @@ export default function Main() {
       </div>
 
       <Divisor title="CATEGORIES"></Divisor>
-      <div className="main-container">
+      <div>
         <Genres genres={genres} data={data} />
       </div>
     </div>
