@@ -6,23 +6,20 @@ import i18next from "i18next";
 import global_es from "./translations/es/global.json";
 import global_en from "./translations/en/global.json";
 import detector from "i18next-browser-languagedetector";
-import backend from "i18next-xhr-backend";
-i18next
-  .use(detector)
-  //.use(backend)
-  .init({
-    interpolation: { escapeValue: false },
-    // lng: "es",
-    // fallbackLng: "es",
-    resources: {
-      es: {
-        global: global_es,
-      },
-      en: {
-        global: global_en,
-      },
+
+i18next.use(detector).init({
+  interpolation: { escapeValue: false },
+  // lng: "es",
+  // fallbackLng: "es",
+  resources: {
+    es: {
+      global: global_es,
     },
-  });
+    en: {
+      global: global_en,
+    },
+  },
+});
 
 ReactDOM.render(
   <React.StrictMode>
