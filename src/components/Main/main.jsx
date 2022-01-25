@@ -24,16 +24,21 @@ export default function Main() {
   let data = getFilms;
 
   return (
-    <div className="container">
-      <Divisor title="PREMIERES"></Divisor>
-      <div className="main-container background-color">
-        <NewFilms data={data} />
+    <>
+      <div className="container">
+        <Divisor title="PREMIERES"></Divisor>
+        <div className="main-container background-color">
+          <NewFilms data={data} />
+        </div>
       </div>
-
-      <Divisor title="CATEGORIES"></Divisor>
       <div>
-        <Genres genres={genres} data={data} />
+        <div className="container">
+          <Divisor title="CATEGORIES"></Divisor>
+        </div>
+        <div>
+          <Genres genres={genres} data={data} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

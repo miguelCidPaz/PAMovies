@@ -2,7 +2,7 @@
 
 .main-container {
   margin: 0 auto;
-  max-width: 90%;
+  max-width: 85%;
   @media (min-width: 450px) {
     max-width: 80%;
   }
@@ -141,11 +141,11 @@ span.MuiButton-label {
   bottom: 0;
 }
 .arrow-1 {
-  left: -5px;
+  left: 15px;
 }
 
 .arrow-2 {
-  right: -5px;
+  right: 25px;
 }
 
 /*GenreType*/
