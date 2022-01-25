@@ -35,7 +35,7 @@ export default function Nav() {
         {/* <p className="views-nav" onClick={changeLang}>
           {language === true ? "Es" : "In"}
         </p> */}
-        <div>
+        <div className="views-nav">
           <Button
             id="fade-button"
             aria-controls={open ? "fade-menu" : undefined}

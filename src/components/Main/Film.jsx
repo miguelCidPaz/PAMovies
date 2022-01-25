@@ -15,7 +15,7 @@ function Film(props) {
       key={props.id}
     >
       <figure>
-        {props.item.poster_path === null ? (
+        {props.item.poster_path.includes("null") ? (
           <img
             alt="film"
             src={`https://www.gruposertec.com/wp-content/uploads/2015/03/no_image_available.jpeg`}

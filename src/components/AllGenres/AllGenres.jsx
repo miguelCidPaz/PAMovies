@@ -24,7 +24,7 @@ export default function AllGenres() {
               height={250}
               width={160}
               alt="genre"
-              className="image-film"
+              className="image-genres"
             />
             <p className="centerGender big">{element.name}</p>
           </div>

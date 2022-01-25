@@ -17,7 +17,7 @@ export function SampleNextArrow(props) {
     <div className="arrows arrow-2">
       <ArrowForwardIosIcon
         className={className}
-        style={{ ...style, fontSize: "35px", color: "white", right: "-13px" }}
+        style={{ ...style, fontSize: "35px", color: "white", right: "-25px" }}
         onClick={onClick}
       />
     </div>
@@ -30,7 +30,7 @@ export function SamplePrevArrow(props) {
     <div className="arrows arrow-1">
       <ArrowBackIosNewIcon
         className={className}
-        style={{ ...style, fontSize: "35px", color: "white", left: "-5%" }}
+        style={{ ...style, fontSize: "35px", color: "white", left: "-15%" }}
         onClick={onClick}
       />
     </div>
