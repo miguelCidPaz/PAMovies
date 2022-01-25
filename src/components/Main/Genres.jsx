@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+
 import { useNavigate } from "react-router-dom";
 import { Button } from "@material-ui/core";
 
