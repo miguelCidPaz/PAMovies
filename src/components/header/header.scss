@@ -66,7 +66,20 @@
     justify-content: space-between;
     .views-nav {
       text-align: unset;
+      text-align: center;
     }
+  }
+  .MuiButton-textPrimary {
+    color: #ffffff;
+  }
+}
+.MuiPopover-paper.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper
+  > ul {
+  display: flex;
+  flex-direction: column;
+
+  li {
+    padding: 0.4rem;
   }
 }
 

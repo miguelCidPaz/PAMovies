@@ -8,9 +8,11 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
 
 export function SampleNextArrow(props) {
   const { className, style, onClick } = props;
+
   return (
     <div className="arrows arrow-2">
       <ArrowForwardIosIcon
@@ -37,6 +39,7 @@ export function SamplePrevArrow(props) {
 
 export default function Genres(props) {
   const navigate = useNavigate();
+  const [t, i18n] = useTranslation("global");
 
   const [getGenresFilms, setGetGenresFilms] = useState([]);
 
@@ -113,7 +116,7 @@ export default function Genres(props) {
           navigate(`/AllGenres`, { state: dataGenres });
         }}
       >
-        ALL CATEGORIES
+        {t("categories.allCategories")}
       </Button>
 
       <Slider {...settings}>

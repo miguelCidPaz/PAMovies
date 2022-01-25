@@ -1,0 +1,29 @@
+{
+  "header": {
+    "top-movies": "top-peliculas"
+  },
+  "dividers": {
+    "premieres": "ESTRENOS",
+    "categories": "CATEGORIAS",
+    "news": "NOTICIAS",
+    "birthday": "CUMPLEAÑOS",
+    "video": "videos",
+    "similarMovies": "Pelicular Similares",
+    "cast": "Reparto"
+  },
+  "categories": {
+    "allCategories": "Todas las categorias"
+  },
+  "details": {
+    "home": "INICIO",
+    "backTo": "Volver a",
+    "country": "Pais",
+    "director": "Director",
+
+    "producers": "Productoras",
+    "description": "Descripcion",
+    "similarMovies": "pelicular similares",
+    "otherMovies": "otras peliculas"
+  },
+  "movie": "Pelicula"
+}
