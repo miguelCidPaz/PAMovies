@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import ButtonTranslations from "./buttomTranslate";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -8,6 +8,7 @@ export default function Nav() {
   const [t, i18n] = useTranslation("global");
   const navigate = useNavigate();
   const [getGenresFilms, setGetGenresFilms] = useState([]);
+  const [viewModal, setViewModal] = useState(false);
 
   useEffect(() => {
     async function getData() {
@@ -43,6 +44,14 @@ export default function Nav() {
   return (
     <>
       <nav className="nav">
+        <p className="views-nav"
+        onClick={() => {
+          setViewModal(!viewModal)
+          navigate(`/`, { state: {modal: viewModal} });
+        }}
+        >
+          Randomize
+        </p>
         <p
           className="views-nav"
           onClick={() => {

@@ -4,9 +4,12 @@ import { genres } from "./data-main";
 import Genres from "./Genres";
 import NewFilms from "./NewFilms";
 import Divisor from "../Divisor/Divisor";
+import { useLocation, useParams } from "react-router-dom";
+import Randomizer from "../Randomizer/Randomizer";
 
 export default function Main() {
-  const [getFilms, setGetFilms] = useState([]);
+  const [getFilms, setGetFilms] = useState([])
+  const location = useLocation().state;
 
   useEffect(() => {
     async function getInfo() {
@@ -23,8 +26,11 @@ export default function Main() {
 
   let data = getFilms;
 
+  console.log(location.modal)
+
   return (
     <>
+    {location.modal ? <Randomizer /> : null}
       <div className="container">
         <Divisor title="PREMIERES"></Divisor>
         <div className="main-container background-color">
