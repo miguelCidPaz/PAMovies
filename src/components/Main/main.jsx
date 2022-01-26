@@ -4,7 +4,7 @@ import { genres } from "./data-main";
 import Genres from "./Genres";
 import NewFilms from "./NewFilms";
 import Divisor from "../Divisor/Divisor";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Randomizer from "../Randomizer/Randomizer";
 
 export default function Main() {
@@ -26,11 +26,18 @@ export default function Main() {
 
   let data = getFilms;
 
-  console.log(location.modal)
+  console.log(location)
 
   return (
     <>
-    {location.modal ? <Randomizer /> : null}
+    {
+    (location !== undefined || location !== null) 
+      ? location.modal 
+      ? <Randomizer /> 
+      : null 
+      : null
+    } 
+
       <div className="container">
         <Divisor title="PREMIERES"></Divisor>
         <div className="main-container background-color">

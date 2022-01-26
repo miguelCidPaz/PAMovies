@@ -8,7 +8,7 @@ export default function Nav() {
   const [t, i18n] = useTranslation("global");
   const navigate = useNavigate();
   const [getGenresFilms, setGetGenresFilms] = useState([]);
-  const [viewModal, setViewModal] = useState(false);
+  const [viewModal, setViewModal] = useState(true);
 
   useEffect(() => {
     async function getData() {
@@ -47,7 +47,7 @@ export default function Nav() {
         <p className="views-nav"
         onClick={() => {
           setViewModal(!viewModal)
-          navigate(`/`, { state: {modal: viewModal} });
+          navigate(`/`, { state: {modal: viewModal}});
         }}
         >
           Randomize
