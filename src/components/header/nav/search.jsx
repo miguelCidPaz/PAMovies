@@ -30,7 +30,7 @@ export default function ComboBox() {
           );
           setInput(getData.data.results);
         } catch (err) {
-          console.log("hola");
+          console.log(err);
         }
       }
     };
