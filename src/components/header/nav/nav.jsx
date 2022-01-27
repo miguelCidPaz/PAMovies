@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import ButtonTranslations from "./buttomTranslate";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -41,13 +41,26 @@ export default function Nav() {
 
   let data = getFilms;
 
+  useEffect(() =>{
+  },[])
+  
+
+  const whatPage = "http://localhost:3000/".length;
+  const takeURL = (value) => {
+    return value.replace("http://localhost:3000/", "")
+  }
+
   return (
     <>
       <nav className="nav">
         <p className="views-nav"
         onClick={() => {
           setViewModal(!viewModal)
-          navigate(`/`, { state: {modal: viewModal}});
+          if(window.location.href.length > whatPage){
+            navigate('/'+takeURL(window.location.href), {state: {modal: viewModal}})
+          }else{
+            navigate(`/`, { state: {modal: viewModal}});
+          }
         }}
         >
           Randomize

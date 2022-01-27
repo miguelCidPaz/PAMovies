@@ -9,6 +9,8 @@ import Randomizer from "../Randomizer/Randomizer";
 
 export default function Main() {
   const [getFilms, setGetFilms] = useState([])
+  const [modal, setModal] = useState(false);
+  const [keys, setKeys] = useState(undefined);
   const location = useLocation().state;
 
   useEffect(() => {
@@ -19,6 +21,12 @@ export default function Main() {
         )
         .then((res) => {
           setGetFilms(res.data.results);
+          console.log(res.data.results)
+          setKeys(res.data.results.map(element => ({
+            img: element.poster_path,
+            name: element.original_title,
+            id: element.id,
+          })))
         });
     }
     getInfo();
@@ -26,14 +34,12 @@ export default function Main() {
 
   let data = getFilms;
 
-  console.log(location)
-
   return (
     <>
     {
-    (location !== undefined || location !== null) 
-      ? location.modal 
-      ? <Randomizer /> 
+    (location !== undefined && location !== null)
+      ? location.modal === modal
+      ? <Randomizer modal={modal} setModal={setModal} keys={keys} /> 
       : null 
       : null
     } 
