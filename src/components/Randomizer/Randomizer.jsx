@@ -29,7 +29,7 @@ const Randomizer = (props) => {
 
     },[key, movie])
 
-    console.log(key)
+    /* console.log(key) */
     return(
         <div className="randomizer--background">
             <div className="randomizer--body-main">

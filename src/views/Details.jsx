@@ -69,7 +69,7 @@ const Details = ({ state }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 
-  console.log(keys)
+  /* console.log(keys) */
 
   return (
     <>
