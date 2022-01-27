@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Randomizer = (props) => {
-    const [key, setKey] = useState(undefined);
+    const [key, setKey] = useState(props.keys);
     const [movie, setMovie] = useState(undefined)
 
     const urlForImages = "https://image.tmdb.org/t/p/w500/";
@@ -11,14 +11,15 @@ const Randomizer = (props) => {
 
     const randomSelect = async(values) => {
         const numRandom = Math.floor(Math.random()*values.length)
-        const URLPrincipal = `https://api.themoviedb.org/3/movie/${numRandom}/similar?api_key=${ApiKey}&language=en-US&page=1`;
+        const similarTo = key[numRandom]
+        const URLPrincipal = `https://api.themoviedb.org/3/movie/${similarTo}/similar?api_key=${ApiKey}&language=en-US&page=1`;
         await fetch(URLPrincipal)
         .then((res) => res.json())
         .then((data) => {
             //movies(data);
             const otherRandom = Math.floor(Math.random()*20)
-            console.log(data.results)
             if(data.status_code !== 34){
+                console.log(data.results)
                 setMovie(data.results[otherRandom])
             }
         });
@@ -28,7 +29,7 @@ const Randomizer = (props) => {
 
     },[key, movie])
 
-    console.log(props)
+    console.log(key)
     return(
         <div className="randomizer--background">
             <div className="randomizer--body-main">
@@ -50,7 +51,7 @@ const Randomizer = (props) => {
 
                         <div className="randomizer--tobottom">
                             <button className="randomizer--button"
-                            onClick={(e) => {setKey(randomSelect(props.keys))}}
+                            onClick={(e) => {randomSelect(props.keys)}}
                             >Randomizame</button>
                         </div>
                     </div>

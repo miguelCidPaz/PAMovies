@@ -1,26 +1,29 @@
 import Description from "../components/Details/Description";
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { filmDetail } from "../components/Details/Data";
 import Presentation from "../components/Details/Presentation";
 import { Normalizer } from "./../components/Details/Normalizer";
 import DetailTrailer from "../components/Details/DetailTrailer";
 import ContainerCast from "../components/Details/ContainerCast";
 import Omnibar from "../components/Omnibar/Omnibar";
+import Randomizer from "../components/Randomizer/Randomizer";
 import { useTranslation } from "react-i18next";
 
 const Details = ({ state }) => {
   const [casting, setCasting] = useState(undefined); //Reparto de la pelicula
   const [director, setDirector] = useState(undefined);
   const [item, setItem] = useState(filmDetail); //Pasara a ser o bien una llamada a la Api o el objeto que reciba por prop
+  const [modal, setModal] = useState(false); // Si se vera o no el modal
+  const [keys, setKeys] = useState(undefined); // Las keys que recogeremos de otra parte
   const params = useParams(); //Parametros de la URL
   const [saveparams, setSaveParams] = useState({
     type: params.type,
     id: params.id,
   });
   const [t, i18n] = useTranslation("global");
-
   const navigate = useNavigate();
+  const location = useLocation().state;
 
   //Url necesaria para las imagenes
   const urlForImages = "https://image.tmdb.org/t/p/w500/";
@@ -66,8 +69,17 @@ const Details = ({ state }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 
+  console.log(keys)
+
   return (
     <>
+        {
+    (location !== undefined && location !== null)
+      ? location.modal === modal
+      ? <Randomizer modal={modal} setModal={setModal} keys={keys} /> 
+      : null 
+      : null
+    } 
       <div className="container">
         {item.photo_principal !== undefined ? (
           <Presentation
@@ -106,6 +118,7 @@ const Details = ({ state }) => {
             }
             id={saveparams.id}
             value={saveparams.type}
+            setKeys={keys === undefined ? setKeys : null}
           />
         ) : null}
       </div>

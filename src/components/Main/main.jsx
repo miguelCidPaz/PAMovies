@@ -22,11 +22,7 @@ export default function Main() {
         .then((res) => {
           setGetFilms(res.data.results);
           console.log(res.data.results)
-          setKeys(res.data.results.map(element => ({
-            img: element.poster_path,
-            name: element.original_title,
-            id: element.id,
-          })))
+          setKeys(res.data.results.map(element => element.id))
         });
     }
     getInfo();

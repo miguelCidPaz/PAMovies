@@ -17,13 +17,12 @@ const Omnibar = (props) => {
         const respuesta = async () => {
             const response = await decisionForType(props.value, props.id)
             setItem(response);
+            if(props.setKeys !== null){
+                props.setKeys(response.map(element => element.id))
+            }
         }
         respuesta();
     }, [props])
-
-    useEffect(() => {
-
-    }, [item])
 
     //console.log(decisionForType(props.value, props.id))
     return (
