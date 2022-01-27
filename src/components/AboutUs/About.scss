@@ -1,0 +1,125 @@
+.titleAbout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $blue;
+  font-size: 30px;
+  text-align: center;
+}
+.big {
+  font-size: 40px;
+}
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.order {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.textAbout {
+  font-size: 15px;
+  font-size: x-large;
+  text-align: justify;
+}
+/* Botones capacidades */
+.points {
+  width: 200px;
+  height: 60px;
+  font-size: 23px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 700;
+  position: relative;
+  transition: all 0.5s;
+  z-index: 1;
+  margin: 5px;
+}
+
+.points::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background-color: $blue;
+  z-index: -1;
+  transition: all 0.5s;
+}
+
+.points:hover::before {
+  width: 100%;
+}
+
+.points:hover {
+  color: white;
+}
+
+.points:active:before {
+  background: #b9b9b9;
+}
+
+/* boton caritas */
+.buttonAbout {
+  outline: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 200px;
+  height: 50px;
+  border-radius: 0.5em;
+  box-shadow: 0 0.625em 1em 0 rgba(30, 143, 255, 0.35);
+  overflow: hidden;
+}
+
+.buttonAbout div {
+  transform: translateY(0px);
+  width: 100%;
+}
+
+.buttonAbout,
+.buttonAbout div {
+  transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.buttonAbout div span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  padding: 0.75em 1.125em;
+}
+
+.buttonAbout div:nth-child(1) {
+  background-color: $blue;
+}
+
+.buttonAbout div:nth-child(2) {
+  background-color: $purple;
+}
+
+.buttonAbout:hover {
+  box-shadow: 0 0.625em 1em 0 rgba(240, 18, 181, 0.35);
+}
+
+.buttonAbout:hover div {
+  transform: translateY(-50px);
+}
+
+.buttonAbout p {
+  font-size: 15px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.buttonAbout:active {
+  transform: scale(0.95);
+}
