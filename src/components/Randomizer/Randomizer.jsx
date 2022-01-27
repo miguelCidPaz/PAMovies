@@ -19,7 +19,6 @@ const Randomizer = (props) => {
             //movies(data);
             const otherRandom = Math.floor(Math.random()*20)
             if(data.status_code !== 34){
-                console.log(data.results)
                 setMovie(data.results[otherRandom])
             }
         });
