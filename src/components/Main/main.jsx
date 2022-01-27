@@ -44,8 +44,8 @@ export default function Main() {
           <NewFilms data={data} />
         </div>
       </div>
-      <div>
-        <div className="container">
+      <div className="container">
+        <div>
           <Divisor title="CATEGORIES"></Divisor>
         </div>
         <div>

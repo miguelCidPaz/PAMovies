@@ -12,6 +12,7 @@ import AllGenres from "./components/AllGenres/AllGenres";
 import AllPremieres from "./components/AllPremieres/AllPremieres";
 import Error404 from "./components/Error404/Error404";
 import Footer from "./components/footer/footer";
+import About from "./components/AboutUs/About";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/AllGenres/" element={<AllGenres />} />
           <Route exact path="/Genres/:title/:id" element={<ListGenres />} />
           <Route path="/listSearch" element={<ListSearch />} />
+          <Route exact path="/AboutUs/" element={<About />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer></Footer>

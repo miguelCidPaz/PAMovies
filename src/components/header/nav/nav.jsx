@@ -68,7 +68,14 @@ export default function Nav() {
         >
           All Categories
         </p>
-        <p className="views-nav">About us</p>
+        <p
+          className="views-nav"
+          onClick={() => {
+            navigate(`/AboutUs`);
+          }}
+        >
+          About us
+        </p>
         <ButtonTranslations></ButtonTranslations>
       </nav>
     </>
