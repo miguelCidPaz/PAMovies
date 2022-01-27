@@ -2,9 +2,9 @@
 
 .main-container {
   margin: 0 auto;
-  max-width: 85%;
+  max-width: 80%;
   @media (min-width: 450px) {
-    max-width: 80%;
+    max-width: 70%;
   }
 }
 
@@ -140,13 +140,21 @@ span.MuiButton-label {
   bottom: 0;
 }
 .arrow-1 {
-  left: 15px;
+  left: 60px;
 }
 
 .arrow-2 {
-  right: 25px;
+  right: 60px;
 }
+@media (min-width: 450px) {
+  .arrow-1 {
+    left: 0px;
+  }
 
+  .arrow-2 {
+    right: 0px;
+  }
+}
 /*GenreType*/
 .type-container {
   position: relative;
