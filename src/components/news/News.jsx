@@ -48,7 +48,7 @@ export default function News() {
   useEffect(() => {
     async function fecthData() {
       try {
-        var options = {
+        let options = {
           method: "GET",
           url: "https://api.newscatcherapi.com/v2/search",
           params: {

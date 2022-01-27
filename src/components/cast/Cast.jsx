@@ -47,8 +47,9 @@ function SamplePrevArrow(props) {
 const Cast = (props) => {
   const navigate = useNavigate();
   let settings = {
+    // arrows: false,
     infinite: true,
-    speed: 500,
+    speed: 200,
     slidesToShow: 5,
     slidesToScroll: 2,
     focusOnSelect: true,
