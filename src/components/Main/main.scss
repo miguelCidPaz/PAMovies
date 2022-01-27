@@ -185,3 +185,10 @@ span.MuiButton-label {
     margin-top: 15px;
   }
 }
+.container-genres {
+  @media (min-width: 450px) {
+    margin: 0 auto;
+    max-width: 1400px;
+    width: 60%;
+  }
+}

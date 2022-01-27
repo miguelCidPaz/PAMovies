@@ -57,7 +57,7 @@ export default function Genres(props) {
   let dataGenres = getGenresFilms;
 
   let settings = {
-    dots: true,
+    dots: false,
     speed: 2000,
     slidesToShow: 4,
     slidesToScroll: 3,

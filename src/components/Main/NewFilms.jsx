@@ -36,7 +36,7 @@ export default function NewFilms(props) {
     slidesToScroll: 3,
     initialSlide: 3,
     arrows: true,
-    // autoplay: true,
+    autoplay: true,
     autoplaySpeed: 3000,
     focusOnSelect: true,
     nextArrow: <SampleNextArrow />,
