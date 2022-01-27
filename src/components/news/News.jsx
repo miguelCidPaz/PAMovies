@@ -59,7 +59,7 @@ export default function News() {
             sources: "rottentomatoes.com,cnn.com,nytimes.com",
           },
           headers: {
-            "x-api-key": "etTuYg-LShcP5DtU53WYMflslh8eCJe99DiKGl09lro",
+            "x-api-key": "sjfM4OCbxTGAUE8yFh3WSwngU7DsBxfrdgXuDGglYaM",
           },
         };
         const getData = await axios.request(options);
