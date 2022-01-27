@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const Randomizer = (props) => {
     const [key, setKey] = useState(props.keys);
     const [movie, setMovie] = useState(undefined)
-
     const urlForImages = "https://image.tmdb.org/t/p/w500/";
     const image = "https://skillz4kidzmartialarts.com/wp-content/uploads/2017/04/default-image-620x600.jpg"
     const ApiKey = "07e793aeac523d9f4455050b060257c7";

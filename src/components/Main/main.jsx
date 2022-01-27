@@ -6,12 +6,14 @@ import NewFilms from "./NewFilms";
 import Divisor from "../Divisor/Divisor";
 import { useLocation } from "react-router-dom";
 import Randomizer from "../Randomizer/Randomizer";
+import { useLocalStorage } from "../Randomizer/CustomStorageAux";
 
 export default function Main() {
   const [getFilms, setGetFilms] = useState([])
-  const [modal, setModal] = useState(false);
   const [keys, setKeys] = useState(undefined);
   const location = useLocation().state;
+  const [modal, setModal] = useState(location !== undefined && location !== null ? !location.modal : false);
+  const [auxLocal, setAuxLocal] = useLocalStorage('auxiliarRandom', keys !== undefined ? keys : undefined)
 
   useEffect(() => {
     async function getInfo() {
@@ -21,8 +23,10 @@ export default function Main() {
         )
         .then((res) => {
           setGetFilms(res.data.results);
-          console.log(res.data.results)
-          setKeys(res.data.results.map(element => element.id))
+          console.log(res.data.results);
+          const ids = res.data.results.map(element => element.id)
+          setKeys(ids)
+          setAuxLocal(ids)
         });
     }
     getInfo();

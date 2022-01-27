@@ -1,18 +1,34 @@
-import React from "react";
+import React, {useState} from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Divisor from "../Divisor/Divisor";
+import Randomizer from "../Randomizer/Randomizer";
 
 export default function AllPremieres() {
   const location = useLocation().state;
   const navigate = useNavigate();
+  const [modal, setModal] = useState(location !== undefined && location !== null ? !location.modal : false);
+  // eslint-disable-next-line no-unused-vars
+
+  const keys = location.auxiliarKeys.map(element => element.id)
+
+  console.log(location.auxiliarKeys)
 
   return (
-    <div className="container ">
+    <>
+    {
+    (location !== undefined && location !== null)
+      ? location.modal === modal
+      ? <Randomizer modal={modal} setModal={setModal} keys={keys} /> 
+      : null 
+      : null
+    } 
+    {location !== undefined && location !== null 
+    ? <div className="container ">
       <div className="title-genre">
         <Divisor title={"ALL PREMIERES"}></Divisor>
       </div>
       <div className="all-components">
-        {location.map((element) => (
+        {location.auxiliarKeys.map((element) => (
           <div
             className="ind-premiere"
             key={element.id}
@@ -44,6 +60,7 @@ export default function AllPremieres() {
           </div>
         ))}
       </div>
-    </div>
+    </div> : null}
+    </>
   );
 }

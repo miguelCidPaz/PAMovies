@@ -14,7 +14,6 @@ const Details = ({ state }) => {
   const [casting, setCasting] = useState(undefined); //Reparto de la pelicula
   const [director, setDirector] = useState(undefined);
   const [item, setItem] = useState(filmDetail); //Pasara a ser o bien una llamada a la Api o el objeto que reciba por prop
-  const [modal, setModal] = useState(false); // Si se vera o no el modal
   const [keys, setKeys] = useState(undefined); // Las keys que recogeremos de otra parte
   const params = useParams(); //Parametros de la URL
   const [saveparams, setSaveParams] = useState({
@@ -24,6 +23,7 @@ const Details = ({ state }) => {
   const [t, i18n] = useTranslation("global");
   const navigate = useNavigate();
   const location = useLocation().state;
+  const [modal, setModal] = useState(location !== undefined && location !== null ? !location.modal : false);
 
   //Url necesaria para las imagenes
   const urlForImages = "https://image.tmdb.org/t/p/w500/";

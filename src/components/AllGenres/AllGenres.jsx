@@ -1,17 +1,32 @@
-import React from "react";
+import React, {useState} from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { genres } from "../Main/data-main";
 import Divisor from "../Divisor/Divisor";
+import Randomizer from "../Randomizer/Randomizer";
+import { useLocalStorage } from "../Randomizer/CustomStorageAux";
 
 export default function AllGenres() {
   const location = useLocation().state;
   const navigate = useNavigate();
+  const [modal, setModal] = useState(location !== undefined && location !== null ? !location.modal : false);
+  // eslint-disable-next-line no-unused-vars
+  const [auxLocal, setAuxLocal] = useLocalStorage('auxiliarRandom', "")
+
+  console.log(location)
 
   return (
+    <>
+        {
+    (location !== undefined && location !== null)
+      ? location.modal === modal
+      ? <Randomizer modal={modal} setModal={setModal} keys={auxLocal} /> 
+      : null 
+      : null
+    } 
     <div className="container">
       <Divisor title="ALL CATEGORIES"></Divisor>
       <div className="containerGenres ">
-        {location.map((element) => (
+        {location.auxiliarKeys.map((element) => (
           <div
             className="type-container"
             key={element.id}
@@ -31,5 +46,6 @@ export default function AllGenres() {
         ))}
       </div>
     </div>
+    </>
   );
 }

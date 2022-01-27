@@ -38,14 +38,18 @@ export default function Nav() {
     }
     getInfo();
   }, []);
+  
+  const titles = {
+    premieres: `/AllPremieres`,
+    genres: '/AllGenres',
+    about: `/AboutUs`,
+  }
 
   let data = getFilms;
 
   useEffect(() =>{
   },[])
   
-
-  const whatPage = "http://localhost:3000/".length;
   const takeURL = (value) => {
     return value.replace("http://localhost:3000/", "")
   }
@@ -53,14 +57,31 @@ export default function Nav() {
   return (
     <>
       <nav className="nav">
-        <p className="views-nav"
+        <p 
+        className="views-nav"
         onClick={() => {
-          setViewModal(!viewModal)
-          if(window.location.href.length > whatPage){
-            navigate('/'+takeURL(window.location.href), {state: {modal: viewModal}})
+
+          if(takeURL(window.location.href) === titles.genres){
+            navigate('/'+takeURL(window.location.href), 
+            {state: {modal: viewModal, auxiliarKeys: dataGenres}})
+
+          }else if(takeURL(window.location.href) === titles.premieres){
+            navigate('/'+takeURL(window.location.href), 
+            {state: {modal: viewModal, auxiliarKeys: data}})
+
+          }else if(takeURL(window.location.href) === titles.about){
+            navigate('/'+takeURL(window.location.href), 
+            {state: {modal: viewModal, auxiliarKeys: data}})
+
+          }else if(takeURL(window.location.href).length > 3){
+            navigate('/' + takeURL(window.location.href), 
+            {state: {modal: viewModal, auxiliarKeys: data}})
+
           }else{
-            navigate(`/`, { state: {modal: viewModal}});
+            navigate(`/`, 
+            { state: {modal: !viewModal}});
           }
+          setViewModal(!viewModal)
         }}
         >
           Randomize
@@ -68,7 +89,7 @@ export default function Nav() {
         <p
           className="views-nav"
           onClick={() => {
-            navigate(`/AllPremieres`, { state: data });
+            navigate(titles.premieres, { state: {modal: viewModal, auxiliarKeys: data} });
           }}
         >
           All Premieres
@@ -76,7 +97,7 @@ export default function Nav() {
         <p
           className="views-nav"
           onClick={() => {
-            navigate(`/AllGenres`, { state: dataGenres });
+            navigate(titles.genres, { state: {modal: viewModal, auxiliarKeys: dataGenres} });
           }}
         >
           All Categories
@@ -84,7 +105,7 @@ export default function Nav() {
         <p
           className="views-nav"
           onClick={() => {
-            navigate(`/AboutUs`);
+            navigate(titles.about);
           }}
         >
           About us
