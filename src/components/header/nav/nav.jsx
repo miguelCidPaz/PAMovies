@@ -2,8 +2,6 @@ import ButtonTranslations from "./buttomTranslate";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Footer from "../../footer/footer";
-
 import { t } from "i18next";
 import { useTranslation } from "react-i18next";
 
@@ -67,12 +65,10 @@ export default function Nav() {
   //Debe reemplazarse con la direccion base de PamVideos
   //https://pam-movies.vercel.app
   const takeURL = (value) => {
-    return value.replace("http://localhost:3000", "")
+    return value.replace("https://pam-movies.vercel.app", "")
   }
 
   const url = takeURL(window.location.href)
-
-  console.log(url)
 
   return (
     <>
