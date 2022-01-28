@@ -1,25 +1,42 @@
-.container-cast > .img-cast {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  margin: 0 auto 32px auto;
-}
 .container-cast {
-  height: 250px;
+  height: 400px;
   text-align: center;
+  display: flex;
+  filter: brightness(60%);
+
+  .img-cast {
+    width: 180px;
+    height: 180px;
+    object-position: center;
+    object-fit: contain;
+
+    margin: 0 auto 32px auto;
+  }
+
   .h2 {
     width: 180px;
+    height: 20px;
     margin: 0 auto;
   }
   p {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
+  &:hover {
+    transform: scale(1.1);
+    filter: brightness(100%);
+  }
+}
+.cast {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .container-slider-cast {
   width: 100%;
   margin: 0 auto;
   max-width: 1400px;
-  margin-top: 6rem;
+  // margin-top: 4rem;
 
   @media (min-width: 750px) {
     width: 70%;
@@ -34,9 +51,11 @@
 .arrow {
   z-index: 1;
   position: absolute;
-  top: -5px;
+  top: 0;
   bottom: 0;
+  margin: auto;
   width: 50px;
+  height: 300px;
 }
 .arrow-next {
   right: 0px;

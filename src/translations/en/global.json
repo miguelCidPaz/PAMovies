@@ -4,12 +4,12 @@
   },
   "dividers": {
     "premieres": "premieres",
-    "categories": "CATEGORIES",
-    "news": "NEWS",
-    "birthday": "BIRTHDAY",
+    "categories": "categories",
+    "news": "news",
+    "birthday": "birthday",
     "video": "videos",
     "similarMovies": "Similar Movies",
-    "cast": "Cast"
+    "cast": "cast"
   },
   "categories": {
     "allCategories": "All Categories"
@@ -25,5 +25,15 @@
     "similarMovies": "Similar Movies",
     "otherMovies": "other movies"
   },
-  "movie": "Movie"
+  "movie": "Movie",
+  "aboutUs": "about us",
+  "spanish": "Spanish",
+  "english": "English",
+  "titleAbout": "We execute our ideas",
+  "titleAboutBig": "from start to finish.",
+  "contentAbout": "Why? Because we design and create for (and within) context. Combining deep technical expertise with artistic talent, we create everything inside the medium it is meant for.So, from the very start, every stage of our creative process is holistic, functional, and interactive. From every angle, our process is highly collaborative. Internally, we have overlapping roles. Externally, we socialize stakeholders into our decision-making; and we test and validate our ideas with real people that want to use them.",
+  "Development": "Development",
+  "Strategy": "Strategy",
+  "UserExperience": "User Experience",
+  "Design": "Design"
 }

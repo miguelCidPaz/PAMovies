@@ -1,15 +1,18 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Divisor from "../Divisor/Divisor";
-
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 export default function AllPremieres() {
+  const [t] = useTranslation("global");
+
   const location = useLocation().state;
   const navigate = useNavigate();
 
   return (
     <div className="container ">
       <div className="title-genre">
-        <Divisor title={"ALL PREMIERES"}></Divisor>
+        <Divisor title={t("dividers.premieres")}></Divisor>
       </div>
       <div className="all-components">
         {location.map((element) => (

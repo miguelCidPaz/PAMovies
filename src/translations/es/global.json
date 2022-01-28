@@ -3,13 +3,13 @@
     "top-movies": "top-peliculas"
   },
   "dividers": {
-    "premieres": "ESTRENOS",
-    "categories": "CATEGORIAS",
-    "news": "NOTICIAS",
-    "birthday": "CUMPLEAÑOS",
+    "premieres": "estrenos",
+    "categories": "categorias",
+    "news": "noticia",
+    "birthday": "cumpleaños",
     "video": "videos",
     "similarMovies": "Pelicular Similares",
-    "cast": "Reparto"
+    "cast": "reparto"
   },
   "categories": {
     "allCategories": "Todas las categorias"
@@ -25,5 +25,15 @@
     "similarMovies": "peliculas similares",
     "otherMovies": "otras peliculas"
   },
-  "movie": "Pelicula"
+  "movie": "Pelicula",
+  "aboutUs": "sobre nosotros",
+  "spanish": "Español",
+  "english": "Ingles",
+  "titleAbout": "Ejecutamos nuestras ideas",
+  "titleAboutBig": "de principio a fin.",
+  "contentAbout": "¿Por qué? Porque diseñamos y creamos para (y dentro) del contexto. Combinando una profunda experiencia técnica con talento artístico, creamos todo dentro del medio para el que está destinado. Entonces, desde el principio, cada etapa de nuestro proceso creativo es holística, funcional e interactiva. Desde todos los ángulos, nuestro proceso es altamente colaborativo. Internamente, tenemos roles superpuestos. Externamente, socializamos a las partes interesadas en nuestra toma de decisiones; y probamos y validamos nuestras ideas con personas reales que quieren usarlas.",
+  "Development": "Desarrollo",
+  "Strategy": "Estrategia",
+  "UserExperience": "Experiencia de usuario",
+  "Design": "Diseño"
 }

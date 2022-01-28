@@ -1,8 +1,11 @@
-import { useTranslation } from "react-i18next";
 import ButtonTranslations from "./buttomTranslate";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Footer from "../../footer/footer";
+
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 export default function Nav() {
   const [t, i18n] = useTranslation("global");
@@ -49,7 +52,7 @@ export default function Nav() {
             navigate(`/AllPremieres`, { state: data });
           }}
         >
-          All Premieres
+          {t("dividers.premieres")}
         </p>
         <p
           className="views-nav"
@@ -57,7 +60,7 @@ export default function Nav() {
             navigate(`/AllGenres`, { state: dataGenres });
           }}
         >
-          All Categories
+          {t("dividers.categories")}
         </p>
         <p
           className="views-nav"
@@ -65,7 +68,7 @@ export default function Nav() {
             navigate(`/AboutUs`);
           }}
         >
-          About us
+          {t("aboutUs")}
         </p>
         <ButtonTranslations></ButtonTranslations>
       </nav>

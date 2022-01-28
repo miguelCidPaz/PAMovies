@@ -2,11 +2,15 @@
 
 .containerGenres {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
-  align-items: inherit;
-  justify-content: space-around;
-
+  align-items: center;
+  @media (min-width: 450px) {
+    justify-content: space-between;
+  }
+  .type-container {
+    margin: 1rem;
+  }
   .centerGender {
     font-size: 25px;
   }
