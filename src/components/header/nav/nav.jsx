@@ -7,23 +7,7 @@ import axios from "axios";
 export default function Nav() {
   const [t, i18n] = useTranslation("global");
   const navigate = useNavigate();
-  const [getGenresFilms, setGetGenresFilms] = useState([]);
   const [viewModal, setViewModal] = useState(true);
-
-  useEffect(() => {
-    async function getData() {
-      await axios
-        .get(
-          `https://api.themoviedb.org/3/genre/movie/list?api_key=198b2f6e124efb8ffaed4dd22cc65a8c&language=en-US`
-        )
-        .then((res) => {
-          setGetGenresFilms(res.data.genres);
-        });
-    }
-    getData();
-  }, []);
-
-  let dataGenres = getGenresFilms;
   const [getFilms, setGetFilms] = useState([]);
 
   useEffect(() => {
@@ -55,7 +39,7 @@ export default function Nav() {
 
     if(url === titles.genres){
       navigate(url, 
-      {state: {modal: viewModal, auxiliarKeys: dataGenres, msg:'/'+url, toPage: titles.genres}})
+      {state: {modal: viewModal, msg:'/'+url, toPage: titles.genres}})
 
     }else if(url === titles.premieres){
       navigate(url, 
@@ -106,7 +90,7 @@ export default function Nav() {
         <p
           className="views-nav"
           onClick={() => {
-            navigate(titles.genres, { state: {modal: !viewModal, auxiliarKeys: dataGenres} });
+            navigate(titles.genres, { state: {modal: !viewModal} });
           }}
         >
           All Categories
