@@ -80,7 +80,7 @@ export default function Genres(props) {
         },
       },
       {
-        breakpoint: 1025,
+        breakpoint: 1200,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,

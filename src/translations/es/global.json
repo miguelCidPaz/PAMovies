@@ -4,7 +4,7 @@
   },
   "dividers": {
     "premieres": "estrenos",
-    "categories": "categorias",
+    "categories": "Categorias",
     "news": "noticia",
     "birthday": "cumpleaños",
     "video": "videos",
@@ -26,7 +26,7 @@
     "otherMovies": "otras peliculas"
   },
   "movie": "Pelicula",
-  "aboutUs": "sobre nosotros",
+  "aboutUs": "Sobre nosotros",
   "spanish": "Español",
   "english": "Ingles",
   "titleAbout": "Ejecutamos nuestras ideas",
