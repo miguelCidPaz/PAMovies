@@ -1,24 +1,30 @@
 import { useNavigate } from "react-router-dom";
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
   const navigate = useNavigate();
+  const [t] = useTranslation("global");
+
   return (
     <footer className="footer">
       <div className="container">
         <div className="container-footer">
           <p
+            className="itemFooter"
             onClick={() => {
               navigate(`/AllGenres`);
             }}
           >
-            All Categories
+            {t("dividers.categories")}
           </p>
           <p
+            className="itemFooter"
             onClick={() => {
               navigate(`/AboutUs`);
             }}
           >
-            About Us
+            {t("aboutUs")}
           </p>
         </div>
       </div>
