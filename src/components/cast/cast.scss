@@ -3,6 +3,7 @@
   text-align: center;
   display: flex;
   filter: brightness(60%);
+  cursor: pointer;
 
   .img-cast {
     width: 180px;
@@ -90,4 +91,7 @@
     rgba(39, 39, 39, 0) 100%
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#272727', endColorstr='#00272727',GradientType=1 ); /* IE6-9 */
+}
+.itemFooter {
+  cursor: pointer;
 }
