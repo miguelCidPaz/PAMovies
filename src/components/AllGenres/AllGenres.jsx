@@ -8,7 +8,7 @@ export default function AllGenres() {
   const navigate = useNavigate();
 
   const [getGenresFilms, setGetGenresFilms] = useState([]);
-
+  //Obtenemos un listado de todas las categorías disponibles para poder mostrarlas a la vez y mandar el id correspondiente a cada una de ellas.
   useEffect(() => {
     async function getData() {
       await axios

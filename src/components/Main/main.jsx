@@ -9,6 +9,7 @@ export default function Main() {
   const [getFilms, setGetFilms] = useState([]);
 
   useEffect(() => {
+    //obtenemos los datos de peliculas de estrenos
     async function getInfo() {
       await axios
         .get(

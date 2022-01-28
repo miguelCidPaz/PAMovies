@@ -42,6 +42,7 @@ export default function Genres(props) {
   const [getGenresFilms, setGetGenresFilms] = useState([]);
 
   useEffect(() => {
+    //Obtenemos el listado con todas las categorías
     async function getData() {
       await axios
         .get(
