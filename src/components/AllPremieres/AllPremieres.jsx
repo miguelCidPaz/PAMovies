@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Divisor from "../Divisor/Divisor";
-
+//renderiamos los datos que nos va a pasar el navegador cuando hagan click en el botón de All Premieres
 export default function AllPremieres() {
   const location = useLocation().state;
   const navigate = useNavigate();

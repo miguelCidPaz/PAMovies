@@ -1,15 +1,8 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { genres } from "../Main/data-main";
-import Divisor from "../Divisor/Divisor";
 
 export default function About() {
-  const location = useLocation().state;
-  const navigate = useNavigate();
-
   return (
     <div className="container ">
-      {/* <Divisor title="About us"></Divisor> */}
       <div className="page">
         <br />
         <br />
