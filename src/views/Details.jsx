@@ -9,6 +9,7 @@ import ContainerCast from "../components/Details/ContainerCast";
 import Omnibar from "../components/Omnibar/Omnibar";
 import Randomizer from "../components/Randomizer/Randomizer";
 import { useTranslation } from "react-i18next";
+import DetailProvider from "../components/DetailProvider/DetailProvider";
 
 const Details = ({ state }) => {
   const [casting, setCasting] = useState(undefined); //Reparto de la pelicula
@@ -98,6 +99,13 @@ const Details = ({ state }) => {
             <span className="details--spinner"></span>
           </div>
         )}
+
+        {/* {item !== undefined && params.type === 'movie' ? (
+          <DetailProvider id={params.id} /> //Objeto con datos de la api
+        ) : (
+          null
+        )} */}
+
         {item !== undefined ? (
           <Description item={item} /> //Objeto con datos de la api
         ) : (
