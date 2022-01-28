@@ -13,8 +13,9 @@ const NavBox = (props) => {
     while (falseLibrary.length > 0) {
       let aux = [falseLibrary.splice(0, numItems)];
       newArr.push(aux);
+      
     }
-
+    props.setMaxLength(newArr.length);
     return newArr;
   };
 
