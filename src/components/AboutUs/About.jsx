@@ -1,34 +1,34 @@
 import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { genres } from "../Main/data-main";
+import Divisor from "../Divisor/Divisor";
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 export default function About() {
+  const location = useLocation().state;
+  const navigate = useNavigate();
+  const [t] = useTranslation("global");
+
   return (
     <div className="container ">
       <div className="page">
         <br />
         <br />
         <div className="">
-          <h2 className="titleAbout">We execute our ideas </h2>
-          <h2 className="titleAbout big">from start to finish. </h2>
+          <h2 className="titleAbout">{t("titleAbout")}</h2>
+          <h2 className="titleAbout big">{t("titleAboutBig")} </h2>
         </div>
         <br />
         <div>
-          <p className="textAbout">
-            Why? Because we design and create for (and within) context.
-            Combining deep technical expertise with artistic talent, we create
-            everything inside the medium it is meant for.So, from the very
-            start, every stage of our creative process is holistic, functional,
-            and interactive. From every angle, our process is highly
-            collaborative. Internally, we have overlapping roles. Externally, we
-            socialize stakeholders into our decision-making; and we test and
-            validate our ideas with real people that want to use them.
-          </p>
+          <p className="textAbout">{t("contentAbout")}</p>
         </div>
         <br />
         <div className="order">
-          <button className="points"> Development.</button>
-          <button className="points"> Strategy.</button>
-          <button className="points"> User Experience.</button>
-          <button className="points"> Design.</button>
+          <button className="points"> {t("Development")}.</button>
+          <button className="points"> {t("Strategy")}.</button>
+          <button className="points"> {t("UserExperience")}.</button>
+          <button className="points"> {t("Design")}.</button>
         </div>
         <br />
         <button className="buttonAbout">

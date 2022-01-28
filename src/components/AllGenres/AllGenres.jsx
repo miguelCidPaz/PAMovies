@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { genres } from "../Main/data-main";
 import Divisor from "../Divisor/Divisor";
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function AllGenres() {
   const navigate = useNavigate();
+  const [t] = useTranslation("global");
 
   const [getGenresFilms, setGetGenresFilms] = useState([]);
   //Obtenemos un listado de todas las categorías disponibles para poder mostrarlas a la vez y mandar el id correspondiente a cada una de ellas.
@@ -24,7 +27,8 @@ export default function AllGenres() {
 
   return (
     <div className="container">
-      <Divisor title="ALL CATEGORIES"></Divisor>
+      <Divisor title={t("categories.allCategories")}></Divisor>
+
       <div className="containerGenres ">
         {getGenresFilms.map((element) => (
           <div

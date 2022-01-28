@@ -48,11 +48,13 @@ const Cast = (props) => {
   const navigate = useNavigate();
   let settings = {
     // arrows: false,
+    className: "center",
     infinite: true,
     speed: 200,
     slidesToShow: 5,
     slidesToScroll: 2,
     focusOnSelect: true,
+    swipeToSlide: true,
     className: "container-slider-cast",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -86,7 +88,7 @@ const Cast = (props) => {
           slidesToShow: 1,
           slidesToScroll: 1,
           centerMode: true,
-          centerPadding: "80px",
+          centerPadding: "100px",
         },
       },
     ],
@@ -105,14 +107,19 @@ const Cast = (props) => {
             key={key}
             className="container-cast"
           >
-            {element.picture?.includes("null") ? (
-              <ImageNotSupportedIcon className="img-cast"></ImageNotSupportedIcon>
-            ) : (
-              <img className="img-cast" src={element.picture} alt=""></img>
-            )}
-            <div className="h2">
-              <p>({element.item})</p>
-              <h2>{element.name}</h2>
+            <div className="cast">
+              <div>
+                {element.picture?.includes("null") ? (
+                  <ImageNotSupportedIcon className="img-cast"></ImageNotSupportedIcon>
+                ) : (
+                  <img className="img-cast" src={element.picture} alt=""></img>
+                )}
+
+                <div className="h2">
+                  <p>({element.item})</p>
+                  <h2>{element.name}</h2>
+                </div>
+              </div>
             </div>
           </div>
         ))}

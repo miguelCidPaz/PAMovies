@@ -6,7 +6,8 @@ import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@material-ui/core";
 
@@ -38,6 +39,7 @@ export function SamplePrevArrow(props) {
 
 export default function Genres(props) {
   const navigate = useNavigate();
+  const [t] = useTranslation("global");
 
   const [getGenresFilms, setGetGenresFilms] = useState([]);
 
@@ -116,7 +118,7 @@ export default function Genres(props) {
           navigate(`/AllGenres`);
         }}
       >
-        ALL CATEGORIES
+        {t("categories.allCategories")}
       </Button>
 
       <Slider {...settings}>
