@@ -112,7 +112,7 @@ export default function Genres(props) {
       <Button
         className="buttonAll"
         onClick={() => {
-          navigate(`/AllGenres`, { state: dataGenres });
+          navigate(`/AllGenres`);
         }}
       >
         ALL CATEGORIES
