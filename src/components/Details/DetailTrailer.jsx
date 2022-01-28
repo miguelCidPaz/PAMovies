@@ -10,6 +10,7 @@ const DetailTrailer = (props) => {
   const [libraryFilms, setLibraryFilms] = useState([]);
   const [index, setIndex] = useState(0);
   const [t, i18n] = useTranslation("global");
+  const [maxLength, setMaxLength] = useState(0)
   const [tab, setTab] = useState(0);
   const numItems = 6;
 
@@ -37,12 +38,9 @@ const DetailTrailer = (props) => {
 
   const ChangeTab = (e) => {
     if (e.currentTarget.value === "back") {
-      const slots = Math.floor(libraryFilms.length / numItems) - 1;
-      let numMax = slots < 0 ? 0 : slots;
-
       if (index === 0) {
         setIndex(libraryFilms.length - 1);
-        setTab(numMax);
+        setTab(maxLength-1);
       } else {
         setIndex(index - 1);
         setTab(index % numItems === 0 ? tab - 1 : tab);
@@ -128,6 +126,7 @@ const DetailTrailer = (props) => {
               newIndex={newIndex}
               newTab={tab}
               setTab={setTab}
+              setMaxLength={setMaxLength}
             />
           ) : null}
         </div>
