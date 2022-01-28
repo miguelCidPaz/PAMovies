@@ -12,7 +12,6 @@ export default function About() {
 
   return (
     <div className="container ">
-      {/* <Divisor title="About us"></Divisor> */}
       <div className="page">
         <br />
         <br />

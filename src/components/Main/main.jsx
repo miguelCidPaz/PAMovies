@@ -11,6 +11,7 @@ export default function Main() {
   const [getFilms, setGetFilms] = useState([]);
   const [t] = useTranslation("global");
   useEffect(() => {
+    //obtenemos los datos de peliculas de estrenos
     async function getInfo() {
       await axios
         .get(

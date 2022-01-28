@@ -50,7 +50,7 @@ export default function Header() {
       <header className="header">
         <div className="container-header">
           <p className="logo" onClick={() => navigate("/")}>
-            logo
+            PAMOVIES
           </p>
           <div className="faBars">
             {mobile ? (

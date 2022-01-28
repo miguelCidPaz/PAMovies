@@ -1,20 +1,36 @@
-import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { genres } from "../Main/data-main";
 import Divisor from "../Divisor/Divisor";
 import { t } from "i18next";
 import { useTranslation } from "react-i18next";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 export default function AllGenres() {
-  const location = useLocation().state;
   const navigate = useNavigate();
   const [t] = useTranslation("global");
+
+  const [getGenresFilms, setGetGenresFilms] = useState([]);
+  //Obtenemos un listado de todas las categorías disponibles para poder mostrarlas a la vez y mandar el id correspondiente a cada una de ellas.
+  useEffect(() => {
+    async function getData() {
+      await axios
+        .get(
+          `https://api.themoviedb.org/3/genre/movie/list?api_key=198b2f6e124efb8ffaed4dd22cc65a8c&language=en-US`
+        )
+        .then((res) => {
+          setGetGenresFilms(res.data.genres);
+        });
+    }
+    getData();
+  }, []);
 
   return (
     <div className="container">
       <Divisor title={t("categories.allCategories")}></Divisor>
 
       <div className="containerGenres ">
-        {location.map((element) => (
+        {getGenresFilms.map((element) => (
           <div
             className="type-container"
             key={element.id}
@@ -24,8 +40,8 @@ export default function AllGenres() {
           >
             <img
               src={genres.src}
-              height={250}
-              width={160}
+              height={240}
+              width={150}
               alt="genre"
               className="image-genres"
             />

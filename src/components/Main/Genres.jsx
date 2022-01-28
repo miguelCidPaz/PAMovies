@@ -44,6 +44,7 @@ export default function Genres(props) {
   const [getGenresFilms, setGetGenresFilms] = useState([]);
 
   useEffect(() => {
+    //Obtenemos el listado con todas las categorías
     async function getData() {
       await axios
         .get(
@@ -114,7 +115,7 @@ export default function Genres(props) {
       <Button
         className="buttonAll"
         onClick={() => {
-          navigate(`/AllGenres`, { state: dataGenres });
+          navigate(`/AllGenres`);
         }}
       >
         {t("categories.allCategories")}

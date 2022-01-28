@@ -10,7 +10,7 @@ export default function ListGenres() {
   const gender_name = params.title;
 
   const [orderFilms, setOrderFilms] = useState([]);
-
+  //Obtenemos los datos que va a renderizar la pagína en funcion del id y nombre de la categoría que nos va a pasar GenreType cuando el usuario haga click sobre una categoría en concreto
   useEffect(() => {
     async function getID() {
       await axios
