@@ -1,15 +1,30 @@
+import { useNavigate } from "react-router-dom";
+
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <footer className="footer">
       <div className="container">
         <div className="container-footer">
-          <p>categorias</p>
-          <p>sobre nosotros</p>
+          <p
+            onClick={() => {
+              navigate(`/AllGenres`);
+            }}
+          >
+            All Categories
+          </p>
+          <p
+            onClick={() => {
+              navigate(`/AboutUs`);
+            }}
+          >
+            About Us
+          </p>
         </div>
       </div>
       <div className="subfooter">
         <p className="copy">
-          Desarrollada por PAM <span>todos los derechos reservados &copy;</span>
+          Developed by PAM <span> all rights reserved &copy;</span>
         </p>
       </div>
     </footer>
