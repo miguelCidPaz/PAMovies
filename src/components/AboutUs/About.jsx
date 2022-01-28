@@ -1,13 +1,23 @@
-import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { genres } from "../Main/data-main";
-import Divisor from "../Divisor/Divisor";
+import React, {useState} from "react";
+import { useLocation } from "react-router-dom";
+import { useLocalStorage } from "../Details/CustomStorage";
+import Randomizer from "../Randomizer/Randomizer";
 
 export default function About() {
   const location = useLocation().state;
-  const navigate = useNavigate();
+  const [modal, setModal] = useState(location !== undefined && location !== null ? !location.modal : false);
+  // eslint-disable-next-line no-unused-vars
+  const [auxLocal, setAuxLocal] = useLocalStorage('auxiliarRandom', "")
 
   return (
+    <>
+    {
+    (location !== undefined && location !== null)
+      ? location.modal === modal
+      ? <Randomizer modal={modal} setModal={setModal} keys={auxLocal} /> 
+      : null 
+      : null
+    } 
     <div className="container ">
       {/* <Divisor title="About us"></Divisor> */}
       <div className="page">
@@ -54,5 +64,6 @@ export default function About() {
         </button>
       </div>
     </div>
+    </>
   );
 }

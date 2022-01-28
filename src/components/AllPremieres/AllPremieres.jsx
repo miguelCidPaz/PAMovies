@@ -11,7 +11,7 @@ export default function AllPremieres() {
 
   const keys = location.auxiliarKeys.map(element => element.id)
 
-  console.log(location.auxiliarKeys)
+  console.log(location)
 
   return (
     <>

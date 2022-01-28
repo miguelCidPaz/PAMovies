@@ -54,9 +54,9 @@ export default function Main() {
         <div>
           <Divisor title="CATEGORIES"></Divisor>
         </div>
-      </div>
-      <div className="container-genres">
-        <Genres genres={genres} data={data} />
+        <div className="container-genres">
+          <Genres genres={genres} data={data} />
+        </div>
       </div>
     </>
   );

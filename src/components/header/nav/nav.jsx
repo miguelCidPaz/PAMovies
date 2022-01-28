@@ -43,53 +43,62 @@ export default function Nav() {
     premieres: `/AllPremieres`,
     genres: '/AllGenres',
     about: `/AboutUs`,
+    raiz: `/`
   }
 
   let data = getFilms;
 
   useEffect(() =>{
   },[])
+
+  const decision = () => {
+
+    if(url === titles.genres){
+      navigate(url, 
+      {state: {modal: viewModal, auxiliarKeys: dataGenres, msg:'/'+url, toPage: titles.genres}})
+
+    }else if(url === titles.premieres){
+      navigate(url, 
+      {state: {modal: viewModal, auxiliarKeys: data, msg:'/'+url, toPage: titles.premieres }})
+
+    }else if(url === titles.about){
+      navigate(url, 
+      {state: {modal: viewModal, auxiliarKeys: null, msg:'/'+url, toPage: titles.about}})
+
+    }else if(!Object.values(titles).includes(url)){
+      navigate(url, 
+      {state: {modal: viewModal, auxiliarKeys: null, msg:'/'+url === titles.genres, toPage: "Raiz"}})
+
+    }else{
+      navigate(titles.raiz, 
+      { state: {modal: viewModal}});
+    }
+
+    setViewModal(!viewModal)
+  }
   
   const takeURL = (value) => {
-    return value.replace("http://localhost:3000/", "")
+    return value.replace("http://localhost:3000", "")
   }
+
+  
+  const url = takeURL(window.location.href)
+
+  console.log(url)
 
   return (
     <>
       <nav className="nav">
         <p 
         className="views-nav"
-        onClick={() => {
-
-          if(takeURL(window.location.href) === titles.genres){
-            navigate('/'+takeURL(window.location.href), 
-            {state: {modal: viewModal, auxiliarKeys: dataGenres}})
-
-          }else if(takeURL(window.location.href) === titles.premieres){
-            navigate('/'+takeURL(window.location.href), 
-            {state: {modal: viewModal, auxiliarKeys: data}})
-
-          }else if(takeURL(window.location.href) === titles.about){
-            navigate('/'+takeURL(window.location.href), 
-            {state: {modal: viewModal, auxiliarKeys: data}})
-
-          }else if(takeURL(window.location.href).length > 3){
-            navigate('/' + takeURL(window.location.href), 
-            {state: {modal: viewModal, auxiliarKeys: data}})
-
-          }else{
-            navigate(`/`, 
-            { state: {modal: !viewModal}});
-          }
-          setViewModal(!viewModal)
-        }}
+        onClick={() => {decision()}}
         >
           Randomize
         </p>
         <p
           className="views-nav"
           onClick={() => {
-            navigate(titles.premieres, { state: {modal: viewModal, auxiliarKeys: data} });
+            navigate(titles.premieres, { state: {modal: !viewModal, auxiliarKeys: data} });
           }}
         >
           All Premieres
@@ -97,7 +106,7 @@ export default function Nav() {
         <p
           className="views-nav"
           onClick={() => {
-            navigate(titles.genres, { state: {modal: viewModal, auxiliarKeys: dataGenres} });
+            navigate(titles.genres, { state: {modal: !viewModal, auxiliarKeys: dataGenres} });
           }}
         >
           All Categories
@@ -105,7 +114,7 @@ export default function Nav() {
         <p
           className="views-nav"
           onClick={() => {
-            navigate(titles.about);
+            navigate(titles.about, {modal: !viewModal});
           }}
         >
           About us
