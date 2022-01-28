@@ -56,9 +56,9 @@ export default function Main() {
         <div>
           <Divisor title={t("dividers.categories")}></Divisor>
         </div>
-        <div className="container-genres">
-          <Genres genres={genres} data={data} />
-        </div>
+      </div>
+      <div className="container-genres">
+        <Genres genres={genres} data={data} />
       </div>
     </>
   );
