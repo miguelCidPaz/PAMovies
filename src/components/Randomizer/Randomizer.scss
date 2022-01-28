@@ -8,6 +8,7 @@
   width: 100%;
   height: 100vh;
   background-color: rgba(61, 59, 59, 0.705);
+  overflow: hidden;
   z-index: 10;
 }
 
@@ -17,8 +18,9 @@
   border-radius: 5px;
   background-color: $background-color;
 
-  @media (max-width: 500px) {
+  @media (max-width: 700px) {
     width: 90%;
+    height: 100vh;
   }
 }
 
@@ -34,10 +36,16 @@
   border-top-right-radius: 5px;
   border-bottom-left-radius: 5px;
   outline: none;
-  box-shadow: 0 0 5px $purple;
+  box-shadow: 0 0 3px red;
   background-color: red;
   color: white;
   font-weight: bolder;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 0 8px red;
+    text-shadow: 0 0 5px white;
+  }
 }
 
 .randomizer--body-interior {
@@ -47,7 +55,7 @@
   align-items: center;
   height: 94%;
 
-  @media (max-width: 500px) {
+  @media (max-width: 700px) {
     flex-direction: column;
   }
 }
@@ -61,7 +69,7 @@
   height: 100%;
   background-color: transparent;
 
-  @media (max-width: 500px) {
+  @media (max-width: 700px) {
     width: 100%;
   }
 }
@@ -73,19 +81,28 @@
   transition-duration: 0.3s;
   outline: none;
   font-size: 30px;
-  background-color: white;
   border-bottom-left-radius: 5px;
   border-top-right-radius: 5px;
-  background-color: white;
+  margin-left: 2px;
+  margin-top: -1px;
+  background-color: $background-color;
+  box-shadow: 1px -5px 10px #3d3d3d, 3px 1px 5px #111111;
   cursor: pointer;
+  color: white;
 
   &:hover {
-    background-color: $purple;
-    color: white;
+    background-color: #c206bc96;
+    box-shadow: -2px -2px 5px #f55ef0d8, 2px 2px 5px #72036eec;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 700px) {
     border-radius: 0px;
+    margin: 0px;
+    box-shadow: 0px -3px 10px #3d3d3d, 0px 1px 5px #111111;
+
+    &:hover {
+      box-shadow: 0px -3px 10px #f55ef0d8, 0px 1px 5px #72036eec;
+    }
   }
 }
 
@@ -104,7 +121,7 @@
   font-weight: bolder;
   text-shadow: -5px -5px 5px $purple, 5px 5px 5px $blue;
 
-  @media (max-width: 500px) {
+  @media (max-width: 700px) {
     font-size: 40px;
   }
 }
@@ -127,8 +144,9 @@
     width: 200px;
     height: 280px;
     box-shadow: 5px 3px 5px $purple, -5px -2px 5px $blue;
+    border-radius: 10px;
 
-    @media (max-width: 500px) {
+    @media (max-width: 700px) {
       width: 100px;
       height: 150px;
       margin-top: 50px;
@@ -139,10 +157,43 @@
     font-size: 20px;
     font-weight: bolder;
     text-shadow: 0 0 3px white;
+    padding-top: 20px;
   }
 }
 
-.randomizer--ranura {
+/* .randomizer--ranura {
   width: 80%;
-  background-color: red;
+  border: 0;
+  outline: none;
+  background-color: #272727;
+  box-shadow: 0px 0px 16px #161616, 0 0 3px inset #585858, 0 0 2px inset #918d8d,
+    0 0 5px inset #383737, 0 0 3px #363636, 0 0 5px inset #272727;
+  border-radius: 10px;
+  transition-duration: 0.3s;
+
+  &:hover {
+    background-color: #027df5;
+    box-shadow: 0px 0px 16px #0464c4, 0 0 3px inset #0352a1,
+      0 0 2px inset #3691ec, 0 0 5px inset #1a84ee, 0 0 3px #01509e,
+      0 0 5px inset #0069d3;
+
+    img {
+      box-shadow: 0 0 20px $purple;
+    }
+  }
+} */
+
+.randomizer--ranura {
+  border: 0;
+  outline: none;
+  transition-duration: 0.3s;
+  width: 80%;
+  border-radius: 30px;
+  background-color: $background-color;
+  box-shadow: -5px -5px 15px #3d3d3d, 5px 5px 15px #111111;
+
+  &:hover {
+    background-color: #c206bc96;
+    box-shadow: -2px -2px 5px #f55ef0d8, 2px 2px 5px #72036eec;
+  }
 }

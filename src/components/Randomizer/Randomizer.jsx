@@ -56,7 +56,7 @@ const Randomizer = (props) => {
                     
                     <div className="randomizer--container-interior">
                         
-                        <div className="randomizer--toCenter randomizer--ranura">
+                        <button className="randomizer--toCenter randomizer--ranura">
                             <Link 
                             to={movie !== undefined ? `/details/movie/${movie.id}` : '/'}
                             className="randomizer--container-img">
@@ -67,10 +67,10 @@ const Randomizer = (props) => {
                                 }
                                 {movie !== undefined
                                 ? <p>{movie.original_title}</p>
-                                : null }
+                                : <p>Random</p> }
 
                             </Link>
-                        </div>
+                        </button>
 
                     </div>
 
