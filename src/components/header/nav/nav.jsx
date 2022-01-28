@@ -61,11 +61,12 @@ export default function Nav() {
     setViewModal(!viewModal)
   }
   
+  //Debe reemplazarse con la direccion base de PamVideos
+  //https://pam-movies.vercel.app
   const takeURL = (value) => {
     return value.replace("http://localhost:3000", "")
   }
 
-  
   const url = takeURL(window.location.href)
 
   console.log(url)
