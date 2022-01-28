@@ -16,7 +16,7 @@ export default function Header() {
   useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
 
-    if (width <= 550) {
+    if (width <= 800) {
       setMobile(true);
     } else {
       setBars(true);
