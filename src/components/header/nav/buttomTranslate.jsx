@@ -48,8 +48,8 @@ export default function ButtonTranslations() {
           TransitionComponent={Fade}
           className="language"
         >
-          <MenuItem onClick={Spanish}>Español</MenuItem>
-          <MenuItem onClick={English}>Ingles</MenuItem>
+          <MenuItem onClick={Spanish}>{t("spanish")}</MenuItem>
+          <MenuItem onClick={English}>{t("english")}</MenuItem>
         </Menu>
       </div>
     </>

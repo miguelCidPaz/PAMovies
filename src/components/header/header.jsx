@@ -16,7 +16,7 @@ export default function Header() {
   useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
 
-    if (width <= 550) {
+    if (width <= 800) {
       setMobile(true);
     } else {
       setBars(true);
@@ -50,7 +50,7 @@ export default function Header() {
       <header className="header">
         <div className="container-header">
           <p className="logo" onClick={() => navigate("/")}>
-            logo
+            PAMOVIES
           </p>
           <div className="faBars">
             {mobile ? (

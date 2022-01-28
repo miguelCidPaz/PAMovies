@@ -4,18 +4,21 @@ import { genres } from "./data-main";
 import Genres from "./Genres";
 import NewFilms from "./NewFilms";
 import Divisor from "../Divisor/Divisor";
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import Randomizer from "../Randomizer/Randomizer";
 import { useLocalStorage } from "../Randomizer/CustomStorageAux";
 
 export default function Main() {
-  const [getFilms, setGetFilms] = useState([])
   const [keys, setKeys] = useState(undefined);
   const location = useLocation().state;
-  const [modal, setModal] = useState(location !== undefined && location !== null ? !location.modal : false);
+  const [modal, setModal] = useState(location !== undefined && location !== null ? !location.modal : true);
   const [auxLocal, setAuxLocal] = useLocalStorage('auxiliarRandom', keys !== undefined ? keys : undefined)
-
+  const [getFilms, setGetFilms] = useState([]);
+  const [t] = useTranslation("global");
   useEffect(() => {
+    //obtenemos los datos de peliculas de estrenos
     async function getInfo() {
       await axios
         .get(
@@ -23,7 +26,6 @@ export default function Main() {
         )
         .then((res) => {
           setGetFilms(res.data.results);
-          console.log(res.data.results);
           const ids = res.data.results.map(element => element.id)
           setKeys(ids)
           setAuxLocal(ids)
@@ -45,14 +47,14 @@ export default function Main() {
     } 
 
       <div className="container">
-        <Divisor title="PREMIERES"></Divisor>
+        <Divisor title={t("dividers.premieres")}></Divisor>
         <div className="main-container background-color">
           <NewFilms data={data} />
         </div>
       </div>
       <div className="container">
         <div>
-          <Divisor title="CATEGORIES"></Divisor>
+          <Divisor title={t("dividers.categories")}></Divisor>
         </div>
         <div className="container-genres">
           <Genres genres={genres} data={data} />

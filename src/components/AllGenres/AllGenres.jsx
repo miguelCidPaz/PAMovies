@@ -13,7 +13,7 @@ export default function AllGenres() {
   // eslint-disable-next-line no-unused-vars
   const [auxLocal, setAuxLocal] = useLocalStorage('auxiliarRandom', "")
   const [getGenresFilms, setGetGenresFilms] = useState([]);
-
+  //Obtenemos un listado de todas las categorías disponibles para poder mostrarlas a la vez y mandar el id correspondiente a cada una de ellas.
   useEffect(() => {
     async function getData() {
       await axios

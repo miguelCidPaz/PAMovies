@@ -2,8 +2,11 @@ import React, {useState} from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Divisor from "../Divisor/Divisor";
 import Randomizer from "../Randomizer/Randomizer";
+import { useTranslation } from "react-i18next";
 
 export default function AllPremieres() {
+  const [t] = useTranslation("global");
+
   const location = useLocation().state;
   const navigate = useNavigate();
   const [modal, setModal] = useState(location !== undefined && location !== null ? !location.modal : false);
@@ -25,7 +28,7 @@ export default function AllPremieres() {
     {location !== undefined && location !== null 
     ? <div className="container ">
       <div className="title-genre">
-        <Divisor title={"ALL PREMIERES"}></Divisor>
+        <Divisor title={t("dividers.premieres")}></Divisor>
       </div>
       <div className="all-components">
         {location.auxiliarKeys.map((element) => (
