@@ -29,7 +29,12 @@ function ListSearch() {
               <h1>{element.title}</h1>
               <div className="container-list-start">
                 <Star star={element.vote_average}></Star>
-                <p>( {element.release_date.slice(0, 4)} )</p>
+                {element.release_date === undefined ||
+                element.release_date === "" ? (
+                  <p>( {element.release_date} )</p>
+                ) : (
+                  <p>( {element.release_date.slice(0, 4)} )</p>
+                )}
               </div>
             </div>
           </div>
